@@ -1,0 +1,89 @@
+---
+layout: post
+title: Chapter 15 Security Assessment and Testing
+permalink: /study/chapter-15-security-assessment-and-testing
+subtitle: 
+date: 2022-08-25 00:20:00 +0900
+cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
+thumbnail-img: https://i.imgur.com/Se6UFV3.png
+share-img:
+tags: [CISSP]
+categories: [Study]
+---
+
+<!-- wp:heading -->
+<h2>Building a Security Assessment and Testing Program</h2>
+<!-- /wp:heading -->
+
+<img src="https://i.imgur.com/Se6UFV3.png">
+
+<!-- wp:list -->
+<ul><li>Security Testing</li><li>Verify a control is functioning properly.</li><li>It's not sufficient to simply perform security tests.</li><li>Security professionals must also carefully review the results of those tests to ensure that each test was successful.</li><li>Security Assessments</li><li>Are comprehensive reviews of the security of a system, application, or other tested environment.</li><li>Security Audits</li><li>Three main types of audits<ul><li>internal audits</li><li>external audits</li><li>third-party audits</li></ul></li><li>Real World Scenario</li><li>Internal Audits</li><li>Internal audits are performed by an organization's internal audit staff and are typically intended for internal audiences.</li><li>Chief Audit Executive (CAE)</li><li>External Audits</li><li>External audits are performed by an outside auditing firm.</li><li>The so-called Big Four audit firms:(所谓的四大审计事务所)<ul><li>Ernst &amp; Young (EY, 安永会计师事务所 / アーンスト&amp;ヤング, イギリス発)</li><li>Deloitte (DTT, 德勤会计师事务所 / デロイト、イギリス発)</li><li>PricewaterhouseCoopers (PwC, 普华永道会计师事务所 / プライスウォーターハウスクーパース, イギリス発)</li><li>KPMG (毕马威 / KPMG, イギリス発)</li></ul></li><li>Third-Party Audits</li><li>Service Organization Controls<ul><li>SOC 1 Engagements</li><li>SOC 2 Engagements</li><li>Audit results are confidential and only shared under an NDA.</li><li>SOC 3 Engagements</li><li>Audit results are intended for public disclosure.</li></ul></li><li>SOC reports<ul><li>Type I Reports</li><li>Type I reports also cover only a specific point in time, rather than an extended period.</li><li>Type II Reports</li><li>The Type II report also covers an extended period of time: at least six months of operation.</li><li>Mush more reliable then Type I reports.</li></ul></li><li>Auditing Standards</li><li>COBIT (Control Objectives for Information and Related Technologies)<ul><li>Describes the common requirements that organizations should have in place surrounding their information systems.</li></ul></li><li>ISO 27001<ul><li>Describes a standard approach for setting up an information security management system.</li></ul></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Performing Vulnerability Assessments</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Describing Vulnerabilityes</li><li>NIST : Security Content Automation Protocol (SCAP)<ul><li>CVE</li><li>CVSS</li><li>CCE</li><li>CPE</li><li>XCCDF</li><li>OVAL</li></ul></li><li>Vulnerability Scans</li><li>Four main categories of vulnerability scans:<ul><li>Network dicovery scans (网络诊断扫描)</li><li>Network vulnerability scans (网络漏洞扫描)</li><li>Web application vulnerability scans (Web应用程序漏洞扫描)</li><li>Database vulnerability scans (数据库漏洞扫描)</li></ul></li><li>Network Dicovery Scanning<ul><li>Techniques to identify open ports on remote systems</li><li>TCP SYN Scanning (also known as "half-open" scanning)<ul><li>Sends a SYN packet and receives a SYN ACK packet in response, but it does not send the final ACK required to complete the three-way handshake.</li></ul></li><li>TCP Connect Scanning</li><li>TCP ACK Scanning</li><li>UDP Scanning</li><li>Xmas Scanning</li><li>The most common tool for network dicovery scanning is nmap. Current state of the port:</li><li>Open - open &amp; there is an application actively accepting connections on that port.</li><li>Closed - accessible but there is no application accepting connection.</li><li>Filtered - unable to determine open or closed (a firewall is interfering with the connection)</li><li>netstat command</li><li>Lists all active network connections on a system as well as those ports that are open and awaiting new connectons.</li></ul></li><li>Network Vulnerability Scanning<ul><li>Network vulnerability scans go deeper than discovery scans.</li><li>false positive report (假阳性报告 / 誤検知レポート)</li><li>false negative report (假阴性报告 / 偽陰性報告)</li><li>By default, network vulnerability scanners run unauthenticated scans.</li><li>Performing authenticated scans of systems can reduce false prositive/negative reports.</li></ul></li><li>Web Vulnerability Scanning<ul><li>Special-purpose tools that scour web applications for known vulnerabilities.</li><li>May discover flaws not visible to network vulnerability scanners.</li><li>Nessus</li><li>OWASP</li></ul></li><li>Databasae Vulnerability Scanning<ul><li>Tools that allow security professionals to scan both databases and web applications for vulnerabilities that may affect database security.</li><li>Sqlmap</li></ul></li><li>Vulnerability Management Workflow<ul><li>A workflow approach to managing vulnerabilities should also be developed.</li><li>The basic steps:</li></ul><ol><li>Detection</li><li>Validation (Confirming the vuln to detemine it is not a false positive report)</li><li>Remediation</li></ol></li><li>Penetration Testing<ul><li>NIST defines four phases</li></ul><ol><li>Planning</li><li>Information gathering and discovery</li><li>Attack</li></ol><ul><li>tool: Metasploit Framework</li><li>Three groups categoried of the tests</li><li>White-Box Penetration Test ("known environment" test)<ul><li>Provides the attackers with detailed information.</li><li>Bypasses many of the reconnaissance steps.</li><li>Shortening the time.</li><li>Increasing the likelihood that it will find security flaws.</li></ul></li><li>Gray-Box Penetration Test ("partially known environment" test)<ul><li>Partical knowledge tests.</li><li>Balance the advantages and disadvantages os white- and black-box penetraton tests.</li></ul></li><li>Black-Box Penetration Test ("unknown environment test")<ul><li>Simulates an external attacker.</li></ul></li></ul></li><li>Compliance Checks<ul><li>An important part of security testing and assessment programs for regulated firms.</li></ul></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Testing Your Software</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Code Review and Testing</li><li>Code Review (also known as peer review)<ul><li>Fagan inspections (The most formal code review processes)</li></ul><ol><li>Planning</li><li>Overview</li><li>Preparation</li><li>Inspection</li><li>Rework</li><li>Follow-up</li></ol></li><li>Static Testing<ul><li>Static application security testing (SAST)</li></ul></li><li>Dynamic Testing<ul><li>Dynamic application security testing (DAST)</li><li>IAST (Interactive application security testing)</li><li>RASP (Runtime Applications Self-Protection)</li></ul></li><li>Fuzz Testing<ul><li>A specialized dynamic testing technique that provides many different types of input to software to stress its limits and find previously undetected flaws.</li><li>Categories</li><li>Mutation (Dumb) Fuzzing (突变模糊测试)<ul><li>Uses bit flipping and other techniques to slightly modify previous inputs to a program in an attempt to detect software flaws.</li></ul></li><li>Generational (Intelligent) Fuzzing</li></ul></li><li>Interface Testing<ul><li>Three types</li><li>APIs</li><li>User Interfaces (UIs)<ul><li>Includes assessments of both graphical user interfaces (GUIs) and command-line interfaces (CLIs) for a software program.</li></ul></li><li>Physical Interfaces</li></ul></li><li>Misuse Case Testing (异常用例测试)</li><li>Test Coverage Analysis<ul><li>Five common criteria (五个共同标准)</li><li>Branch coverage</li><li>Condition coverage</li><li>Function coverage</li><li>Loop coverage</li><li>Statement coverage</li></ul></li><li>Website Monitoring<ul><li>Passive monitoring</li><li>Real user monitoring (RUM)</li><li>Synthetic monitoring (or active monitoring)</li></ul></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Implementing Security Management Processes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Log Reviews (日志审查)</li><li>To ensure that privileged users are not abusing their privileges.</li><li>Account Management</li><li>To ensure that users retain authorized permissionsn and that unauthorized modifications do not occur.</li><li>Organizations that do not have time to conduct this thorough process may use sampling instead.</li><li>Disaster Recovery and Business Continuity</li><li>Consistent backup programs are an extremely important component of these efforts.</li><li>Training and Awareness (培训和认识)</li><li>Many organizations use phishing simulations to evaluate the effectiveness of their security awareness programs.</li><li>Key Performance and Risk Indicators</li><li>Number of open vulnerabilities</li><li>Time to resolve vulnerabilities</li><li>Vulnerability/defect recurrence</li><li>Number of compromised accounts</li><li>Number of software flaws detected in preproduction scanning</li><li>Repeat audit findings</li><li>User attempts to visit known malicious sites</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Summary</h2>
+<!-- /wp:heading -->
+
+<!-- wp:heading -->
+<h2>Exam Essentials</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Understand the importance of security assessment and testing programs.</li><li>Conduct Vulnerability assessments and penetration tests.</li><li>Perform software testing to validate code moving into production.</li><li>Understand the difference between static and dynamic software testing.</li><li>Explain the concept of fuzzing.</li><li>Perform security management tasks to provide oversight to the information security program.</li><li>Conduct or facilitate internal and third-party audits.</li><li>Collect security process data.</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Review Questions</h2>
+<!-- /wp:heading -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>1 A
+2 D
+3 D → C
+4 C
+5 A
+6 C
+7 B
+8 B
+9 D
+10 C
+11 D
+12 C
+13 B
+14 A → C
+15 A
+16 A → B
+17 B
+18 B
+19 B
+20 C → B</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>正解率：16 / 20 = 80%</p>
+<!-- /wp:paragraph -->
