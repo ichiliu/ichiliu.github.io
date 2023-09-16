@@ -46,12 +46,10 @@ Ref:[Apexドメインを設定する](https://docs.github.com/ja/pages/configuri
 独自ドメインにSSL証明書が発行されていないため、Enforce HTTPSがUnavailableに。
 
 ## DNS設定変更
-ISP（onamae.com）側ではDNSのALIASレコードやANAMEレコードを作成することができないため、
-URL転送設定を利用する必要がある。DNS追加オプションを購入する必要があり、
-2023/09/15時点133円（税込）/月。仕方なく、購入することにしました。
-
 ### Aレコードの作成
 Ref:[Apexドメインを設定する](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain)
+
+やることは、onamae.comにおいてDNSのAレコードにGithub PagesのIPアドレスを追加します。
 
 ![file](https://i.imgur.com/BB3Yij3.png)
 
@@ -60,38 +58,6 @@ IPv4のをだけ設定することにしました。
 onamae.com上に設定完了の画面↓
 
 ![file](https://i.imgur.com/tkhG4Ys.png)
-
-### URL転送設定
-
-![file](https://i.imgur.com/EHp6XaI.png)
-
-onamae.comの「ドメイン設定」画面にて、以下のようにURL転送を利用します。
-
-![file](https://i.imgur.com/edolzBX.png)
-
-転送情報設定画面を開きます。まずはまだ何も入力していないデフォルト状態は以下のようになります。
-画面が縦長いため、2枚に分けてキャプチャを貼ります。
-
-転送元、転送先の設定
-
-![file](https://i.imgur.com/m0aRrP9.png)
-
-リダイレクト転送か、フレーム転送かの設定
-
-![file](https://i.imgur.com/VzV8Td7.png)
-
-入力内容ですが、
-- 転送元：デフォルトのまま
-- 転送先：転送先URLをhttps://<username>.github.or にします
-
-個人的には、転送後もブラウザのアドレスバーには転送元の独自ドメインを表示させたいため、
-「フレーム転送」を選択しました。
-
-![file](https://i.imgur.com/Z49a3G7.png)
-
-設定完了した画面には以下の表示があります。
-
-![file](https://i.imgur.com/BPm1fTT.png)
 
 ## SSL証明書の設定
 onamae.com上で購入すると、年間2.5万円程度かかるので、無料で作れないものがないか、
@@ -121,6 +87,8 @@ Cloudflareは、無料でSSLを提供するサービスで、カスタムドメ�
     Cloudflare のダッシュボードで SSL の設定を行い、SSL を有効にします。
     これで、abcde.net のドメインが Cloudflare を介してアクセスされるようになり、Cloudflare の機能を利用できます。
 
+
+## Cloudflareの設定
 早速、`cloudfare`のアカウントを作成しました。上記の手順に沿ってやっていきます。
 
 - Add a Site  
@@ -135,7 +103,8 @@ Cloudflareは、無料でSSLを提供するサービスで、カスタムドメ�
 
     無料の割に、こんなに機能がいっぱい付いているのですか、素晴らしい！
 - Review your DNS records
-![file](https://i.imgur.com/9GFRuXo.png)
+
+![file](https://i.imgur.com/tGB62Q8.png)
 
   DNSレコードは引き継がれているみたい。
 
@@ -147,7 +116,7 @@ Cloudflareは、無料でSSLを提供するサービスで、カスタムドメ�
 
 ![file](https://i.imgur.com/FQqe2XR.png)
 
-  設定完了させて、次はcloudfare画面の「Done,check nameservers」ボタンを押す。
+  設定完了させて、次はcloudflare画面の「Done,check nameservers」ボタンを押す。
 
 - Quick Start Guide
 ![file](https://i.imgur.com/XrESMU6.png)
@@ -155,7 +124,6 @@ Cloudflareは、無料でSSLを提供するサービスで、カスタムドメ�
   1つずつ開いてみてみます
   - Improve security
 ![file](https://i.imgur.com/RDpqACR.png)
-
 
   - Always use HTTPS
 ![file](https://i.imgur.com/uJ6ofsV.png)
@@ -168,5 +136,92 @@ Cloudflareは、無料でSSLを提供するサービスで、カスタムドメ�
 
 「Finish」ボタンを押します。
 
+## SSL/TLS設定
+- Overview
+  cloudflareのSSL共用証明書を使います、「Advanced Certificate」は別の用途なので、今回は関係ない。
+
+![file](https://i.imgur.com/MBqiAXi.png)
+
+  Flexibleを選択するようにします。
+  - Browserとcloudflare間は「HTTPS」、cloudflareとGithub Pages間は「HTTP」になります。
+  - Fullを選択すると、cloudflareとGithub Pages間がHTTPSとなり、SSL証明書エラーになります。
+
+## Github PagesにてEnforce HTTPS設定
+上記のcloudflare設定が無事完了していれば、cloudflare->HTTP->Github Pagesになります。
+セキュリティを強化するため、Enforce HTTPS設定をします。
+
+![file](https://i.imgur.com/ax2fH6o.png)
+
+この設定が完了すると、Github Pagesのサイトは`https://<custom domain>`になります。
+
+![file](https://i.imgur.com/kf67k70.png)
+
 ## 動作確認
-正しく転送できているのかを確認します。
+Github Pagesに引越前と同いURLでBlogを閲覧することができました。
+めでだしめでだし。
+
+# AWS EC2を削除
+動作確認で問題なかったため、いよいよAWS EC2を削除するタイミングが来ました。
+
+- AMIsを削除
+
+![file](https://i.imgur.com/fQMG6oa.png)
+
+  削除する前のスクショを取るのを忘れましたが、AMIsを全部選択して「Deregister AMI」のActionをしました。
+
+- Snapshotsを削除
+
+![file](https://i.imgur.com/nWkk3Nu.png)
+
+- EC2を削除
+
+![file](https://i.imgur.com/N1BKVwv.png)
+
+  Terminate instanceで完全に削除しようとすると、以下の警告画面が表示されました
+
+![file](https://i.imgur.com/B4U3LSz.png)
+
+  Elastic IPsを削除しないと、まだ時間単位で費用発生するよと。後で削除するので、Terminate。
+
+- Elastic IPsを削除
+
+![file](https://i.imgur.com/pbzIHI3.png)
+
+  "Release Elastic IP address"でIPを開放と削除します。
+
+- Cloudfrontを削除
+
+![file](https://i.imgur.com/Yoj0oN2.png)
+
+  画面にあるDisableを選択しましたら、以下の警告画面が表示されました
+
+![file](https://i.imgur.com/HLt0qxH.png)
+
+  Disableを選択します。
+
+- Route 53を削除
+
+![file](https://i.imgur.com/hUsXSJd.png)
+
+![file](https://i.imgur.com/NaYG5Oo.png)
+
+  Deleteを押しますと、以下の警告画面が出ましたが、deleteを入力します。
+
+![file](https://i.imgur.com/KnhGzlO.png)
+
+  きれいに削除し終わった後の画面
+
+![file](https://i.imgur.com/4h9h8CF.png)
+
+- VPCを削除
+
+![file](https://i.imgur.com/kEYjaq9.png)
+
+  順番に選択し、1つずつActionsのDelete VPCで削除します。
+  VPCが削除されると、作成されたSubnetsInternet Gatewaysなども一緒に削除されるみたい。
+
+
+
+# 参考資料
+- [GitHub Pages + CloudFlare で独自ドメインをSSL化する](https://zenn.dev/noraworld/articles/use-ssl-on-github-pages-with-cloudflare))
+- 
