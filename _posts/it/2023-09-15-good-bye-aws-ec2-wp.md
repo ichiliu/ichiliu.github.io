@@ -249,15 +249,29 @@ Cloudflareは、無料でSSLを提供するサービスで、カスタムドメ�
 - Overview
   cloudflareのSSL共用証明書を使います、「Advanced Certificate」は別の用途なので、今回は関係ない。
 
-![file](https://i.imgur.com/MBqiAXi.png)
+  Full (strict)を選択するようにします。
+  >Encrypts end-to-end, but requires a trusted CA or Cloudflare Origin CA certificate on the server
 
-  Flexibleを選択するようにします。
-  - Browserとcloudflare間は「HTTPS」、cloudflareとGithub Pages間は「HTTP」になります。
-  - Fullを選択すると、cloudflareとGithub Pages間がHTTPSとなり、SSL証明書エラーになります。
+  最初はFlexibleを選択して特に問題なかったが、数時間が立った後に、ブラウザから以下のエラーが発生
+  ```
+  This page isn’t working guaiguailei.net redirected you too many times.
+  Try clearing your cookies.
+  ERR_TOO_MANY_REDIRECTS 
+  ```
+  いろいろ調べた結果、下記記事にはこれだと思われる原因を示してくれました。
+  [WordPressウェブサイトの「ERR_TOO_MANY_REDIRECTS」エラーの対応方法について](https://kinsta.com/jp/blog/err_too_many_redirects/#nature-of-redirect-loop) 
+
+  具体的には、
+  >ERR_TOO_MANY_REDIRECTSは、Cloudflareなどのリバースプロキシサービスを原因に発生することもあります。通常は、向こうのフレキシブルなSSLオプションが有効になっているのに、WordPressホストにもSSL証明書がインストールされている場合に発生します。なぜかというと、Flexibleを選択すると、ホスティングサーバーへのすべてのリクエストがHTTP経由で送信されるが、ホストサーバーにはHTTPからHTTPSへのリダイレクトがあり、リダイレクトループが発生するためです。
+
+  >対策は、Cloudflare Cryptoの設定をFlexibleからFullまたFull (strict)に切り替えることです。
+
+  なので、次のようにFull (strict)を選択します。
+![file](https://i.imgur.com/raIgnU4.png)
 
 ## Github PagesにてEnforce HTTPS設定
-上記のcloudflare設定が無事完了していれば、cloudflare->HTTP->Github Pagesになります。
-セキュリティを強化するため、Enforce HTTPS設定をします。
+上記のcloudflare設定が無事完了していれば、cloudflare->HTTPS->Github Pagesになりますが、
+Enforce HTTPSも設定をしておきます。
 
 ![file](https://i.imgur.com/ax2fH6o.png)
 
