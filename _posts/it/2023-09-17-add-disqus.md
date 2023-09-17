@@ -4,15 +4,21 @@ title: DISQUSのコメント投稿機能を追加
 permalink: /it/DISQUSのコメント投稿機能を追加
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
-thumbnail-img: 
+thumbnail-img: https://i.imgur.com/9qnlZyF.png
 share-img:
-tags: [DISQUS]
+tags: [Disqus]
 categories: [IT]
 ---
 
+* [概要](#概要)
+先日、EC2で運用していたWordPressのBlogをGithub Pagesに移行しましたが、WordPressにはあったコメント機能がないため、付けたいモチベーションがあって、ネットで調べてみました（移行の記事は [ここ](https://guaiguailei.net/it/migrate-aws-ec2-wordpress-to-github-pages)を参考）
+
+調べた結果、Disqusを使うことにしました。設定方法などを書いておきます。
+
+![file](https://i.imgur.com/9qnlZyF.png)
+
 <!-- vim-markdown-toc GFM -->
 
-* [概要](#概要)
 * [Disqusでの設定](#disqusでの設定)
   * [アカウント作成](#アカウント作成)
   * [プランの選択](#プランの選択)
@@ -24,11 +30,6 @@ categories: [IT]
 * [動作確認](#動作確認)
 
 <!-- vim-markdown-toc -->
-
-## 概要
-先日、EC2で運用していたWordPressのBlogをGithub Pagesに移行しましたが、WordPressにはあったコメント機能がないため、付けたいモチベーションがあって、ネットで調べてみました（移行の記事は [ここ](https://guaiguailei.net/it/migrate-aws-ec2-wordpress-to-github-pages)を参考）
-
-調べた結果、Disqusを使うことにしました。設定方法などを書いておきます。
 
 ## Disqusでの設定
 ### アカウント作成
