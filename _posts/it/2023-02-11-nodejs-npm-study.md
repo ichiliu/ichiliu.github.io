@@ -10,6 +10,26 @@ tags: [node.js, npm]
 categories: [IT]
 ---
 
+<!-- vim-markdown-toc GFM -->
+
+* [概要](#概要)
+* [NPM](#npm)
+  * [プロジェクト=パッケージ](#プロジェクトパッケージ)
+  * [package.json](#packagejson)
+    * [パッケージ作成](#パッケージ作成)
+      * [dependenciesの表記](#dependenciesの表記)
+      * [scripts](#scripts)
+      * [main](#main)
+      * [bin](#bin)
+  * [package-lock.json](#package-lockjson)
+  * [package.jsonとpackage-lock.jsonの優先順位](#packagejsonとpackage-lockjsonの優先順位)
+  * [ユースケース](#ユースケース)
+    * [npm install](#npm-install)
+    * [npm install <package>](#npm-install-package)
+    * [npm audit](#npm-audit)
+* [参考資料（THX）](#参考資料thx)
+
+<!-- vim-markdown-toc -->
 # 概要
 `Node.js`を仕事上で最近1,2ヶ月初めて使うようになったので、調べて理解したものをまとめる（といっても内容的なは初歩的なものである）。
 

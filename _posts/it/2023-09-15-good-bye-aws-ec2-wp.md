@@ -4,9 +4,9 @@ title: Migrate AWS EC2 WordPress to Github Pages
 permalink: /it/migrate-aws-ec2-wordpress-to-github-pages
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
-thumbnail-img: https://i.imgur.com/N1BKVwv.png
+thumbnail-img: https://i.imgur.com/raIgnU4.png
 share-img:
-tags: [Jekyll, Github Pages, Cloudflare]
+tags: [Jekyll, Github Pages, Cloudflare, SSL/TLS]
 categories: [IT]
 ---
 

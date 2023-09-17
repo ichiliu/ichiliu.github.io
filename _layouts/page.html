@@ -17,6 +17,14 @@ layout: base
 
       {{ content }}
 
+      {% if page.cover-img %}
+        {% if page.cover-img.first %}
+          {{ page.cover-img[0].first.first }}
+        {% else %}
+          {{ page.cover-img }}
+        {% endif %}
+      {% endif %}
+
       {% if page.after-content %}
         <div class="after-content">
           {% for file in page.after-content %}
