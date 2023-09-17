@@ -8,5 +8,6 @@ thumbnail-img:
 share-img:
 tags: [hometown]
 categories: [Life]
+comments: false
 ---
 
