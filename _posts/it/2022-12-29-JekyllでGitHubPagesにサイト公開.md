@@ -213,21 +213,20 @@ jekyll 4.3.1
   $ git init
   ```
 1. 公開サイト用のテンプレートを生成する。
-    ```shell
-  $ jekyll new --skip-bundle .
-  New jekyll site installed in /Users/xxxxxxxx/dev/github/pages-test.
-Bundle install skipped.
-  $ tree
-  .
-├── 404.html
-├── Gemfile
-├── _config.yml
-├── _posts
-│   └── 2022-12-28-welcome-to-jekyll.markdown
-├── about.markdown
-└── index.markdown
-
- 1 directory, 6 files
+  ```
+  $ jekyll new --skip-bundle .  
+  New jekyll site installed in /Users/xxxxxxxx/dev/github/pages-test.  
+  Bundle install skipped.   
+  $ tree  
+  .  
+  ├── 404.html  
+  ├── Gemfile   
+  ├── _config.yml  
+  ├── _posts  
+  │   └── 2022-12-28-welcome-to-jekyll.markdown  
+  ├── about.markdown  
+  └── index.markdown  
+  1 directory, 6 files
   ```
   このコマンドにより、デフォルトのテンプレート用の`markdown`ファイルや`Gemfile`などが生成されます。
 1. `Gemfile`の内容を修正する。

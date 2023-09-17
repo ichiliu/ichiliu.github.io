@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: 南海東瀛（なんかいとうえい）
+subtitle: 南海東瀛
 cover-img: [/assets/img/page/img1.jpg, /assets/img/page/img2.jpg, /assets/img/page/img3.jpg, /assets/img/page/img4.jpg, /assets/img/page/img5.jpg, /assets/img/page/img6.jpg]
 ---
 
