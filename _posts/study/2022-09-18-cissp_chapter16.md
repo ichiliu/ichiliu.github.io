@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Chapter 16 Managing Security Operations
-permalink: /study/chapter-16-managing-security-operations
 subtitle: 
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
 thumbnail-img: https://i.imgur.com/Se6UFV3.png

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: WordPress的用法TIPS
-permalink: /it/wordpress的用法tips
 subtitle: 
 date: 2023-01-01 22:27:00 +0900
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]

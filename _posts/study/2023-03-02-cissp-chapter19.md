@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Chapter 19 Investigations and Ethics
-permalink: /study/chapter-19-investigations-and-ethics
 subtitle: 
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
 thumbnail-img: https://i.imgur.com/Se6UFV3.png

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 画像生成AIのMidjourneyを試してみました
-permalink: /it/画像生成aiのmidjourney（ミッドジャーニー）を試してみ
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/vR95DaN.png

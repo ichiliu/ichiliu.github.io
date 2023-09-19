@@ -1,7 +1,6 @@
 ---
 layout: post
 title: TAKAGI製の水栓修理DIY
-permalink: /life/takagi製の水栓修理diy
 subtitle: 
 cover-img: [/assets/img/cover/life1.jpg, /assets/img/cover/life2.jpg, /assets/img/cover/life3.jpg]
 thumbnail-img: https://i.imgur.com/aG3RFtE.png

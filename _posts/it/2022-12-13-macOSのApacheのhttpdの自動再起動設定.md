@@ -1,7 +1,6 @@
 ---
 layout: post
 title: macOSのApache httpdの自動再起動設定
-permalink: /it/macosのapache-httpdの自動再起動設定
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/4znywRg.png

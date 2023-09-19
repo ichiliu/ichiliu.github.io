@@ -1,7 +1,6 @@
 ---
 layout: post
 title: CloudFront+EC2でSSL通信させる
-permalink: /it/cloudfrontec2でssl通信させる
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/6HXCtWF.png

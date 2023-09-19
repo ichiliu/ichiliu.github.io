@@ -1,7 +1,6 @@
 ---
 layout: post
 title: About OpenSSF
-permalink: /security/about-openssf
 subtitle: 
 cover-img: [/assets/img/cover/security1.jpg, /assets/img/cover/security2.jpg, /assets/img/cover/security3.jpg]
 thumbnail-img: https://i.imgur.com/M72xiBP.png

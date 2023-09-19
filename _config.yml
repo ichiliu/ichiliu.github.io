@@ -22,6 +22,16 @@ author: Ganxiang Liu
 navbar-links:
   About Me: "aboutme"
   Index: "/tags"
+  Categories:
+    - IT: "/category/it.html"
+    - Study: "/category/study.html"
+    - Security: "/category/security.html"
+    - Travel: "/category/travel.html"
+    - Life: "/category/life.html"
+    - Gourmet: "/category/gourmet.html"
+    - Books: "/category/books.html"
+    - Cat: "/category/cat.html"
+    - Other: "/category/other.html"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
@@ -255,7 +265,8 @@ date_format: "%B %-d, %Y"
 timezone: "Asia/Tokyo"
 markdown: kramdown
 highlighter: rouge
-permalink: /:year-:month-:day-:title/
+permalink: /:categories/:year-:month-:day-:title
+# permalink: /:year-:month-:day-:title/
 paginate: 10
 
 kramdown:

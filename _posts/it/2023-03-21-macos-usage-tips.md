@@ -1,7 +1,6 @@
 ---
 layout: post
 title: macOS Usage Tips
-permalink: /it/macos-usage-tips
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/PMqR9QQ.png

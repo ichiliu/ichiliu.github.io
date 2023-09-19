@@ -1,7 +1,6 @@
 ---
 layout: post
 title: OWASP API Security Top 10 Study 
-permalink: /security/owasp-api-security-top-10-study
 subtitle: 
 cover-img: [/assets/img/cover/security1.jpg, /assets/img/cover/security2.jpg, /assets/img/cover/security3.jpg]
 thumbnail-img: https://i.imgur.com/slPpf5D.png

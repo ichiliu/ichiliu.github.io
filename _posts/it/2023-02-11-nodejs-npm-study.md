@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Node.js NPM Study
-permalink: /it/node-js-study
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/a70XpT1.png

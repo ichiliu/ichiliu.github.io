@@ -1,7 +1,6 @@
 ---
 layout: post
 title: About TOEFL iBT TEST
-permalink: /study/about-toefl-ibt-test
 subtitle: 
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
 thumbnail-img: https://i.imgur.com/TLF4fu3.png

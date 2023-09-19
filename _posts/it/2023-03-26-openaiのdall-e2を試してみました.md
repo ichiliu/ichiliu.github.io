@@ -1,7 +1,6 @@
 ---
 layout: post
 title: OpenAIのDALL-E2を試してみました
-permalink: /it/openaiのdall-e2を試してみました
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/5Va6ZBF.png

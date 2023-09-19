@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Backup EBS to S3 by AMI
-permalink: /it/backup-ebs-to-s3-by-ami
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/bl7gTfY.png

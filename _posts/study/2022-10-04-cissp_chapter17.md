@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Chapter 17 Preventing and Responding to Incidents
-permalink: /study/chapter-17-preventing-and-responding-to-incidents
 subtitle: 
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
 thumbnail-img: https://i.imgur.com/Se6UFV3.png

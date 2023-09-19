@@ -1,7 +1,6 @@
 ---
 layout: post
 title: JekyllでGitHub Pagesにサイト公開を試す
-permalink: /it/github-pagesを理解する
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/YlRnWhB.png

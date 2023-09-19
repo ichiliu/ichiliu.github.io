@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 在Mac本地使用Screwdriver.cd验证job build 
-permalink: /it/在mac本地使用screwdriver-cd验证ci-cd
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/RB86t7r.png

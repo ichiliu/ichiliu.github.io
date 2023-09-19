@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Penetration Testing Study
-permalink: /security/penetration-testing-study
 subtitle: 
 cover-img: [/assets/img/cover/security1.jpg, /assets/img/cover/security2.jpg, /assets/img/cover/security3.jpg]
 thumbnail-img: https://i.imgur.com/ksR28RZ.png

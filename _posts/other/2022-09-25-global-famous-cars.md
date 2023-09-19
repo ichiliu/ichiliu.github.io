@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Global Famous Cars
-permalink: /other/global-famous-cars
 subtitle: 
 cover-img: [/assets/img/cover/other1.jpg, /assets/img/cover/other2.jpg, /assets/img/cover/other3.jpg]
 thumbnail-img: https://i.imgur.com/AKNGpfV.png

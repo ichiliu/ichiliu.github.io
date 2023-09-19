@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Coding Styles
-permalink: /it/Coding Styles
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/0OKtYpd.png

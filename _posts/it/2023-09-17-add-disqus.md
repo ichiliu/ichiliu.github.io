@@ -1,7 +1,6 @@
 ---
 layout: post
 title: DISQUSのコメント投稿機能を追加
-permalink: /it/DISQUSのコメント投稿機能を追加
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
 thumbnail-img: https://i.imgur.com/9qnlZyF.png

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: macOSのapache2にSSLの自己証明書を導入
-permalink: /it/macosのapache2に自己証明書を導入
 subtitle: 
 date: 2022-11-17 02:10:00 +0900
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
