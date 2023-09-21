@@ -3,7 +3,7 @@ layout: post
 title: AWS Security Services
 subtitle: 
 cover-img: [/assets/img/cover/security1.jpg, /assets/img/cover/security2.jpg, /assets/img/cover/security3.jpg]
-thumbnail-img: 
+thumbnail-img: https://i.imgur.com/7jkDxaE.png
 share-img:
 tags: [AWS, Security]
 categories: [Security]
@@ -18,14 +18,14 @@ A brief introduction of AWS Security Services.
 * [Amazon Cognito](#amazon-cognito)
 * [AWS Single Sign-On (AWS SSO / AWS单点登录)](#aws-single-sign-on-aws-sso--aws单点登录)
 * [Infrastructure Protection (基础设施保护)](#infrastructure-protection-基础设施保护)
-	* [AWS Shield (AWSシールド)](#aws-shield-awsシールド)
-	* [AWS Firewall Manager](#aws-firewall-manager)
-	* [AWS Web Application Firewall (WAF)](#aws-web-application-firewall-waf)
+  * [AWS Shield (AWSシールド)](#aws-shield-awsシールド)
+  * [AWS Firewall Manager](#aws-firewall-manager)
+  * [AWS Web Application Firewall (WAF)](#aws-web-application-firewall-waf)
 * [Date Protection](#date-protection)
-	* [AWS Macie (AWSメイシー)](#aws-macie-awsメイシー)
-	* [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
-	* [AWS CloudHSM (Cloud Hardware Security Module)](#aws-cloudhsm-cloud-hardware-security-module)
-	* [AWS Certificate Manager](#aws-certificate-manager)
+  * [AWS Macie (AWSメイシー)](#aws-macie-awsメイシー)
+  * [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
+  * [AWS CloudHSM (Cloud Hardware Security Module)](#aws-cloudhsm-cloud-hardware-security-module)
+  * [AWS Certificate Manager](#aws-certificate-manager)
 
 <!-- vim-markdown-toc -->
 

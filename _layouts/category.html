@@ -2,15 +2,28 @@
 layout: default
 ---
 
-<h1>Posts in {{ page.category }}</h1>
+<h1>Posts in {{ page.categories }}</h1>
 
-<ul>
-  {% for post in site.posts %}
-    {% if post.categories == page.categories %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-      </li>
-    {% endif %}
-  {% endfor %}
-</ul>
-
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>日付</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+		{% assign count = 1 %}	
+    {% for post in sorted_posts %}
+			{% if post.categories == page.categories %}
+				<tr>
+					<td>{{ count }}</td>
+					<td>{{ post.date | date: '%Y-%m-%d' }}</td>
+					<td><a href="{{ post.url }}">{{ post.title }}</a></td>
+				</tr>
+				{% assign count = count | plus: 1 %}
+			{% endif %}
+    {% endfor %}
+  </tbody>
+</table>
