@@ -29,6 +29,7 @@ A brief introduction of AWS Security Services.
 
 <!-- vim-markdown-toc -->
 
+
 # Amazon Cognito
 Amazon Cognito is a fully managed identity and access management service provided by AWS. It allows developers to easily add user identity and authentication to their applications, whether they are web or mobile apps.
 
@@ -50,7 +51,7 @@ Some key features and aspects:
 
 1. **Scalability and Reliability (可伸缩性和高可用性)**: Being an AWS service, Amazon Cognito is designed to be highly scalable and reliable, ensuring that it can handle varying workloads and maintain high availability.
 
-Developers often use Amazon Cognito in combination with other AWS services to build secure, scalable, and user-friendly applications by managing user identities and authentication seamlessly. However, please note that advancements or updates might have occurred since my last knowledge update, so I recommend referring to the latest AWS documentation for the most current and detailed information about Amazon Cognito.
+Developers often use Amazon Cognito in combination with other AWS services to build secure, scalable, and user-friendly applications by managing user identities and authentication seamlessly. 
 
 ![file](https://i.imgur.com/RmvVhwl.png)
 
