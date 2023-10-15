@@ -98,6 +98,23 @@ Initial Access Broker / イニシャル・アクセス・ブローカー / 初�
 * [Kerberos Authentication](https://www.infraexpert.com/study/security18.html)
   * Windows Server Active Directoryのユーザ認証の際に使用しているプロトコル。
 
+- Kill Chain  
+  サイバーセキュリティや軍事戦術の分野で使用される概念であり、攻撃者が標的に対して実施する一連の段階的な攻撃手法や攻撃フェーズを指す。以下がその各段階
+  1. Reconnaissance (偵察)  
+    攻撃者がターゲットに情報収集、システムや脆弱性を調査するなど。
+  1. Weaponization (武装化)  
+    攻撃用のツールやマルウェアを準備。
+  1. Delivery (配信)  
+    武装化されたマルウェア等をターゲットに送り込む。
+  1. Exploitation (悪用)  
+    武器化されたマルウェア等がシステムの脆弱性を悪用して侵入。 
+  1. Installation (インストール)  
+    侵入したシステムにて、攻撃者が制御を維持するために必要なツールやバックドアをインストールする。
+  1. Command and Control (C2) (コマンドと制御)  
+    攻撃者は侵入したシステムを制御するためのバックドアを使用する。
+  1. Actions on Objectives (AOO) (目的の実施)
+    攻撃者は最終的な目的を達成するための活動を開始(情報窃取や改ざんなど)。
+
 * MaaS（Malware as a Service）
 	恶意软件即服务
   
@@ -230,6 +247,13 @@ Qualified Security Assessors/認定セキュリティ評価機関。PCISSCにさ
 
 * [VNC](https://e-words.jp/w/VNC.html)
   Virtual Network Computing
+
+- Vulnerability Chaining (脆弱性連鎖)  
+  サイバーセキュリティの分野で、複数の脆弱性を組み合わせることで、より大きな影響や攻撃を実現する手法。以下が例
+  - Privilege Escalation Attack (権限昇格攻撃)  
+    攻撃者は、まず低い権限の脆弱性を利用して侵入し、その後別の脆弱性を利用して権限を昇格させ、管理者権限を取得。
+  - SQLiとXSSの連鎖  
+    攻撃者は、まずWebアプリでSQLiを利用してDBを乗っ取り、次に取得したデータをXSS攻撃に利用してユーザーのブラウザで任意のスクリプトを実行させる。
 
 * [VPN Gateway](https://e-words.jp/w/VPN%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4.html)
   内部NWと外部NWの境界に置かれ、別のNWとの間で暗号化された安全な通信経路を作り出す終端装置。

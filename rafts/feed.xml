@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    
+    <title>IT技術者的BLOG</title>
+    
+    
+    <description>This website is a virtual proof that I&apos;m awesome</description>
+    
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Chapter 21 Malicious Code and Application Attacks</title>
+        <description>
+          
+          Chatpter 21 Malicious Code and Application Attacks
+
+##
+
+        </description>
+        <pubDate>Tue, 03 Oct 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/study/2023-10-03-cissp-chapter21</link>
+        <guid isPermaLink="true">http://localhost:4000/study/2023-10-03-cissp-chapter21</guid>
+      </item>
+    
+      <item>
+        <title>脆弱性管理にSSVCを活用</title>
+        <description>
+          
+          泥沼から脱却したい IT業界の現場でエンジニアの仕事をしている（したことがある）人なら、誰もが「脆弱性対応」を経験したことがあるだろう。脆弱性（Vulnerability）は年々発表される件数が増えていて、エンジニアはその対応に追われ、貴重な開発工数を割かなければならない現状があります。 長年、この業界では脆弱性の深刻度評価基準であるCVSS (Common Vulnerability Scoring System) を使ってきました。CVE脆弱性の基本評価基準(Base Metrics)までの分析に留まり、現状評価基準、まして環境評価基準まで踏み込んで深刻度を評価することは、膨大な数あるCVE脆弱性がある状況の中では、現実的でないし、そもそも無理があります。 脆弱性管理の効率よく実効性を上げることができないものか？ 2022年は25,000件ものCVE脆弱性が公表された CISAのBOD 22-01から知った事実 CISAにはKEVがある SSVC SSVC 基本的な特性 Vulnerability Management Decisions Enumerating Stakeholders (列举利益相关者) Enumerating Decisions Enumerating Vulnerability Management Actions Supplier Units of Work Deployer Units of Work Coordinator Units of Work Aggregation of SSVC across units of work Supplying Patches...
+        </description>
+        <pubDate>Thu, 28 Sep 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/security/2023-09-28-vuln-mgt-cvss-sev</link>
+        <guid isPermaLink="true">http://localhost:4000/security/2023-09-28-vuln-mgt-cvss-sev</guid>
+      </item>
+    
+      <item>
+        <title>AWS Security Services</title>
+        <description>
+          
+          Abstract A brief introduction of AWS Security Services. Amazon Cognito AWS Single Sign-On (AWS SSO / AWS单点登录) Infrastructure Protection (基础设施保护) AWS Shield (AWSシールド) AWS Firewall Manager AWS Web Application Firewall (WAF) Date Protection AWS Macie (AWSメイシー) AWS Key Management Service (KMS) AWS CloudHSM (Cloud Hardware Security Module) AWS Certificate Manager...
+        </description>
+        <pubDate>Wed, 20 Sep 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/security/2023-09-20-aws-security-services</link>
+        <guid isPermaLink="true">http://localhost:4000/security/2023-09-20-aws-security-services</guid>
+      </item>
+    
+      <item>
+        <title>DISQUSのコメント投稿機能を追加</title>
+        <description>
+          
+          概要 先日、EC2で運用していたWordPressのBlogをGithub Pagesに移行しましたが、WordPressにはあったコメント機能がないため、付けたいモチベーションがあって、ネットで調べてみました（移行の記事は ここを参考） 調べた結果、Disqusを使うことにしました。設定方法などを書いておきます。 Disqusでの設定 アカウント作成 プランの選択 Ads Configuration Installation JekyllにDisqusの情報を設置 _config.ymlにDisqusのShortnameを記入 post.htmlのYAML Front Matterにcomments変数にtrueを設定 動作確認 Disqusでの設定 アカウント作成 Disqusにアクセスし、アカウントを作成しました。 すると、Shortname をいうのがシステムから作成されました(後術のJekyllの設定で必要） 他の入力項目に、 Category : Techを選択した Language : Englishを選択した プランの選択 有料プランと、無料のBasicプランがあるらしく、Basicプランを選択しました。 Ads Configuration デフォルトでは、Disqusはコメントの中、コメントの下の2箇所に、Adsを表示させることが可能になっています。 まずどんなAdsが表示されるか、状況をみてみたいので、一旦はそのままにします。 今後状況をみて、下記2箇所のチェックを外すことにします。 Installation Disqusサイトでの説明では、以下3つの設定が必要とされています。 What platform is your site on? を選択 もちろんここではJekyllを選択しました。 Set comments variable to...
+        </description>
+        <pubDate>Sun, 17 Sep 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/it/2023-09-17-add-disqus</link>
+        <guid isPermaLink="true">http://localhost:4000/it/2023-09-17-add-disqus</guid>
+      </item>
+    
+      <item>
+        <title>My Hometown</title>
+        <description>
+          
+          
+
+        </description>
+        <pubDate>Sat, 16 Sep 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/life/2023-09-16-my-hometown</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2023-09-16-my-hometown</guid>
+      </item>
+    
+      <item>
+        <title>Migrate AWS EC2 WordPress to Github Pages</title>
+        <description>
+          
+          概要 やりたいこと GitHub Pagesへの引越手順 JekyllのTheme選定 Blog記事の移行 imgur.com APIを利用した画像Upload Vim編集時imgur.comの画像urlを貼り付ける Custom Domain設定 DNS設定変更 Aレコードの作成 SSL証明書の設定 Cloudflareの設定 SSL/TLS設定 Github PagesにてEnforce HTTPS設定 動作確認 AWS EC2を削除 参考資料 概要 2022-05-01に、はてなブログで記事（AWS無料枠で1台のEC2上にWordPressを構築）を書いた以来、AWS EC2を1台で、Blogサイトを運営して1年数ヶ月を経過しました。 AWSで運営する上で、勉強することも兼ねて得るものはありますが、毎月2~3千円の出費が発生します。 最近、記事を書く頻度が下がってきたこともあり、無料のサイトに記事を移行しようかと考えてました。 そこで思いついたは、Github Pagesです。 この記事は、AWS EC2で運営しているWordPressのBlogを、GitHub Pagesに移行するために書いたもの。 やりたいこと GitHub Pagesを使う。 無料で1GBまで使える → 画像の管理はimgur.comを利用するため、実質Github Pages上はテキストしか管理しない。 静的ファイルのジェネレーターにJekyllを使う。 Custom domainに取得した独自ドメインを使う。 Enforce HTTPSを使う。 https://&amp;lt;独自ドメイン&amp;gt;/&amp;lt;postのdirectory&amp;gt;を引き継がせたい。 https://&amp;lt;domain&amp;gt;/travel/冲绳到此一游 にアクセスすると DNSのAレコードによりGitHub PagesのIPアドレスを指します...
+        </description>
+        <pubDate>Fri, 15 Sep 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/it/2023-09-15-good-bye-aws-ec2-wp</link>
+        <guid isPermaLink="true">http://localhost:4000/it/2023-09-15-good-bye-aws-ec2-wp</guid>
+      </item>
+    
+      <item>
+        <title>在macOS上看网络电视</title>
+        <description>
+          
+          在电脑上看网络电视也挺不错。随便调查了一下，采取了最适合自己需求的方法，安装了几款软件。下面把它记录下来。 都有什么方法 电脑看电视的几种方法 这个网页介绍了几种方法，其中，“网络电视直播软件”这个方法最简单。 安装了什么软件 因为是在自己的macOS上安装，所以找了一些Mac版的中文软件。 腾讯视频 网址：腾讯视频mac版 v2.65.0 苹果电脑版 看了一下： 电影电视剧体育综艺等齐全 可惜没有电视直播 很多需要成为会员才能看 有“免费专区“ 优酷 网址：优酷Mac版正式版官方版 起动应用的时候，杀毒软件Avast会发出警告画面： 和腾讯视频基本类似，但是没有“免费专区”，等于基本需要交钱成为会员，没有什么存在价值，所以把它卸装了。 央视影音 网址：CBOX央视影音Mac版正式版官方版 特点： 央妈权威的软件（www.cctv.com） CBOX央视影音Mac版是中国网络电视台的Mac客户端软件。CBOX央视影音Mac版支持多路电视直播和海量点播内容，集纳央视频道、全国卫视、城市频道的直播，以满足观看直播节目为核心，打造全国最极致以直播为核心的播放器产品。 央视频道齐全 各个地方卫视 可惜地方频道少（只有少数BRTV？） 完全免费 可惜有时候只放片段 or 版权问题不放 CloudTV 3.9.9 Mac 网址：CloudTV 3.9.9 Mac 破解版 全球电视播放工具 CloudTV allows you to watch over 400 live TV channels from...
+        </description>
+        <pubDate>Sat, 26 Aug 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/life/2023-08-26-%E5%9C%A8macOS%E4%B8%8A%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%94%B5%E8%A7%86</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2023-08-26-%E5%9C%A8macOS%E4%B8%8A%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%94%B5%E8%A7%86</guid>
+      </item>
+    
+      <item>
+        <title>Coding Styles</title>
+        <description>
+          
+          JavaScript
+JavaScript Info
+The Modern JavaScript Tutorial
+
+Coding Style
+
+Code structure
+
+JavaScript Standard Style
+https://github.com/standard/standard
+
+Python
+to be continued…
+
+        </description>
+        <pubDate>Fri, 21 Jul 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/it/2023-07-21-coding-styles</link>
+        <guid isPermaLink="true">http://localhost:4000/it/2023-07-21-coding-styles</guid>
+      </item>
+    
+      <item>
+        <title>ソフトウェアライセンスの学習メモ</title>
+        <description>
+          
+          概要 仕事関連で、ソフトウェアのライセンスに触れることがしばしばあり、数の多さやそれらの違いに惑わされ、忘れられることが多いため、気づきベースで学習メモとしてまとめていきます。 ライセンスのリスト CopyLeft：有 / 無　の2択。 略称 全称 概説 CopyLeft 代表例 備考 BSD BSD Licenses 「無保証」であることの明記と著作権およびライセンス条文自身の表示を再頒布の条件 無 Apache Sofrware License :– GPL GNU General Public LicenseGNU一般公衆ライセンス&amp;lt;/br&amp;gt; 二次的著作物に関してもGPLでライセンスされなければならない 有 Linux Kernel / GCC   MIT MIT License MITを起源とするBSDスタイルのライセンスの1つで非常に制限が緩い 無 X Windows X License / X11 Licenseの表記もある 重要な概念を理解 ソフトウェアライセンス コンピュータのソフトウェアについて、ソフトウェア利用者が遵守すべき事項を記載した文書（ライセンス）である（Wikipedia） 商用ライセンスによく含まれる事項 利用できる人数（ないしコンピュータの台数...
+        </description>
+        <pubDate>Wed, 19 Jul 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/study/2023-07-19-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%81%AE%E5%AD%A6%E7%BF%92%E3%83%A1%E3%83%A2</link>
+        <guid isPermaLink="true">http://localhost:4000/study/2023-07-19-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%81%AE%E5%AD%A6%E7%BF%92%E3%83%A1%E3%83%A2</guid>
+      </item>
+    
+      <item>
+        <title>OWASP Top 10</title>
+        <description>
+          
+          OWASP Top Ten Globally recognized by developers as the first step towards more secure coding. EN：https://owasp.org/Top10/ JP：https://owasp.org/Top10/ja/ CN:https://owasp.org/Top10/zh_CN/ 引用）http://www.bilibili.com/video/av809069915 Latest Top10（2021） Risk Description A01-Broken Access Control&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;权限控制失效&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;アクセス制御の不備 94%のアプリで何らかのアクセス制御の不備が確認され、平均発生率3.81%で31.8万を超えるデータセットの中で最も多く発生した。 CWE-200:認証されていない動作主体への情報露出、 CWE-201:送信データを通じた情報露出、そしてCWE-352:クロスサイトリクエストフォージェリなどの共通脆弱性列挙を注目すべき。 A02-Cryptographic Failures&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;加密机制失效&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;暗号化の失敗 暗号化技術の不適切な使用、または暗号化の欠如に関連した幅広い障害に焦点を当てている。こうした障害は、時に機微な情報の露出を結果としてもたらす。 CWE-259:ハードコードされたパスワードの使用、CWE-327:不適切な暗号化アルゴリズム、CWE-331:不十分なエントロピーなどを注目すべき。 A03-Injection&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;注入式攻击&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;インジェクション 94%のアプリで、何らかのインジェクションに関する問題が確認されており、最大発生率は19%、平均発生率は3%、そして発生件数は27万4千件だった。CWE-79:クロスサイト・スクリプティング、 CWE-89:SQLインジェクション、そしてCWE-73:ファイル名やパス名の外部制御などを注目すべき。 A04-Insecure Design&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;不安全设计&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;安全が確認されない不安な設計 2021年の新カテゴリーでは、設計やアーキテクチャの欠陥に関するリスクに焦点を当てている。 脅威のモデル化、セキュアなデザインパターンおよび、リファレンスアーキテクチャなどをもっと利用していくことが必要。 コーディングスペースでの「shift-left」を超え、Secure by Designの原則に不可欠なプレコーディング活動に移行する必要がある。CWE-209: エラーメッセージからの情報漏洩、CWE-256: 保護されていない認証情報の保存、CWE-501: 信頼境界線の侵害および、CWE-522: 適切に保護されていないクレデンシャルなどを注目すべき。 A05-Security Misconfiguration&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;安全设定缺陷&amp;lt;/br&amp;gt;&amp;lt;/br&amp;gt;セキュリティの設定ミス アプリの...
+        </description>
+        <pubDate>Sat, 24 Jun 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/security/2023-06-24-owasp-top10</link>
+        <guid isPermaLink="true">http://localhost:4000/security/2023-06-24-owasp-top10</guid>
+      </item>
+    
+      <item>
+        <title>OWASP API Security Top 10 Study</title>
+        <description>
+          
+          Summary This is my studying note of OWASP API Security Project. The page of OWASP API Security Project. The other OWASP Top 10 Series. Editions There are two ediitons of API Security Top 10, which are 2019 and 2023. Editions 2019 2023 ref : https://www.anquanke.com/post/id/288466 API Security Top 10 –...
+        </description>
+        <pubDate>Tue, 20 Jun 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/security/2023-06-20-owasp-api-security-top10-study</link>
+        <guid isPermaLink="true">http://localhost:4000/security/2023-06-20-owasp-api-security-top10-study</guid>
+      </item>
+    
+      <item>
+        <title>Chapter 20 Software Development Security</title>
+        <description>
+          
+          Chatpter 20 Software Development Security Introducing Systems Development Controls (引入系统开发控制) Software Development It’s much easier to build security into a system than it is to add security to an existing system. Programming Languages Two options are available to execute the programs: compilation and interpretation. Reverse engineering may be able to...
+        </description>
+        <pubDate>Tue, 30 May 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/study/2023-05-30-cissp-chapter20</link>
+        <guid isPermaLink="true">http://localhost:4000/study/2023-05-30-cissp-chapter20</guid>
+      </item>
+    
+      <item>
+        <title>再游冲绳@2023/05</title>
+        <description>
+          
+          上周，因公司的事情，又去了一趟冲绳出差。自去年第一次去冲绳后，这次是第二次，去的地方还是那霸市。 由于是只住一晚，没有充足的时间，所以也没抱什么希望能在工作之余去哪个远的地方看看风景，就像这到时再想吧。 BTW、去年出差回来后，写了下面这个博文。有兴趣赏脸的的朋友可以看一看：冲绳到此一游 由于去年的博文只写到一半不够完整，所以我就在这次的博文里，补写去年未写完的部分，敬请谅解。 小巧迷人的单轨电车 沖縄モノレール（Okinawa Monorail）有一个爱称，叫“ゆいレール”（Yui-Rail）。坐车的时候，会放冲绳的民谣，音乐等。因为只有两节车厢，所以显得十分的小巧迷人。 会有不同的脸： 冲绳县立博物馆 第一天到达之后，由于酒店要到15:00才能登记入住，没事就坐电车到了“おもろまち駅”（”有趣的小镇车站“的意思），走路去“冲绳县立博物馆”参观。 途中、看到一个外观漂亮，设计匠心的拱桥↑。 还看到了开摩托满街跑，举旗呐喊“冲绳独立”的义士↓。 到了博物馆，入场券500日元。进去常设展厅前，在公共的地方先拍一拍。 虽然看不到整体，但是外貌很钢筋水泥，让我两箱起日本兵构建的大碉堡。 后庭院的美术展品 在博物馆的后庭院，有免费开放的Object。首先是这个十分抢眼。是一个叫“能勢孝二郎“的冲绳本土的美术家的作品，叫“CONCRETE AND STEEL”。 此外，在旁边有个看起来像狗又像猫的Object，名字叫“太陽と月のロマンス”(中文：太阳和月亮的浪漫)，是一个叫“ゴヤ・フリオ・エドワルド”的阿根廷出生的雕刻家的作品。 让我们来分享下她们的浪漫。 从不同角度看，能感受到不一样的东西，或者南北。但是我就不明白，为什么要用三根钢管撑住它。是怕地震吗？（😊） 在后庭院看到的博物馆的建筑是这样的↓。或许，设计这个博物馆的建筑家，是想表现战后满目苍夷，绝地重生的冲绳吗（谁告诉我答案）。 还是ChatGPT告诉了我答案(谢啦) 冲绳县立博物馆是一座于 2007 年开馆的建筑，由建筑师隈研吾设计。 隈研吾是著名建筑师，在日本国内外承接过无数建筑项目，具有独特的建筑风格。 建筑物的外观以白色外墙和波浪形曲线为特色，旨在与冲绳美丽的自然环境相协调。 此外，屋顶采用传统的冲绳屋瓦，体现了当地的文化和建筑风格。 里面布置了宽敞的展示空间，陈列着与冲绳历史文化有关的展品。 大楼内部的设计也颇具现代感，巧妙地利用光影将空间铺展开来。 冲绳县立博物馆的建筑风格融合了冲绳传统建筑风格和现代设计，使其成为象征该地区历史和文化的建筑。 其美丽的外观和内部展览空间使其成为吸引许多人参观的地方。 常设展厅里的人文历史 琉球王国与中国千丝万缕到关系 有很多中国的出土文物， 展示在以前的首里城，进行接受中国（明清两代）册封使对琉球国王的册封典礼。 摆放着进贡船的模型。 当时的国王，对派遣去中国的进贡船的“官舍”这个官员的任命状。写于1523年，据说是现存最古老的任命状，被认定为日本的”重要文化财”呢。 我看到这贱宝物，知道了两件事情： 使用了中国的年号“嘉靖二年”，可见当时中国对琉球王国影响多大。 除了汉字外，用了很多日语的平假名。这个比较意外，起码说明了16世纪的时候的琉球王国，在文字使用的方面也受了日本不少的影响。 为了揭开这个谜团，我在网上找到了下面这个网页(琉球はどんな文字を使ってた？)，里面有一段讲得很明白,中文翻译是这个意思： 琉球官方文件虽用平假名书写，但始终沿用中国年号。 这是因为琉球王国是明朝的附庸国，但在日本，中国的年号从不用于国内文献。 原来如此。 与中国，日本（九州）的贸易关系频繁。很有趣的是海路到福州，经杭州，苏州，扬州到北京。我估计他们那时候是利用的“京杭大运河”运载货物的吧。 琉球王国主要的进贡品（当然不全部是，不排除一部分是交易用）是： 贡纳布 海参...
+        </description>
+        <pubDate>Sat, 27 May 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/travel/2023-05-27-%E5%86%8D%E6%B8%B8%E5%86%B2%E7%BB%B3at2023-05</link>
+        <guid isPermaLink="true">http://localhost:4000/travel/2023-05-27-%E5%86%8D%E6%B8%B8%E5%86%B2%E7%BB%B3at2023-05</guid>
+      </item>
+    
+      <item>
+        <title>天満宮&amp;東照宮@仙台</title>
+        <description>
+          
+          2023年5月、また仕事で仙台に行ってきました。新幹線による日帰りでしたが、仕事の合間の空き時間が少しあったため、徒歩で行ける距離で、2箇所を見に行きました。
+
+ここで、写真掲載をメインで説明をサブとする形で、軽く紹介したいと思います。
+
+榴岡天満宮
+つつじがおかてんまんぐう、と発音のよう（ちょっと長い）。
+
+長い階段をのぼった所、立派な鳥居があり、その奥に広い敷地があり、さらにその奥に天満宮があるようにみえます。
+
+
+文人墨客が俳句を残した石碑
+この天満宮には、沢山の石碑があり、その多くの石碑には、当時の筆達者たちが美しい俳句が2,3百年の時が経っても、未だ鮮明に刻まれていて、訪れる人達に読ませています。
+
+
+
+
+  花になどことなりし実のふるさくら
+
+
+意味を調べると、なんと、ChatGPTが次のように解説してくれています、すごい！
+
+
+  「花になどことなりし実のふるさくら」は、自然の移り変わりや一瞬の美しさ、または命の移り変わりや終わりの喩えとして解釈することができます。また、この句は物事の移り変わりや喜びと悲しみの対比など、人生の短さや儚さを表現するためにも使われることがあります。
+
+
+
+
+
+  道ばかり歩いてもどる枯野かな
+
+
+ChatGPTは次のように解説してくれています
+
+  「道ばかり歩いてもどる枯野かな」という言葉は、日本の俳句（haiku）の一句です。直訳すると、「ただ道を歩いて帰るだけでは、荒れ果てた野原に戻ってしまうのかな」となります。
+
+
+他にも沢山ありますが、一旦割愛します。
+
+
+天満宮
+
+
+
+↑ここで参拝しました。
+
+
+↑天神さまと撫で牛
+
+  「天神さまと撫で牛」は、日本の伝説や民話に登場する話。自然への畏敬や動物への敬意、そして神秘的な存在である天神さまへの信仰を伝えるために語り継がれてきました。また、牛が人々の生活において重要な存在であった日本の農耕文化を反映しています。
+
+
+
+↑合格祈願の絵馬（えま）
+
+豆知識（自己勉強のために）
+
+  絵馬（えま）とは
+絵馬は、神社や寺院などの神聖な場所において、願い事や祈願をするために書かれた木製の板です
+
+
+
+  合格祈願の絵馬とは
+受験や試験に合格することを祈願するために使われます。例えば、高校や大学の入学試験や資格試験を控えた受験生が、合格祈願の絵馬を書いて神社や寺院に奉納することがあります。
+
+
+仙台東照宮
+そもそも東照宮とは、
+
+  徳川家康（とくがわ いえやす、1543-1616）の墓であり、彼を神として祀る神社のことで、「東から照らす神社」という意味だそうです。 家康は死後に神となり、日本列島の東側から全国を照らし、守護しているのです。 家康の死後、息子の秀忠(ひでただ)によって創建されました。
+
+
+仙台東照宮とは
+
+  仙台市青葉区東照宮にある徳川家康をまつる神社。承応3年（1654年）に仙台藩2代藩主伊達忠宗が創建。正式名称は東照宮。唐門、本殿など4棟と鳥居1基が国の重要文化財に指定されている。
+
+
+
+↑立派な鳥居（重文）
+
+  伊達忠宗奉納の石造の明神鳥居,鳥居の柱に「承応三年午甲四月十七日」の刻銘があり県内最古の鳥居である。伊達忠宗夫人・振姫の郷里・備前国（現・岡山県）の犬島から海路で運ばれたが、途中、一度、江戸で下ろし祝い事をし、再び海路で仙台まで運んだと伝わる。
+
+
+
+↑随神門。
+
+
+↑側面から（東照宮の字がよく見える）
+
+
+↑拝殿を側面から一部を撮影。
+
+その他
+仙台駅から仙台東照宮へ徒歩の途中に、仙山線という鉄道がありました。
+ある横断歩道付近、こんな面白い絵がありました。
+
+
+日本らしい！
+
+そして、締めくくりは、何と言っても仙台駅。
+
+
+
+        </description>
+        <pubDate>Fri, 26 May 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/travel/2023-05-26-%E5%A4%A9%E6%BA%80%E5%AE%AEand%E6%9D%B1%E7%85%A7%E5%AE%AEat%E4%BB%99%E5%8F%B0</link>
+        <guid isPermaLink="true">http://localhost:4000/travel/2023-05-26-%E5%A4%A9%E6%BA%80%E5%AE%AEand%E6%9D%B1%E7%85%A7%E5%AE%AEat%E4%BB%99%E5%8F%B0</guid>
+      </item>
+    
+      <item>
+        <title>修心養性</title>
+        <description>
+          
+          自己修養です。 上善若水(shàng shàn ruò shuǐ) 先秦·老子（老子第8章） 上善若水　（老子第8章） 上善若水。水善利万物、而不争。処衆人之所悪。故幾於道。 居善地、心善淵、与善仁、言善信、正善治、事善能、動善時。 夫唯不争、故無尤。 中文譯文： 身居高位的人最好的行為 像自然界的水一樣呵護大家。水善於滋潤萬物而不與萬物相爭，停留在眾人都不喜歡的地方，所以最接近於“道”。 最善的人，居處最善於選擇地方， 心胸善於保持沉靜而深不可測， 待人善於真誠、友愛和無私， 說話善於恪守信用， 為政善於精簡處理，能把國家治理好， 處事能夠善於發揮所長， 行動善於把握時機。 最善的人所作所為正因為有不爭的美德，所以沒有過失，也就不會被他人 埋怨。 虛懷若谷; 海納百川; 稻谷越熟越低头 好文欣賞： 水の教え 最上の善を例えるなら水だ。 万物に利沢を与え育て上げ、水自体は利を争おうとしない。 それどころか一般の人が避ける場所、例えば低い土地に居る。 目立たず、万物を潤している。 これが自然の法則に最も近い。 居場所を良い大地にし、澄んだ淵のような静かな心境で、 仲間には仁を、語らいは信頼を、 善いまつりごとで治め、仕事は良く機能し、 時を失するような事は無い。 水の偉大さは万物に順じ争わないこと。だから咎められるような事は無い。 【茶席の禅語】 上善若水 上善は水のごとし。（老子） 最上の善とは水のようなものである。万物に恵みを与えながらも他と争わず、自らは低い位置に身を置く。 插秧偈(chā yāng jié) 五代後梁・契此和尚（布袋和尚） 手把青秧插滿田， 低頭便見水中天。 心地清淨方為道， 退步原來是向前。 日本語訳すると、...
+        </description>
+        <pubDate>Sun, 14 May 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/life/2023-05-14-%E4%BF%AE%E5%BF%83%E9%A4%8A%E6%80%A7</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2023-05-14-%E4%BF%AE%E5%BF%83%E9%A4%8A%E6%80%A7</guid>
+      </item>
+    
+      <item>
+        <title>2023年黄金周自驾游 东日本走起</title>
+        <description>
+          
+          2023年黄金周（Golden Week/GW）Solo自驾游去了一趟东日本沿太平洋一带走了走。沿途收获不少，但身体也有点吃不消。为什么呢？ 以下让我细细道来。 出游的目的 其实事先并没有定好什么计划， 因为5/1，5/2这两天，我公司请了假。由于家庭里的一些原因，当天老婆孩子大家都有自己的事，所以我就想一个人开车出个远门。 去什么地方呢？ 在自己脑海里思考5分钟好，定了沿着日本的东海岸（太平洋）走，经过仙台后，到石卷市后返航。大约是单程400KM。 走高速还是一般道？ 我选择了后者，理由有两个。一是沿途更机动，能随时停车看周边风景，二是有充足的时间（自己预计是2晚3天）。 出门的时候都10点半了，随便买了些喝的之外，多带了2条长袖衣服。因为我想在车里过夜（日本語：「車中泊」）。这里顺便说一下，事后后悔没带睡袋，或者是棉被。 一段说走就走的旅行，就这样开始了。 第一站：茨城县大洗町 为什么选大洗町？ 因为我第一次去大洗町是在2000/1/1，千禧年的第一天，也是Y2K问题在全世界搞得人心惶惶的那一天。 所以，我就选了去大洗町（这是我的第三次）。 基本是走国道6号线为主，经过的代表性的地方有： 千叶县的松本市，柏市，茨木县的取手市，土浦市，kashumigaura city，石岗市，小美玉市等。 第一天的午饭：SUSHIRO 路经石岗市的时候，饿的不得了了，看到路边有AKINDO SUSHIRO（日本語：スシロー）的店，就进去饱餐了一顿。 （2023/5/1 14:32） 大洗的Sun Beach 吃完后继续往东北走，终于到了Oarai Sun Beach（日本語：大洗サンビーチ）。 （2023/5/1 16:00） （2023/5/1 16:04） 第一晚：Iwaki City（いわき市） 在大洗町做短暂停留之后，顺着国道245号线继续北上，目标是第一晚过夜的地方：Iwaki City 沿途路经的主要地方：东海村，日立市，高荻市， 古房地公园打卡 在245号国道边上，路过一个地方发现有一个高高的灯塔矗立在海边，赶紧开过去停车。 一看原来是地处日立市的一个叫“古房地公园”（日文叫：Kobouchikouen）的地方，有不少人在游玩。带着小孩的，牵着宠物狗的，等等。 （2023/5/1 17:10） 看了这个灯塔叫做“日立灯台”， 高度是距地面高25米，距水面高42米。灯台发出的光，能照射到12.5海里（约23公里）。 公园就在太平洋边上 夜宿7-11的停车场 离开古房地公园后，天色渐渐变黑了，所以就专心继续北上，没有在沿途下车。一直开进了Iwaki City后，下起了中雨，天色也全黑了，人生路不熟的我，急着要找一个可以停车，吃饭，夜宿的地方。 但是雨下得越来越大，国道6号线车流有很多，路况（特别是两边的店铺）看得很不清楚。毕竟这里不是东京，店铺很少，又找不到地方停车慢慢找，只能随着车流往前走，往前走。。...
+        </description>
+        <pubDate>Fri, 05 May 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/travel/2023-05-05-2023%E5%B9%B4%E9%BB%84%E9%87%91%E5%91%A8%E8%87%AA%E9%A9%BE%E6%B8%B8%E4%B8%9C%E6%97%A5%E6%9C%AC%E8%B5%B0%E8%B5%B7</link>
+        <guid isPermaLink="true">http://localhost:4000/travel/2023-05-05-2023%E5%B9%B4%E9%BB%84%E9%87%91%E5%91%A8%E8%87%AA%E9%A9%BE%E6%B8%B8%E4%B8%9C%E6%97%A5%E6%9C%AC%E8%B5%B0%E8%B5%B7</guid>
+      </item>
+    
+      <item>
+        <title>基本から学ぶテストプロセス管理」の読書筆記</title>
+        <description>
+          
+          基本から学ぶテストプロセス管理 〜コンピュータシステムのテストを成功させるために〜 英語名：Managing the Testing Process Second Edition テストの目的は、バグを見つけること！ 第1章 実施するテストの選択 ーーテストプロジェクトの基本計画 実施するテストの候補:テスト作業とその範囲 詳細な観点から全体的な観点へ：テスト観点の粒度 構造(ホワイトボックス)テスト 動作(ブラックリスト)テスト 実地テスト テストフェーズ:暴走か進行か 単体テスト コンポーネントテスト/サブシステムテスト 統合テスト/製品テスト システムテスト 受入テスト/ユーザ受入テスト アルファテスト 社内ユーザが実施 ベータテスト 現在もしくは将来のクライアントが実施 パイロットテスト 実施すべきテスト:品質の考察 象を触る：品質は定義できるか 品質とは：製品の性能や製品の満足度…を左右する重要な特徴である。 経験則的品質から外れる危険性 標準手法だけではない:略式の品質リスク評価法 一般的な品質リスク コンポーネントテスト 状態 トランザクション コードカバレッジ データフローカバレッジ 機能性 ユーザインターフェイス 機械的な寿命 信号品質 統合テスト コンポーネント/サブシステムI/F 機能性 容量とボリューム エラー/災害時の処理と復旧 データ品質 性能...
+        </description>
+        <pubDate>Sun, 30 Apr 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/books/2023-04-30-%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98</link>
+        <guid isPermaLink="true">http://localhost:4000/books/2023-04-30-%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98</guid>
+      </item>
+    
+      <item>
+        <title>About NFT</title>
+        <description>
+          
+          NFTとは
+NFT(Non-Fungible Token/非代替性トークン/非同质化通证) is
+
+
+
+
+  英語
+A unique digital asset that is verified on a blockchain network, such as Ethereum. Each NFT is one-of-a-kind and has its own distinct value and identity.
+  日本語
+ブロックチェーンを基盤にして作成された、デジタルコンテンツを「唯一無二のものである」と証明するもの。
+  中国語
+是区块链网络里具有唯一性特点的可信数字权益凭证，是一种可在区块链上记录和处理多维、复杂属性的数据对象。
+
+
+参考リンク
+
+  NFTとは？仕組みや始め方、購入方法・稼ぎ方をわかりやすく解説！
+  NFTデジタルアートとは？作り方・購入・出品・販売方法を一挙解説！
+  意外と簡単！NFTアートの作り方や販売方法を徹底解説
+
+
+        </description>
+        <pubDate>Thu, 27 Apr 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/study/2023-04-27-about-nft</link>
+        <guid isPermaLink="true">http://localhost:4000/study/2023-04-27-about-nft</guid>
+      </item>
+    
+      <item>
+        <title>PCI DSS v4.0読書筆記</title>
+        <description>
+          
+          Payment Card Industry Data Security Standard v4.0を勉強し、要点をメモ書きする。 https://www.pcisecuritystandards.org/document_library/ 主要なPCI DSS要件 |分類|要件| |:–|:–| |安全なNWとシステムの構築と維持|1.NWのセキュリティコントロールを導入、維持2.すべてのシステムコンポーネントに安全な設定を適用| |アカウントデータの保護|3.保存されたアカウントデータを保護4.オープンな公共NWでカード会員データを伝送する場合、 強力な暗号化技術でカード会員データを保護| |脆弱性管理プログラムの維持|5.すべてのシステムとNWを悪意のあるSWから保護6.安全性の高いシステムおよびSWを開発、保守| |強力なアクセス制御手法の導入|7.システムコンポーネントおよびカード会員データへのアクセスを、 業務上必要な適用範囲に制限8.ユーザを識別し、システムコンポーネントへのアクセスを認証9.カード会員データへの物理的なアクセスを制限| |NWの定期的な監視およびテスト|10.システムコンポーネントおよびカード会員データへのすべてのアクセスを記録し、監視11.システムおよびNWのセキュリティを定期的にテスト事業体のポリシーとプログラムにより、情報セキを維持| PCI DSS適用情報 カード会員データ(CHD)、機密認証データ(SAD)を保存、処理、または伝送するすべての事業体と、カード会員データ環境(CDE)のセキュリティに影響を与える可能性のあるすべての事業体を対象とする。 アカウントデータ カード会員データ プライマリアカウント番号(PAN) カード会員名 有効期限 サービスコード 機密認証データ フルトラックデータ(磁気ストライプデータまたはチップ上の 同等のデータ) カード検証コード（セキュリティコード） PIN/PIN ブロック PCI DSS要件の適用範囲 適用範囲内システム 対象外システム 　　 年次 PCI DSS 適用範囲の確認 事業体は、PCI DSS 適用範囲を決定するための文書を保持することが期待され、検証される。 セグメンとPCI DSS適用範囲 適用範囲のシステムと、セグメント（隔離）されていることの有効性が検証できれば、対象外にできる。セグメントされていない or...
+        </description>
+        <pubDate>Sun, 16 Apr 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/security/2023-04-16-pcidssv4%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98</link>
+        <guid isPermaLink="true">http://localhost:4000/security/2023-04-16-pcidssv4%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98</guid>
+      </item>
+    
+      <item>
+        <title>イシューからはじめようの読書筆記</title>
+        <description>
+          
+          概要
+安宅さんの「イシューからはじめよう」という有名な本があり、2013年ごろその存在を知ったが、拝読する機会がありませんでした。
+今月、拝読しましたので、その感想を簡単にまとめてみました。
+
+
+
+読書筆記
+この本は、仕事や日常生活で直面する問題を解決するためのアプローチを、安宅さんの経験に基づいて紹介しています。安宅さんは、日本の製造業において、「イシュー」という問題解決の手法を確立し、多くの企業で改善活動を指導してきた経験を持っています。
+
+この本では、イシューとは何か、なぜイシューから解決に取り組むべきなのかといった基本的な考え方を説明しています。また、イシューを特定し、解決するためにはどのようなステップを踏むべきかを具体的に解説しています。
+
+まず、問題を客観的に見つめるために、「ゴーラル」という視点を用いることを提唱しています。ゴーラルとは、目的・目標・理念（Goal）・現状・理由（Reason）・対策（Action）・レビュー・学び（Learn）の頭文字をとったもので、問題を客観的に分析し、解決に向けた具体的なアクションを考えるためのフレームワークです。
+
+次に、イシューを特定するための方法について紹介しています。イシューは、目標とのギャップや現状の問題点、要望や改善のニーズなど、様々な形で現れるとされています。それを見極め、具体的なイシューを明確にするための手法やツールを紹介しています。
+
+また、イシューを解決するためのPDCAサイクル（Plan-Do-Check-Act）の考え方を重要視しており、具体的な改善アクションを計画し、実施し、結果をチェックし、学びを得ながら改善を継続する方法を解説しています。さらに、PDCAを実践するためのツールやテクニックについても詳しく解説しています。
+
+本書では、イシューを特定し、解決に向けた改善活動を行うための基本的なステップや考え方を詳細に解説していますが、それだけでなく、イシューを解決する際に必要なチームの協力やリーダーシップの重要性、コミュニケーションの重要性なども強調しています。
+
+さらに、本書ではイシューを解決するためのプロセスに加えて、組織文化やマインドセットの重要性も強調しています。イシューを解決するためには、組織全体の文化やマインドセットを変革し、持続的な改善の取り組みを推進することが重要であると述べられています。
+
+最後に、この本では安宅さん自身の経験やエピソードを交えながら、実際の現場での問題解決の実践例を紹介しています。これにより、読む人は実際の現場での問題解決の難しさや複雑さを理解し、実践に役立つ具体的なヒントやアイデアを得ることができるでしょう。
+
+まとめ
+「イシューからはじめよう」は、問題解決や改善に興味のある人や、組織の改善活動を推進したいリーダーにとって、実践的な手法やアプローチを提供する一冊です。安宅さんの豊富な経験に基づいた具体的な事例や実践的なツールを通じて、イシューを解決するためのスキルを身につけることができるでしょう。
+大変価値が高い一冊の本であり、拝読してよかったです。
+
+
+        </description>
+        <pubDate>Sun, 16 Apr 2023 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/books/2023-04-16-issue%E3%81%8B%E3%82%89%E3%81%AF%E3%81%98%E3%82%81%E3%82%88%E3%81%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98</link>
+        <guid isPermaLink="true">http://localhost:4000/books/2023-04-16-issue%E3%81%8B%E3%82%89%E3%81%AF%E3%81%98%E3%82%81%E3%82%88%E3%81%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98</guid>
+      </item>
+    
+  </channel>
+</rss>

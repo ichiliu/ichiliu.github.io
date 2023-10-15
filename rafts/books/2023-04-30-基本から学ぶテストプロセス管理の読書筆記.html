@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>基本から学ぶテストプロセス管理」の読書筆記</title>
+
+  
+  <meta name="author" content="Ganxiang Liu">
+  
+
+  <meta name="description" content="基本から学ぶテストプロセス管理 〜コンピュータシステムのテストを成功させるために〜 英語名：Managing the Testing Process Second Edition テストの目的は、バグを見つけること！ 第1章 実施するテストの選択 ーーテストプロジェクトの基本計画 実施するテストの候補:テスト作業とその範囲 詳細な観点から全体的な観点へ：テスト観点の粒度 構造(ホワイトボックス)テスト 動作(ブラックリスト)テスト 実地テスト テストフェーズ:暴走か進行か 単体テスト コンポーネントテスト/サブシステムテスト 統合テスト/製品テスト システムテスト 受入テスト/ユーザ受入テスト アルファテスト 社内ユーザが実施 ベータテスト 現在もしくは将来のクライアントが実施 パイロットテスト 実施すべきテスト:品質の考察 象を触る：品質は定義できるか 品質とは：製品の性能や製品の満足度…を左右する重要な特徴である。 経験則的品質から外れる危険性 標準手法だけではない:略式の品質リスク評価法 一般的な品質リスク コンポーネントテスト 状態 トランザクション コードカバレッジ データフローカバレッジ 機能性 ユーザインターフェイス 機械的な寿命 信号品質 統合テスト コンポーネント/サブシステムI/F 機能性 容量とボリューム エラー/災害時の処理と復旧 データ品質 性能...">
+
+  
+
+  
+  <meta name="keywords" content="IT, Study, Security, Life, Travel, Books, Gourmet, Blog">
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="IT技術者的BLOG" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="IT技術者的BLOG">
+  <meta property="og:title" content="基本から学ぶテストプロセス管理」の読書筆記">
+  <meta property="og:description" content="基本から学ぶテストプロセス管理 〜コンピュータシステムのテストを成功させるために〜 英語名：Managing the Testing Process Second Edition テストの目的は、バグを見つけること！ 第1章 実施するテストの選択 ーーテストプロジェクトの基本計画 実施するテストの候補:テスト作業とその範囲 詳細な観点から全体的な観点へ：テスト観点の粒度 構造(ホワイトボックス)テスト 動作(ブラックリスト)テスト 実地テスト テストフェーズ:暴走か進行か 単体テスト コンポーネントテスト/サブシステムテスト 統合テスト/製品テスト システムテスト 受入テスト/ユーザ受入テスト アルファテスト 社内ユーザが実施 ベータテスト 現在もしくは将来のクライアントが実施 パイロットテスト 実施すべきテスト:品質の考察 象を触る：品質は定義できるか 品質とは：製品の性能や製品の満足度…を左右する重要な特徴である。 経験則的品質から外れる危険性 標準手法だけではない:略式の品質リスク評価法 一般的な品質リスク コンポーネントテスト 状態 トランザクション コードカバレッジ データフローカバレッジ 機能性 ユーザインターフェイス 機械的な寿命 信号品質 統合テスト コンポーネント/サブシステムI/F 機能性 容量とボリューム エラー/災害時の処理と復旧 データ品質 性能...">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Ganxiang Liu">
+  <meta property="og:article:published_time" content="2023-04-30T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/books/2023-04-30-%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98">
+  <link rel="canonical" href="http://localhost:4000/books/2023-04-30-%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@gxliu">
+  <meta name="twitter:creator" content="@gxliu">
+
+  <meta property="twitter:title" content="基本から学ぶテストプロセス管理」の読書筆記">
+  <meta property="twitter:description" content="基本から学ぶテストプロセス管理 〜コンピュータシステムのテストを成功させるために〜 英語名：Managing the Testing Process Second Edition テストの目的は、バグを見つけること！ 第1章 実施するテストの選択 ーーテストプロジェクトの基本計画 実施するテストの候補:テスト作業とその範囲 詳細な観点から全体的な観点へ：テスト観点の粒度 構造(ホワイトボックス)テスト 動作(ブラックリスト)テスト 実地テスト テストフェーズ:暴走か進行か 単体テスト コンポーネントテスト/サブシステムテスト 統合テスト/製品テスト システムテスト 受入テスト/ユーザ受入テスト アルファテスト 社内ユーザが実施 ベータテスト 現在もしくは将来のクライアントが実施 パイロットテスト 実施すべきテスト:品質の考察 象を触る：品質は定義できるか 品質とは：製品の性能や製品の満足度…を左右する重要な特徴である。 経験則的品質から外れる危険性 標準手法だけではない:略式の品質リスク評価法 一般的な品質リスク コンポーネントテスト 状態 トランザクション コードカバレッジ データフローカバレッジ 機能性 ユーザインターフェイス 機械的な寿命 信号品質 統合テスト コンポーネント/サブシステムI/F 機能性 容量とボリューム エラー/災害時の処理と復旧 データ品質 性能...">
+
+  
+
+  
+
+
+  
+
+  
+
+<link rel="icon" href="/favicon.ico">
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">IT技術者的BLOG</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Index</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/category/it.html">IT</a>
+                  <a class="dropdown-item" href="/category/study.html">Study</a>
+                  <a class="dropdown-item" href="/category/security.html">Security</a>
+                  <a class="dropdown-item" href="/category/travel.html">Travel</a>
+                  <a class="dropdown-item" href="/category/life.html">Life</a>
+                  <a class="dropdown-item" href="/category/gourmet.html">Gourmet</a>
+                  <a class="dropdown-item" href="/category/books.html">Books</a>
+                  <a class="dropdown-item" href="/category/cat.html">Cat</a>
+                  <a class="dropdown-item" href="/category/other.html">Other</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+                  <a class="dropdown-item" href="https://www.markdowntutorial.com/">Learn markdown</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Chapter 21 Malicious Code and Application Attacks", \
+          "desc"     : "Chapter 21 Malicious Code and Application Attacks", \
+          "category" : "CISSPMalicious Code", \
+          "url"      : "/study/2023-10-03-cissp-chapter21", \
+          "date"     : "October  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "脆弱性管理にSSVCを活用", \
+          "desc"     : "脆弱性管理にSSVCを活用", \
+          "category" : "SecurityCVSSSSVCSEV", \
+          "url"      : "/security/2023-09-28-vuln-mgt-cvss-sev", \
+          "date"     : "September 28, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "AWS Security Services", \
+          "desc"     : "AWS Security Services", \
+          "category" : "AWSSecurity", \
+          "url"      : "/security/2023-09-20-aws-security-services", \
+          "date"     : "September 20, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "DISQUSのコメント投稿機能を追加", \
+          "desc"     : "DISQUSのコメント投稿機能を追加", \
+          "category" : "Disqus", \
+          "url"      : "/it/2023-09-17-add-disqus", \
+          "date"     : "September 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "My Hometown", \
+          "desc"     : "My Hometown", \
+          "category" : "hometown", \
+          "url"      : "/life/2023-09-16-my-hometown", \
+          "date"     : "September 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Migrate AWS EC2 WordPress to Github Pages", \
+          "desc"     : "Migrate AWS EC2 WordPress to Github Pages", \
+          "category" : "JekyllGithub PagesCloudflareSSL/TLS", \
+          "url"      : "/it/2023-09-15-good-bye-aws-ec2-wp", \
+          "date"     : "September 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "在macOS上看网络电视", \
+          "desc"     : "在macOS上看网络电视", \
+          "category" : "Internet TV网络电视", \
+          "url"      : "/life/2023-08-26-%E5%9C%A8macOS%E4%B8%8A%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%94%B5%E8%A7%86", \
+          "date"     : "August 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Coding Styles", \
+          "desc"     : "Coding Styles", \
+          "category" : "Coding Style", \
+          "url"      : "/it/2023-07-21-coding-styles", \
+          "date"     : "July 21, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "ソフトウェアライセンスの学習メモ", \
+          "desc"     : "ソフトウェアライセンスの学習メモ", \
+          "category" : "Software License", \
+          "url"      : "/study/2023-07-19-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%81%AE%E5%AD%A6%E7%BF%92%E3%83%A1%E3%83%A2", \
+          "date"     : "July 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "OWASP Top 10", \
+          "desc"     : "OWASP Top 10", \
+          "category" : "owasptop10", \
+          "url"      : "/security/2023-06-24-owasp-top10", \
+          "date"     : "June 24, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "OWASP API Security Top 10 Study", \
+          "desc"     : "OWASP API Security Top 10 Study", \
+          "category" : "owasptop10", \
+          "url"      : "/security/2023-06-20-owasp-api-security-top10-study", \
+          "date"     : "June 20, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 20 Software Development Security", \
+          "desc"     : "Chapter 20 Software Development Security", \
+          "category" : "CISSP", \
+          "url"      : "/study/2023-05-30-cissp-chapter20", \
+          "date"     : "May 30, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "再游冲绳@2023/05", \
+          "desc"     : "再游冲绳@2023/05", \
+          "category" : "沖縄Okinawa出張", \
+          "url"      : "/travel/2023-05-27-%E5%86%8D%E6%B8%B8%E5%86%B2%E7%BB%B3at2023-05", \
+          "date"     : "May 27, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "天満宮&amp;東照宮@仙台", \
+          "desc"     : "天満宮&amp;東照宮@仙台", \
+          "category" : "仙台天満宮東照宮", \
+          "url"      : "/travel/2023-05-26-%E5%A4%A9%E6%BA%80%E5%AE%AEand%E6%9D%B1%E7%85%A7%E5%AE%AEat%E4%BB%99%E5%8F%B0", \
+          "date"     : "May 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "修心養性", \
+          "desc"     : "修心養性", \
+          "category" : "修心養性上善若水", \
+          "url"      : "/life/2023-05-14-%E4%BF%AE%E5%BF%83%E9%A4%8A%E6%80%A7", \
+          "date"     : "May 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "2023年黄金周自驾游 东日本走起", \
+          "desc"     : "2023年黄金周自驾游 东日本走起", \
+          "category" : "ドライブ東日本福島", \
+          "url"      : "/travel/2023-05-05-2023%E5%B9%B4%E9%BB%84%E9%87%91%E5%91%A8%E8%87%AA%E9%A9%BE%E6%B8%B8%E4%B8%9C%E6%97%A5%E6%9C%AC%E8%B5%B0%E8%B5%B7", \
+          "date"     : "May  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "基本から学ぶテストプロセス管理」の読書筆記", \
+          "desc"     : "基本から学ぶテストプロセス管理」の読書筆記", \
+          "category" : "testtest processテストテストプロセス", \
+          "url"      : "/books/2023-04-30-%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98", \
+          "date"     : "April 30, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "About NFT", \
+          "desc"     : "About NFT", \
+          "category" : "NFT", \
+          "url"      : "/study/2023-04-27-about-nft", \
+          "date"     : "April 27, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "PCI DSS v4.0読書筆記", \
+          "desc"     : "PCI DSS v4.0読書筆記", \
+          "category" : "pci-dss", \
+          "url"      : "/security/2023-04-16-pcidssv4%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98", \
+          "date"     : "April 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "イシューからはじめようの読書筆記", \
+          "desc"     : "イシューからはじめようの読書筆記", \
+          "category" : "issues", \
+          "url"      : "/books/2023-04-16-issue%E3%81%8B%E3%82%89%E3%81%AF%E3%81%98%E3%82%81%E3%82%88%E3%81%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98", \
+          "date"     : "April 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "画像生成AIのMidjourneyを試してみました", \
+          "desc"     : "画像生成AIのMidjourneyを試してみました", \
+          "category" : "Midjourney生成AI", \
+          "url"      : "/it/2023-03-26-%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90ai%E3%81%AEmidjourney", \
+          "date"     : "March 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "OpenAIのDALL-E2を試してみました", \
+          "desc"     : "OpenAIのDALL-E2を試してみました", \
+          "category" : "OpenAIDALL-E2", \
+          "url"      : "/it/2023-03-26-openai%E3%81%AEdall-e2%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%BE%E3%81%97%E3%81%9F", \
+          "date"     : "March 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "macOS Usage Tips", \
+          "desc"     : "macOS Usage Tips", \
+          "category" : "macOSTips", \
+          "url"      : "/it/2023-03-21-macos-usage-tips", \
+          "date"     : "March 21, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "梅と桃のお花見", \
+          "desc"     : "梅と桃のお花見", \
+          "category" : "花見cherry blossom viewinghanami", \
+          "url"      : "/life/2023-03-18-%E6%A2%85%E3%81%A8%E6%A1%83%E3%81%AE%E3%81%8A%E8%8A%B1%E8%A6%8B", \
+          "date"     : "March 18, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Finance Study", \
+          "desc"     : "Finance Study", \
+          "category" : "financefiscniscfsa", \
+          "url"      : "/study/2023-03-15-finance-study", \
+          "date"     : "March 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "GmailでPGPを使ったメール暗号化の検証", \
+          "desc"     : "GmailでPGPを使ったメール暗号化の検証", \
+          "category" : "GmailPGP", \
+          "url"      : "/it/2023-03-07-gmail%E3%81%A7PGP%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%A1%E3%83%BC%E3%83%AB%E6%9A%97%E5%8F%B7%E5%8C%96%E3%81%AE%E6%A4%9C%E8%A8%BC", \
+          "date"     : "March  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 19 Investigations and Ethics", \
+          "desc"     : "Chapter 19 Investigations and Ethics", \
+          "category" : "CISSP", \
+          "url"      : "/study/2023-03-02-cissp-chapter19", \
+          "date"     : "March  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Penetration Testing Study", \
+          "desc"     : "Penetration Testing Study", \
+          "category" : "Penetration Test", \
+          "url"      : "/security/2023-03-02-penetration-testing-study", \
+          "date"     : "March  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Flutterを使ってみた", \
+          "desc"     : "Flutterを使ってみた", \
+          "category" : "Flutter", \
+          "url"      : "/study/2023-02-21-Flutter%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F", \
+          "date"     : "February 21, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "ChatGPTをいろいろ使ってみる", \
+          "desc"     : "ChatGPTをいろいろ使ってみる", \
+          "category" : "ChatGPT生成AI", \
+          "url"      : "/study/2023-02-16-ChatGPT%E3%82%92%E3%81%8A%E8%A9%A6%E3%81%97", \
+          "date"     : "February 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Node.js NPM Study", \
+          "desc"     : "Node.js NPM Study", \
+          "category" : "node.jsnpm", \
+          "url"      : "/it/2023-02-11-nodejs-npm-study", \
+          "date"     : "February 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "在Mac本地使用Screwdriver.cd验证job build", \
+          "desc"     : "在Mac本地使用Screwdriver.cd验证job build", \
+          "category" : "screwdriver.cdjob build", \
+          "url"      : "/it/2023-02-10-mac%E6%9C%AC%E5%9C%B0%E4%BD%BF%E7%94%A8screwdriver%E9%AA%8C%E8%AF%81", \
+          "date"     : "February 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Lots of TOP10 of 2022", \
+          "desc"     : "Lots of TOP10 of 2022", \
+          "category" : "TOP10", \
+          "url"      : "/technology/2023-01-31-lotsoftip10of2022", \
+          "date"     : "January 31, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "2023年お正月、東京・浜離宮庭園で放鷹術を見学", \
+          "desc"     : "2023年お正月、東京・浜離宮庭園で放鷹術を見学", \
+          "category" : "Eagle鷹浜離宮", \
+          "url"      : "/life/2023-01-03-2023%E5%B9%B4%E3%81%8A%E6%AD%A3%E6%9C%88%E6%9D%B1%E4%BA%AC%E6%B5%9C%E9%9B%A2%E5%AE%AE%E5%BA%AD%E5%9C%92%E3%81%A7%E6%94%BE%E9%B7%B9%E8%A1%93%E3%82%92%E8%A6%8B%E5%AD%A6", \
+          "date"     : "January  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "WordPress的用法TIPS", \
+          "desc"     : "WordPress的用法TIPS", \
+          "category" : "WordPress", \
+          "url"      : "/it/2023-01-01-WordPress%E7%9A%84%E7%94%A8%E6%B3%95TIPS", \
+          "date"     : "January  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "JekyllでGitHub Pagesにサイト公開を試す", \
+          "desc"     : "JekyllでGitHub Pagesにサイト公開を試す", \
+          "category" : "JekyllGithub Pages", \
+          "url"      : "/it/2022-12-29-Jekyll%E3%81%A7GitHubPages%E3%81%AB%E3%82%B5%E3%82%A4%E3%83%88%E5%85%AC%E9%96%8B", \
+          "date"     : "December 29, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "我家猫的新小伙伴（トモネコ）", \
+          "desc"     : "我家猫的新小伙伴（トモネコ）", \
+          "category" : "cat", \
+          "url"      : "/cat/2022-12-25-%E6%88%91%E5%AE%B6%E7%8C%AB%E7%9A%84%E6%96%B0%E5%B0%8F%E4%BC%99%E4%BC%B4", \
+          "date"     : "December 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "macOSのApache httpdの自動再起動設定", \
+          "desc"     : "macOSのApache httpdの自動再起動設定", \
+          "category" : "macOSapachehttpd", \
+          "url"      : "/it/2022-12-13-macOS%E3%81%AEApache%E3%81%AEhttpd%E3%81%AE%E8%87%AA%E5%8B%95%E5%86%8D%E8%B5%B7%E5%8B%95%E8%A8%AD%E5%AE%9A", \
+          "date"     : "December 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "大学入学共通テストまとめ", \
+          "desc"     : "大学入学共通テストまとめ", \
+          "category" : "大学入試共通テスト", \
+          "url"      : "/study/2022-12-07-%E5%A4%A7%E5%AD%A6%E5%85%A5%E5%AD%A6%E5%85%B1%E9%80%9A%E3%83%86%E3%82%B9%E3%83%88%E3%81%BE%E3%81%A8%E3%82%81", \
+          "date"     : "December  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "About OpenSSF", \
+          "desc"     : "About OpenSSF", \
+          "category" : "OpenSSF", \
+          "url"      : "/security/2022-11-21-aboutopenssf", \
+          "date"     : "November 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "日本で定年退職後に変わることメモ", \
+          "desc"     : "日本で定年退職後に変わることメモ", \
+          "category" : "retire定年リタイヤ", \
+          "url"      : "/life/2022-11-21-%E6%97%A5%E6%9C%AC%E3%81%A7%E5%AE%9A%E5%B9%B4%E9%80%80%E8%81%B7%E5%BE%8C%E3%81%AB%E5%A4%89%E3%82%8F%E3%82%8B%E3%81%93%E3%81%A8%E3%83%A1%E3%83%A2", \
+          "date"     : "November 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "DXレポートの読後感", \
+          "desc"     : "DXレポートの読後感", \
+          "category" : "DX", \
+          "url"      : "/it/2022-11-19-DX%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AE%E8%AA%AD%E5%BE%8C%E6%84%9F", \
+          "date"     : "November 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "macOSのapache2にSSLの自己証明書を導入", \
+          "desc"     : "macOSのapache2にSSLの自己証明書を導入", \
+          "category" : "macOSapache2SSL証明書", \
+          "url"      : "/it/2022-11-17-macOS%E3%81%AEpache2%E3%81%ABSSL%E3%81%AE%E8%87%AA%E5%B7%B1%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E5%B0%8E%E5%85%A5", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 18 Disaster Recovery Planning", \
+          "desc"     : "Chapter 18 Disaster Recovery Planning", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-11-17-cissp-chapter18", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "BBQ@水元公園", \
+          "desc"     : "BBQ@水元公園", \
+          "category" : "BBQ水元公園", \
+          "url"      : "/life/2022-11-13-BBQat%E6%B0%B4%E5%85%83%E5%85%AC%E5%9C%92", \
+          "date"     : "November 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Backup EBS to S3 by AMI", \
+          "desc"     : "Backup EBS to S3 by AMI", \
+          "category" : "EBSS3AMI", \
+          "url"      : "/it/2022-11-06-BackupEBStoS3byAMI", \
+          "date"     : "November  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "CloudFront+EC2でSSL通信させる", \
+          "desc"     : "CloudFront+EC2でSSL通信させる", \
+          "category" : "AWSCloudFrontSSL", \
+          "url"      : "/it/2022-11-04-CloudFront%E3%81%A7SSL%E9%80%9A%E4%BF%A1%E3%81%95%E3%81%9B%E3%82%8B", \
+          "date"     : "November  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "AWS EC2 のディスク使用量100%の解決方法", \
+          "desc"     : "AWS EC2 のディスク使用量100%の解決方法", \
+          "category" : "AWSEC2HDD容量", \
+          "url"      : "/it/2022-10-17-EC2%E3%81%AE%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%AE%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95", \
+          "date"     : "October 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 17 Preventing and Responding to Incidents", \
+          "desc"     : "Chapter 17 Preventing and Responding to Incidents", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-10-04-cissp_chapter17", \
+          "date"     : "October  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "About TOEFL iBT TEST", \
+          "desc"     : "About TOEFL iBT TEST", \
+          "category" : "toefl iBT Test", \
+          "url"      : "/study/2022-09-26-about-toefl-ibt-test", \
+          "date"     : "September 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Global Famous Cars", \
+          "desc"     : "Global Famous Cars", \
+          "category" : "car", \
+          "url"      : "/other/2022-09-25-global-famous-cars", \
+          "date"     : "September 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "福岡市出張", \
+          "desc"     : "福岡市出張", \
+          "category" : "福岡市出張", \
+          "url"      : "/travel/2022-09-18-%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%87%BA%E5%BC%B5", \
+          "date"     : "September 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 16 Managing Security Operations", \
+          "desc"     : "Chapter 16 Managing Security Operations", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-09-18-cissp_chapter16", \
+          "date"     : "September 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 15 Security Assessment and Testing", \
+          "desc"     : "Chapter 15 Security Assessment and Testing", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-08-25-cissp_chapter15", \
+          "date"     : "August 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "TAKAGI製の水栓修理DIY", \
+          "desc"     : "TAKAGI製の水栓修理DIY", \
+          "category" : "DIY水栓修理", \
+          "url"      : "/life/2022-08-07-TAKAGI%E8%A3%BD%E3%81%AE%E6%B0%B4%E6%A0%93%E4%BF%AE%E7%90%86DIY", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "About SSO (Single Sign On)", \
+          "desc"     : "About SSO (Single Sign On)", \
+          "category" : "SSO", \
+          "url"      : "/security/2022-06-26-about-sso", \
+          "date"     : "June 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 14 Controlling and Monitoring Access", \
+          "desc"     : "Chapter 14 Controlling and Monitoring Access", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-06-23-cissp_chapter14", \
+          "date"     : "June 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "冲绳到此一游", \
+          "desc"     : "冲绳到此一游", \
+          "category" : "沖縄Okinawa", \
+          "url"      : "/travel/2022-06-18-%E5%86%B2%E7%BB%B3%E5%88%B0%E6%AD%A4%E4%B8%80%E6%B8%B8", \
+          "date"     : "June 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "食&amp;夜@仙台", \
+          "desc"     : "食&amp;夜@仙台", \
+          "category" : "牛たんGyutan出張", \
+          "url"      : "/gourmet/2022-05-30-%E9%A3%9Fand%E5%A4%9Cat%E4%BB%99%E5%8F%B0", \
+          "date"     : "May 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "寻踪周树人&amp;藤野先生@仙台", \
+          "desc"     : "寻踪周树人&amp;藤野先生@仙台", \
+          "category" : "鲁迅周树人藤野先生sendai仙台", \
+          "url"      : "/travel/2022-05-20-%E5%AF%BB%E8%B8%AA%E5%91%A8%E6%A0%91%E4%BA%BAand%E8%97%A4%E9%87%8E%E5%85%88%E7%94%9Fat%E4%BB%99%E5%8F%B0", \
+          "date"     : "May 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 13 Managing Identity and Authentication", \
+          "desc"     : "Chapter 13 Managing Identity and Authentication", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-05-09-cissp_chapter13", \
+          "date"     : "May  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Blog環境改造記", \
+          "desc"     : "Blog環境改造記", \
+          "category" : "blogwordpress", \
+          "url"      : "/it/2022-05-09-blog%E7%92%B0%E5%A2%83%E6%94%B9%E9%80%A0%E8%A8%98", \
+          "date"     : "May  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "流山之行", \
+          "desc"     : "流山之行", \
+          "category" : "流山Spring温泉", \
+          "url"      : "/travel/2022-05-06-%E6%B5%81%E5%B1%B1%E4%B9%8B%E8%A1%8C", \
+          "date"     : "May  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "東京-三越前散策", \
+          "desc"     : "東京-三越前散策", \
+          "category" : "WalkMitsukoshi", \
+          "url"      : "/other/2022-05-05-%E6%9D%B1%E4%BA%AC%E4%B8%89%E8%B6%8A%E5%89%8D%E6%95%A3%E7%AD%96", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "🎏市川市的鲤鱼旗🎏", \
+          "desc"     : "🎏市川市的鲤鱼旗🎏", \
+          "category" : "鯉のぼりKoinobori", \
+          "url"      : "/life/2022-05-05-%E5%B8%82%E5%B7%9D%E5%B8%82%E7%9A%84%E9%B2%A4%E9%B1%BC%E6%97%97", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "EC2からSES経由でメール送信する", \
+          "desc"     : "EC2からSES経由でメール送信する", \
+          "category" : "AWSEC2SES", \
+          "url"      : "/it/2022-05-05-EC2%E3%81%8B%E3%82%89SES%E7%B5%8C%E7%94%B1%E3%81%A7%E3%83%A1%E3%83%BC%E3%83%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "美貓魚", \
+          "desc"     : "美貓魚", \
+          "category" : "catdress-upfish", \
+          "url"      : "/cat/2022-05-05-%E7%BE%8E%E8%B2%93%E9%AD%9A", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "海底撈火鍋上野店", \
+          "desc"     : "海底撈火鍋上野店", \
+          "category" : "海底捞", \
+          "url"      : "/gourmet/2022-05-03-%E6%B5%B7%E5%BA%95%E6%92%88%E7%81%AB%E9%8D%8B%E4%B8%8A%E9%87%8E%E5%BA%97", \
+          "date"     : "May  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "アンデルセン公園", \
+          "desc"     : "アンデルセン公園", \
+          "category" : "Andersen Park安徒生公园", \
+          "url"      : "/travel/2022-05-02-%E3%82%A2%E3%83%B3%E3%83%87%E3%83%AB%E3%82%BB%E3%83%B3%E5%85%AC%E5%9C%92", \
+          "date"     : "May  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "今日の晩ごはん", \
+          "desc"     : "今日の晩ごはん", \
+          "category" : "Shushi寿司すし", \
+          "url"      : "/gourmet/2022-05-01-%E4%BB%8A%E6%97%A5%E3%81%AE%E6%99%A9%E3%81%94%E3%81%AF%E3%82%93", \
+          "date"     : "May  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Sample blog post to learn markdown tips", \
+          "desc"     : "Sample blog post to learn markdown tips", \
+          "category" : "test", \
+          "url"      : "/2020-02-28-sample-markdown", \
+          "date"     : "February 28, 2020" \
+        }, \
+       \
+        { \
+          "title"    : "Flake it till you make it", \
+          "desc"     : "Flake it till you make it", \
+          "category" : "bookstest", \
+          "url"      : "/2020-02-26-flake-it-till-you-make-it", \
+          "date"     : "February 26, 2020" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "desc"     : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/books", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/cat", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/gourmet", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/it", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/life", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/other", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/security", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/study", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "desc"     : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/travel", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+  <div id="header-big-imgs" data-num-img=3
+    
+    
+    
+      
+      data-img-src-1="http://localhost:4000/assets/img/cover/book1.jpg"
+    
+    
+    
+    
+    
+      
+      data-img-src-2="http://localhost:4000/assets/img/cover/book2.jpg"
+    
+    
+    
+    
+    
+      
+      data-img-src-3="http://localhost:4000/assets/img/cover/book3.jpg"
+    
+    
+    
+  ></div>
+
+
+<header class="header-section has-img">
+
+<div class="big-img intro-header">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>基本から学ぶテストプロセス管理」の読書筆記</h1>
+          
+
+          
+            <span class="post-meta">Posted on April 30, 2023</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class='img-desc'></span>
+</div>
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>基本から学ぶテストプロセス管理」の読書筆記</h1>
+          
+
+          
+            <span class="post-meta">Posted on April 30, 2023</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</header>
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p>基本から学ぶテストプロセス管理
+〜コンピュータシステムのテストを成功させるために〜</p>
+
+<p>英語名：Managing the Testing Process Second Edition</p>
+
+<p>テストの目的は、バグを見つけること！</p>
+
+<p><img src="https://i.imgur.com/b188sun.png" alt="file" /></p>
+
+<h1 id="第1章-実施するテストの選択">第1章 実施するテストの選択</h1>
+<p>ーーテストプロジェクトの基本計画</p>
+<h2 id="実施するテストの候補テスト作業とその範囲">実施するテストの候補:テスト作業とその範囲</h2>
+<h3 id="詳細な観点から全体的な観点へテスト観点の粒度">詳細な観点から全体的な観点へ：テスト観点の粒度</h3>
+<ul>
+  <li>構造(ホワイトボックス)テスト</li>
+  <li>動作(ブラックリスト)テスト</li>
+  <li>実地テスト
+    <h3 id="テストフェーズ暴走か進行か">テストフェーズ:暴走か進行か</h3>
+  </li>
+  <li>単体テスト</li>
+  <li>コンポーネントテスト/サブシステムテスト</li>
+  <li>統合テスト/製品テスト</li>
+  <li>システムテスト</li>
+  <li>受入テスト/ユーザ受入テスト
+    <ul>
+      <li>アルファテスト
+社内ユーザが実施</li>
+      <li>ベータテスト
+現在もしくは将来のクライアントが実施</li>
+    </ul>
+  </li>
+  <li>パイロットテスト</li>
+</ul>
+
+<h2 id="実施すべきテスト品質の考察">実施すべきテスト:品質の考察</h2>
+<h3 id="象を触る品質は定義できるか">象を触る：品質は定義できるか</h3>
+<p>品質とは：製品の性能や製品の満足度…を左右する重要な特徴である。</p>
+<h3 id="経験則的品質から外れる危険性">経験則的品質から外れる危険性</h3>
+<h3 id="標準手法だけではない略式の品質リスク評価法">標準手法だけではない:略式の品質リスク評価法</h3>
+<ul>
+  <li>一般的な品質リスク
+    <ul>
+      <li>コンポーネントテスト
+        <ul>
+          <li>状態</li>
+          <li>トランザクション</li>
+          <li>コードカバレッジ</li>
+          <li>データフローカバレッジ</li>
+          <li>機能性</li>
+          <li>ユーザインターフェイス</li>
+          <li>機械的な寿命</li>
+          <li>信号品質</li>
+        </ul>
+      </li>
+      <li>統合テスト
+        <ul>
+          <li>コンポーネント/サブシステムI/F</li>
+          <li>機能性</li>
+          <li>容量とボリューム</li>
+          <li>エラー/災害時の処理と復旧</li>
+          <li>データ品質</li>
+          <li>性能</li>
+          <li>ユーザI/F</li>
+        </ul>
+      </li>
+      <li>システムテストと受入テスト
+        <ul>
+          <li>機能性</li>
+          <li>ユーザI/F</li>
+          <li>状態</li>
+          <li>データ品質</li>
+          <li>操作</li>
+          <li>容量とボリューム</li>
+          <li>信頼性、稼働率、安定性</li>
+          <li>エラー/災害時の処理と復旧</li>
+          <li>ストレス</li>
+          <li>性能</li>
+          <li>日時の処理</li>
+          <li>ローカライゼーション</li>
+          <li>NW環境と分散環境</li>
+          <li>設定オプションと互換性</li>
+          <li>規格への適合</li>
+          <li>セキュリティ</li>
+          <li>環境</li>
+          <li>入力電力、消費電力、出力電力</li>
+          <li>衝撃、振動、落下</li>
+          <li>インストール、カットオーバ、セットアップ、初期設定</li>
+          <li>資料とパッケージ</li>
+          <li>保守性</li>
+        </ul>
+      </li>
+      <li>リストの確認と完成
+        <ul>
+          <li>ピアレビュー</li>
+          <li>社内の専門家</li>
+          <li>社外のリソース</li>
+          <li>品質リスクの提案</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="不具合モード影響解析品質リスクを理解するための標準的な手法">不具合モード影響解析:品質リスクを理解するための標準的な手法</h3>
+<p>FMEA：不具合モード影響解析。</p>
+<ul>
+  <li>システム機能または要素</li>
+  <li>潜在的不具合モード-品質リスク</li>
+  <li>不具合の潜在的影響</li>
+  <li>致命的か</li>
+  <li>重要度
+1.データ消失/HW損傷/安全上の問題
+2.機能喪失、迂回方法ない
+3.機能喪失、迂回方法ある
+4.機能が部分喪失
+5.表面的/ささいな問題</li>
+  <li>不具合の潜在的原因</li>
+  <li>優先度
+1.システムの価値が安全に喪失
+2.システムの価値が許容できないほど喪失
+3.システムの価値が低下するが、許容できる可能性がある
+4.システムの価値が低下するが、許容できる
+5.システムの価値が低下は無視できるほど僅かである</li>
+  <li>検出方法</li>
+  <li>発生確立
+1.全ユーザに必ず影響
+2.部分ユーザに影響する可能性高い
+3.部分ユーザに影響する可能性ある
+4.少数のユーザに限定的な影響が生じる
+5.実際の使用用法では考えられない</li>
+  <li>RPN(Risk Priority Number:リスク優先度指数)
+RPN=重度x優先度x発生確率(=1~125)</li>
+  <li>推奨処置</li>
+  <li>責任者／時期</li>
+  <li>参照先</li>
+  <li>処理の結果</li>
+</ul>
+
+<h2 id="実施可能なテストスケジュールリソース予算">実施可能なテスト:スケジュール、リソース、予算</h2>
+<h3 id="テストスケジュールとプロジェクトの調整">テストスケジュールとプロジェクトの調整</h3>
+<ul>
+  <li>費用が高いリソース
+NW、環境テスト機器、テストツールなど</li>
+  <li>準備に時間がかかるリソース
+借りたり、建てたり、回線を引いたりする必要があるテストスペース</li>
+  <li>現在にないリソース
+新たに雇用する必要がある人員など</li>
+  <li>外部リソース
+第三者のテストラボなど</li>
+  <li>不足していて獲得しにくいリソース
+テスト技術者その他の要員</li>
+</ul>
+
+<h3 id="リソースの推定と予算の作成">リソースの推定と予算の作成</h3>
+<ul>
+  <li>人件費</li>
+  <li>テストツール</li>
+  <li>施設と間接費</li>
+  <li>テスト環境</li>
+  <li>外部ラボ</li>
+</ul>
+
+<h3 id="テストプロジェクトの交渉術">テストプロジェクトの交渉術</h3>
+<ul>
+  <li>どのようなリスク管理を採用しようとしているのか</li>
+  <li>どの程度の期間がかかるか</li>
+  <li>コストはいくらか</li>
+  <li>投資利益はどうか</li>
+</ul>
+
+<h1 id="第二章-テスト計画書">第二章 テスト計画書</h1>
+<p>ーーコースの構想と提示</p>
+
+<h2 id="テスト計画書をなぜ作成するのか">テスト計画書をなぜ作成するのか</h2>
+<ul>
+  <li>自分の考えや、アイディア、記憶をまとめる良い機会となる</li>
+  <li>実際に作成を経験したことがあれば、多くのことを学んできたはず</li>
+  <li>テストチームや開発担当者、管理者などと意見を交換しあうきっかけにもなる</li>
+</ul>
+
+<h2 id="いくつテスト計画書を作成すべきか">いくつテスト計画書を作成すべきか</h2>
+<p>下記1つでも異なる要素があれば、サブプロジェクト別にテスト計画書を作成したほうがいい。</p>
+<ul>
+  <li>期間</li>
+  <li>方法</li>
+  <li>目的</li>
+  <li>対象者</li>
+</ul>
+
+<h2 id="草稿を利用して議論を活発化する">草稿を利用して議論を活発化する</h2>
+<p>TBDなどを多用するなど。</p>
+
+<h2 id="テスト計画書のテンプレート">テスト計画書のテンプレート</h2>
+<p>鵜呑みではなく、自分にあったものを使えればいい。</p>
+
+<h2 id="概要">概要</h2>
+<p>テスト対象や全般的なテスト方法などを記載し、そのテストプロジェクトの計画を読み手に紹介する。</p>
+
+<h2 id="境界">境界</h2>
+<p>テスト計画の境界を明確に定める。</p>
+<h3 id="範囲">範囲</h3>
+<p>する/しない 表を作成し、テストの範囲を明確にする。</p>
+<h3 id="定義">定義</h3>
+<p>言葉定義や用語集など。</p>
+<h3 id="設定">設定</h3>
+<p>テストの実施場所や、テスト実施組織とその他の組織の関係を記入。</p>
+<h2 id="品質リスク">品質リスク</h2>
+<h2 id="主要事項のスケジュール">主要事項のスケジュール</h2>
+<h2 id="移行">移行</h2>
+<h2 id="開始基準">開始基準</h2>
+<p>システムが特定のテストフェーズに移行するために必要な条件を細かく規定したもの。</p>
+<h2 id="継続基準">継続基準</h2>
+<p>テストを継続的かつ効果的に継続できるようにするためにテストプロセスが満足しなければならばい条件及び状況を規定したもの。</p>
+
+<h2 id="終了基準">終了基準</h2>
+<p>テストが完了したと判断する方法を定めたもの。</p>
+
+<h2 id="テストの構成及び環境">テストの構成及び環境</h2>
+<p>テストを実施するために使用するHW、SW、NW、ラボスペースなどについて記述する。</p>
+
+<h2 id="テスト開発">テスト開発</h2>
+<p>テストケース、テストツール、テスト手順、テストスイート、自動テストスクリプトなどを設計、開発する作業（まとめてテストシステムと呼ぶ）。</p>
+
+<h2 id="テストの実施">テストの実施</h2>
+<h3 id="参加者">参加者</h3>
+<h3 id="テストケースとバグ追跡">テストケースとバグ追跡</h3>
+<h3 id="バグの分離と分類">バグの分離と分類</h3>
+<ul>
+  <li>バグの分離
+連結された変数、原因、その他を見つける目的でテスト対象システムを試験すること。</li>
+  <li>バグの分類
+    <ul>
+      <li>要件障害
+システムがその要件を満たしていない状況に関する障害レポート。</li>
+      <li>要件外の障害
+システムの要件範囲からははずれていないが、システムの品質に受入がたい影響を及ぼすようなバグのレポート。</li>
+      <li>放棄要求
+確かに不具合ではあるが、クライアント及びユーザの経験則的品質に重大な影響を及ぼすようなバグではないと開発者が判断し、修正の放棄を要求sいている場合。</li>
+      <li>外的な障害
+テスト対象システムの制御範囲外の要員によって生じた不具合についての障害レポート。</li>
+      <li>テスト障害
+障害があるというテスト結果は間違いまたは無効であると開発者が考えている場合。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="テストリリースの管理">テストリリースの管理</h2>
+<ul>
+  <li>テストサイクル</li>
+  <li>テスト時間</li>
+</ul>
+
+<h2 id="リスクと不測事態">リスクと不測事態</h2>
+<p>「未解決問題」という見出しヲつけることもある。テスト計画書の実行を難しくしたり、不可能にしたりする可能性のある事項を記入する。</p>
+
+<h2 id="変更履歴">変更履歴</h2>
+<h2 id="参考文書">参考文書</h2>
+<h2 id="一般的な質問faq">一般的な質問(FAQ)</h2>
+
+<h2 id="計画書の承認">計画書の承認</h2>
+<p>会社のPJ担当の役員と開発部門のマネージャの承認を得ておきたい。
+メールで承認を得ることはよくない(反応がない=みていない可能性が高いから)。
+皆に計画書を読ませるために最も効果的な手段はレビュー会議のようだ。</p>
+
+<h2 id="的を外さず明確にそして実際的に">的を外さず、明確に、そして実際的に</h2>
+<p>文章表現も重要である。受動態を酒、何かが「なさなければならない」とするのではなく、誰がいつ何をするのかはっきり記載する必要がある。</p>
+
+<h1 id="第3章-テストシステムアーキテクチャテストケーステストカバレッジ">第3章 テストシステムアーキテクチャ、テストケース、テストカバレッジ</h1>
+
+<h2 id="テストシステムアーキテクチャとエンジニアリング">テストシステムアーキテクチャとエンジニアリング</h2>
+
+<ul>
+  <li>テストシステム
+テストプロセス、テストウェア、テスト環境によって構築された系統的なテスト能力のこと。
+    <ul>
+      <li>テストプロセス
+テストを行う手順、CL、その他の合意事項。</li>
+      <li>テストウェア
+テストに使用するすべてのツール、文書、スクリプト、データ、テストケース、追跡メカニズムなど。
+        <ul>
+          <li>テストケースのセットアップ
+テストケースを実行するためのテスト環境の構築に必要な手順。</li>
+          <li>テストケースの実行に関する重要なポイント
+ひとまとまりのテスト条件の作成。</li>
+          <li>テストケースの除去
+テストケースの実行後にテスト環境を元どおりの「きれいな」状態に戻すために必要な手順。</li>
+        </ul>
+      </li>
+      <li>テスト環境
+テスト対象システムをテスト可能な状態にするために調達/導入/設定するHW/SW/NWなどのインフラ/消耗品/施設/ラボなど。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="テストシステムアーキテクチャの原則">テストシステムアーキテクチャの原則</h2>
+<h3 id="芸術作品との違いテストシステムの品質">芸術作品との違い:テストシステムの品質</h3>
+<p>ANSI/ISO 9126の特性(機能性、信頼性、使用性、効率性、保守性、移植性)。</p>
+<h3 id="テストシステムはだけでは機能しないテスト担当者とテストシステム">テストシステムはだけでは機能しない:テスト担当者とテストシステム</h3>
+<p>テストシステムを作成、保守するのは人である。</p>
+
+<h3 id="テストシステムの品質と文書化その他の大原則">テストシステムの品質と文書化その他の大原則</h3>
+<ul>
+  <li>操作ガイド(システムの使用方法)</li>
+  <li>機能設計仕様書(システムの仕組み)</li>
+  <li>テストシステムアーキテクチャ（システムの基本構造)</li>
+</ul>
+
+<h2 id="システムの基本要素テストケース">システムの基本要素:テストケース</h2>
+<p>テストケース=アクション、データ、予想結果。</p>
+
+<h3 id="テスト条件の作成">テスト条件の作成</h3>
+<h3 id="基本的なテストのテンプレート">基本的なテストのテンプレート</h3>
+<p>要素：</p>
+<ul>
+  <li>テストケース名</li>
+  <li>識別番号
+5桁のID XX.YYY:XXはテストスイート番号、YYYはテスト番号。
+デューイ10進分類法を使用(Ex.5番目のテストスイートの2番目のテストケースには05.002を使用)</li>
+  <li>テストスイート
+当該テストケースが使用されるテストスイート(複数の場合もある)</li>
+  <li>優先度
+そのテストを何回実行すべきか判断しなければならない場合に便利</li>
+  <li>HW要件</li>
+  <li>SW要件</li>
+  <li>時間
+テストにかかる実時間</li>
+  <li>工数
+人/時(H)</li>
+  <li>セットアップ法</li>
+  <li>除去法</li>
+  <li>結果
+    <ul>
+      <li>合格</li>
+      <li>不合格</li>
+      <li>要注意</li>
+      <li>実行不能</li>
+      <li>省略</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="どの程度の詳細度にすべきか明確に記述する効果">どの程度の詳細度にすべきか:明確に記述する効果</h3>
+<p>アクション、データ、予想結果を詳細に書くことは、テスト担当者に知識乏しいことを想定する。</p>
+
+<h2 id="恐ろしい見逃しバグを防ぐにはカバレッジと回帰テストギャップ">恐ろしい「見逃しバグ」を防ぐには:カバレッジと回帰テストギャップ</h2>
+<p>見逃しバグ=テスト中に当然検出できたはずなのにテストチームが見落としてしまったフィールド報告バグである。</p>
+
+<p>DDP=(bug_test / (bug_test + bug_customer)) x 100%</p>
+
+<ul>
+  <li>発生期間
+フィールドバグの多くは配備後3ヶ月から1年で発見されると考えてm違いない、DDPを評価できるのはその期間を過ぎてから。</li>
+  <li>発生原因
+下記1つ以上あると、大抵発生
+    <ul>
+      <li>忠実性の低いテストシステム</li>
+      <li>回帰テストギャップ</li>
+      <li>テスト結果の誤った解釈</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="品質リスクとテストケースを対応付ける">品質リスクとテストケースを対応付ける</h3>
+<p>定量的なテストカバレッジ分析
+|値|カバレッジの意味|
+|:-|:-|
+|0/blank|テストケースは品質リストとは無関係|
+|1|テストケースは品質リスクに対するある程度の間接的カバレッジを与える|
+|2|テストケースは品質リスクに対する直接かつ重要なカバレッジを与える|</p>
+
+<h3 id="構成に対するカバレッジ">構成に対するカバレッジ</h3>
+<p>実施「不可能な」構成が存在し、時間と工数のコストがかかりすぎる場合もある。</p>
+
+<p>その場合の対応例</p>
+<ul>
+  <li>各構成の変数の種類を5個ずつ選択し組み合わせてテスト</li>
+  <li>ショットガウン方式
+マトリックスの全セルをカバーしようとせず、無作為にテストを分散させる</li>
+  <li>テストサイクルを使用しテスト構成をカバー</li>
+  <li>広範囲なベータテストを利用</li>
+</ul>
+
+<h3 id="バグに対するカバレッジ">バグに対するカバレッジ</h3>
+<p>バグの数を推定する方法として</p>
+<ul>
+  <li>最も一般的なのは、過去のデータを利用する手法</li>
+  <li>ファンクションポイントでPJの規模を測る</li>
+</ul>
+
+<p>欠陥除去モデル</p>
+<ul>
+  <li>欠陥を注入(inj)</li>
+  <li>欠陥を除去(rem)</li>
+  <li>欠陥が次の段階に持越(esc)</li>
+</ul>
+
+<p><img src="https://i.imgur.com/t0KwVX8.png" alt="file" /></p>
+
+<p>このタイプの高度な欠陥除去モデルはかなり高精度(コード行モデルでは、±10%程度)。</p>
+
+<p>エラーシーディングとは、<br />
+テスト対象システムにバグを故意に埋め込む手法。</p>
+
+<p>k / K ≒ n / N</p>
+<ul>
+  <li>K
+埋め込んだバグの数</li>
+  <li>k
+システムテストの最後に、検出した埋め込むバグの数</li>
+  <li>n
+システムテストの最後に、埋め込むバグ以外で検出したバグの数</li>
+  <li>N
+テスト対象システムのバグの数</li>
+</ul>
+
+<h3 id="回避テストギャップ">回避テストギャップ</h3>
+<p>デグレード(回帰)の正しい理解は、<br />
+テスト対象システムを変更した結果、システムの新しいリビジョンS_n+1に、リビジョンS_nには存在しなかった欠陥が生じた場合、システムの品質がでグレートしたと言う。</p>
+
+<ul>
+  <li>自動化は解決策になるか？
+有効な手法の1つだが、万能薬ではない。テストを自動化しても、自動化されるのはテスト条件の作成だけであり、テストケースやテストスイートのセットアップと除去、結果の分析は自動化されない。</li>
+  <li>テストをテストサイクルに配置する4つの方法
+    <ul>
+      <li>優先度方式</li>
+      <li>動的優先度方式</li>
+      <li>ショットガン方式</li>
+      <li>レールローディング方式</li>
+    </ul>
+  </li>
+  <li>もう1つのデグレード発生リスク緩和戦略
+テスト担当組織に新しいリリースが届くたびに、それに対してテストを繰り返す手法。</li>
+</ul>
+
+<h2 id="学ぶ教訓テストケースの漸進的な改善">学ぶ教訓:テストケースの漸進的な改善</h2>
+<h3 id="障害への対応">障害への対応</h3>
+<p>ユーザからのFBはテスト部門にとっても重要で、テストケースを書いたり、テストデータを作成、バグを再現できる手段が必要。</p>
+
+<h3 id="ベストプラクティスを採用">ベストプラクティスを採用</h3>
+<h3 id="探索的テストを利用">探索的テストを利用</h3>
+<h2 id="すべての実行は不可能しないことを決める">すべての実行は不可能:しないことを決める</h2>
+
+<h1 id="第4章-バグ追跡データベース">第4章 バグ追跡データベース</h1>
+<p>ーー「虫」の生態を究める</p>
+
+<h2 id="正式なバグ追跡システムの必要性">正式なバグ追跡システムの必要性</h2>
+<p>すぐれた障害レポートは、問題修正の要否や修正時期の決定に必要な情報をPJチームに提供し、問題修正とデバッグのために必要な情報をプログラマにも提供する。</p>
+
+<p>バグ追跡システムとは、PJチームが詳細レポートを作成/管理/分析してバグの傾向をしるために使う、PG/アプリをいう。</p>
+
+<p>良い障害レポートに含まれるもの</p>
+<ul>
+  <li>要約</li>
+  <li>再現手順</li>
+  <li>分離
+バグが現実の問題であることを確認し、そのバグの出現に関係する因子を特定するため、テスト担当者が収集する情報と結果。</li>
+</ul>
+
+<p>よい障害レポートは、テスト担当者が何をしたかではなく、何を発見したかを読み手に伝えるものである。</p>
+
+<h3 id="障害レポート改善んへの10か条">障害レポート改善んへの10か条</h3>
+<ol>
+  <li>体系化</li>
+  <li>再現
+一般には、障害の再現を3回試みる</li>
+  <li>分離
+条件の変化によってバグの障害が変化しないかを調べ、するようならその条件を特定。</li>
+  <li>一般化
+システムの他の部分にもバグの障害が現れないか、データ等を変えながら探す。</li>
+  <li>比較
+類似のテストの実効結果と比較</li>
+  <li>要約</li>
+  <li>凝縮
+不必要な内容を削る。</li>
+  <li>明確化
+意味のはっきりした言葉を使う</li>
+  <li>中立化
+公平な立場から表現する</li>
+  <li>レビュー
+提出するまえに、少なくとも1人のピアに読んでもらう</li>
+</ol>
+
+<h2 id="柔軟な障害レポートデータベース構築への着手">柔軟な障害レポート:データベース構築への着手</h2>
+<p>MS AccessでもOracleでも、MySQLなどでも構わない。</p>
+
+<p>最低でも含めるべき項目</p>
+<ul>
+  <li>バグID(順序識別番号)</li>
+  <li>プロジェクト名</li>
+  <li>報告書作者</li>
+  <li>報告日付</li>
+  <li>障害記述
+    <ul>
+      <li>要約</li>
+      <li>再現手法</li>
+      <li>分離</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="受容な少数とどうでもよい多数レベル分けの重要性">受容な少数とどうでもよい多数:レベル分けの重要性</h2>
+<p>重要度(1~5)、優先度(1~5)から、RPN(バグのリスク優先度指数,1-25)に分けておく。</p>
+
+<h2 id="バグ追跡データベースに追跡のメカニズムを動的情報の追加">バグ追跡データベースに追跡のメカニズムを:動的情報の追加</h2>
+<h3 id="バグの状態別ライフサイクル管理">バグの状態別ライフサイクル管理</h3>
+<ul>
+  <li>レビュー
+レビューされるまでテストチーム以外の人の目にすることがない状態</li>
+  <li>却下
+レビューアが障害レポートをみて、相当な書き直しが必要な場合、テスト担当者に戻される状態</li>
+  <li>オープン
+レビューアの確認で問題なければレポートがオープンし、既知のバグとして公表する状態</li>
+  <li>割り当て
+権限あるPJメンバーが開発マネージャに割当、さらに開発者に割り当てるかの状態</li>
+  <li>テスト
+開発チームが問題を修正すると、それはテスト状態に移る</li>
+  <li>再オープン
+バグ修正が修正確認テストを合格しないと、テスト担当者は障害レポートを再オープンする</li>
+  <li>クローズ
+合格したら、テスト担当者はクローズする</li>
+  <li>据え置き
+権限あるPJメンバーが問題を低い優先度に割り当てるか、修正を次期リリースまでに待つ決定</li>
+</ul>
+
+<p><img src="https://i.imgur.com/b59bFFm.png" alt="file" /></p>
+
+<h3 id="所有と責任の所在を強調">所有と責任の所在を強調</h3>
+<h3 id="重要なハンドオフ分離からデバッグへ">重要なハンドオフ:分離からデバッグへ</h3>
+<p>テスト担当者からプログラマに引き渡される時、重要なハンドオフが生じる。</p>
+
+<h3 id="バグのライフサイクルを誘導するバグの選別プロセス">バグのライフサイクルを誘導する:バグの選別プロセス</h3>
+<p>優先度の決定に迷うバグの場合は、バグ判定(orバグレビュー)委員会、もう1つは変更管理会議(CCB)のアプローチがある。</p>
+
+<h3 id="動的フィールドをしかるべき場所に">動的フィールドをしかるべき場所に</h3>
+
+<h2 id="仕上げ分析のためのバグデータ取得">仕上げ:分析のためのバグデータ取得</h2>
+<h3 id="何を関連したバグかサブシステム構成品質リスク">何を関連したバグか:サブシステム、構成、品質リスク</h3>
+
+<h3 id="バグはどこからきたか対策と根本的原因">バグはどこからきたか:対策と根本的原因</h3>
+<p>バグをどこから発生したかを把握するための最も簡単な方法は、プログラマなどにバグを修正した技術者にメモを書いてもらうことである。</p>
+
+<p>自由入力形式の対策フィールドで1つ問題となるのは、分析が難しいことである。</p>
+
+<p>企業のプロセス成熟度は低いと、根本的原因分析という概念を取り入れることができないことがある。</p>
+
+<p>根本的原因とは、バグの背後に潜んでいる発生理由のことである。</p>
+
+<p>障害レポート(や事故対応)に関する障害原因を「テスト不足」と書いてあることがあるが、これは根本的原因の分析をしていいない証である。同様に「忘れた」「もれた」「抜けた」なども分析途中での思考停止を示している。</p>
+
+<p><img src="https://i.imgur.com/ISPPc2q.png" alt="file" /></p>
+
+<p>根本的原因分析の目的は、バグを分類し、体系付けることである。</p>
+
+<h4 id="根本的原因分析法">根本的原因分析法</h4>
+<p>Boris Beizer著「Software Testing Techniques」(邦訳:ソフトウェアテスト技法)</p>
+
+<ul>
+  <li>機能
+    <ul>
+      <li>要求仕様誤り
+仕様が誤っている</li>
+      <li>機能不良
+仕様は正しいが、実装が誤っている</li>
+      <li>テストに関わる不良
+システムは正しく動作しているが、テストで実態のないエラーが報告される</li>
+    </ul>
+  </li>
+  <li>システム
+    <ul>
+      <li>内部インターフェース
+内部システム通信の障害</li>
+      <li>ハードウェアデバイス
+HWの障害</li>
+      <li>オペレーティングシステム
+OSの障害</li>
+      <li>ソフトウェア構造
+設計の基本的な前提の誤り</li>
+      <li>リソース管理
+設計の前提は正しいが、その前提を実装するときにどこかで誤った</li>
+    </ul>
+  </li>
+  <li>処理
+    <ul>
+      <li>演算
+プログラムによる加算、除算、乗算、因数分解、積分など、演算の誤り</li>
+      <li>初期化
+ある操作の初期値設定に関する不良</li>
+      <li>制御または順序
+アクションが、起こるべきでない時点で実行される。または、誤った理由で実行される</li>
+      <li>静的論理
+境界定義の誤り、無効な論理、「起こらないはず」のイベントが起こる、「差し支えないはず」のイベントが差し支える、など</li>
+      <li>その他
+上記のどれにも当てはまらない制御の流れの誤りや処理の誤り</li>
+    </ul>
+  </li>
+  <li>データ
+    <ul>
+      <li>型</li>
+      <li>構造体
+複雑なデータ構造が誤っていたり、不適切だったりする</li>
+      <li>初期値
+データ要素の初期値の誤り</li>
+      <li>その他</li>
+    </ul>
+  </li>
+  <li>コード
+タイプミス、ミススペル、形式の誤りなど</li>
+  <li>文書
+文書の記述通りに実装しなかった</li>
+  <li>規則/規格
+システムが業界規格またはベンタ規格を満たしていない、コード規則に従っていない、命名規則にいやんしている、など</li>
+  <li>その他
+根本的原因はわかったが、上記のどのカテゴリにも当てはまらない</li>
+  <li>重複
+2つ(以上)の障害レポートに同じ問題を記録している</li>
+  <li>NAP
+Not a Problem</li>
+  <li>不良品
+実際にバグは存在するが、HWの不足の障害から発生したもの</li>
+  <li>RCN
+Root Cause Needed バグはテストによって終息が確認されたが、開発チームの誰からも根本的原因の指摘がない状態</li>
+  <li>不明
+どこが悪いのか誰にも分からない</li>
+</ul>
+
+<p>根本的原因のデータを収集するメリットは、開発プロセスの改善に着手する次期がきたときに、パレート理論を適用できることである。</p>
+
+<p>別の根本的原因分析法に、</p>
+<ul>
+  <li>IBMのRam Chillaregeが考案した直交的欠陥分類
+(www.chillarege.com)</li>
+  <li>IEEEが定めたSWの標準的分類法
+IEEE Standard Classification for Software Anomalies</li>
+</ul>
+
+<h3 id="バグはいつからクローズ日付と混入検出除去の各段階">バグはいつから:クローズ日付と混入・検出・除去の各段階</h3>
+<p>PJフェーズで調査することが最も一般的である</p>
+<ul>
+  <li>要件定義</li>
+  <li>設計</li>
+  <li>実装</li>
+  <li>コンポーネントテスト
+(orサブシステムテスト)</li>
+  <li>統合テスト
+コンポーネント(orサブシステム)間の相互作用に関するバグを探し、修正する段階</li>
+  <li>システムテスト</li>
+  <li>受け入れテスト</li>
+  <li>リリース後</li>
+</ul>
+
+<h3 id="バグ追跡データベースの完成">バグ追跡データベースの完成</h3>
+
+<h2 id="バグ追跡データベースからのメトリクス抽出">バグ追跡データベースからのメトリクス抽出</h2>
+<h3 id="バグ除去の進み方オープンクローズチャート">バグ除去の進み方:オープン/クローズチャート</h3>
+<p>最も基本的な欠陥分析チャートは、オープンされたバグの累計と、クローズされたバグと対策
+が据え置かれたバグの累計を、毎日プロットしていくというものである。</p>
+
+<h3 id="なぜバグが起きるか根本的原因チャート">なぜバグが起きるか:根本的原因チャート</h3>
+
+<p><img src="https://i.imgur.com/NBBnVMm.jpg" alt="file" /></p>
+
+<h3 id="開発チームの反応解決期間チャート">開発チームの反応:解決期間チャート</h3>
+<p>解決期間とは、テストチームの障害レポートに対する、開発チームの反応の速さを測る尺度である。これには2つの解決期間がある</p>
+<ol>
+  <li>日次解決期間
+その日にクローズされたすべてのバグの、オープンから解決までの平均日数である。</li>
+  <li>定期解決期間
+その日とそれ以前にクローズされたすべてのバグの平均日数である。</li>
+</ol>
+
+<h3 id="どこが悪いのかサブシステムチャート">どこが悪いのか:サブシステムチャート</h3>
+<p>どのサブシステムが最も多くのバグが出ているのかを示すものである。</p>
+
+<p>根本的原因チャートと同様に、サブシステムごとの棒グラフと、累積パーセンテージの折れ線グラフ（パレート図）。</p>
+
+<h3 id="事後メトリクス欠陥検出率">事後メトリクス:欠陥検出率</h3>
+<p>前出のDDPの公式。</p>
+
+<h2 id="バグ追跡の管理">バグ追跡の管理</h2>
+<h3 id="バグデータの政治的側面と誤用">バグデータの政治的側面と誤用</h3>
+<ul>
+  <li>信頼関係の構築を怠るな
+    <ul>
+      <li>バグを個人的に受け止めて感情的になることを避けることが大切。</li>
+      <li>すぐれた障害レポートだけを提出する。</li>
+      <li>先入観抜きで障害レポートについて話し合う。</li>
+      <li>障害レポートに関するプロセスの何かを変更してほしいという要求が開発者から出たときは、その提案を真剣に検討。</li>
+    </ul>
+  </li>
+  <li>余計な口出しをするな
+開発マネージャの責任範囲のことを、テストマネージャは口出しすべきではない。
+    <ul>
+      <li>テストマネージャの仕事
+担当者がバグを見つけ、再現し、分離できる環境を整えること。また、バグを解決に至るまでに追跡し、簡潔なバグの摘出状況の概要を上級管理者に届けるのも仕事。</li>
+      <li>開発マネージャの仕事
+バグ修正プロセス（修正時期、リソースの使い方、進み方など）。</li>
+    </ul>
+  </li>
+  <li>個人を悪者にするな</li>
+</ul>
+
+<h3 id="さまざまな難問">さまざまな難問</h3>
+<ul>
+  <li>バグか機能か</li>
+  <li>再現不能なバグ</li>
+  <li>据え置き化、見逃しか</li>
+</ul>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#test">test</a>
+          
+            <a href="/tags#test process">test process</a>
+          
+            <a href="/tags#テスト">テスト</a>
+          
+            <a href="/tags#テストプロセス">テストプロセス</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%80%8D%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98&url=http%3A%2F%2Flocalhost%3A4000%2Fbooks%2F2023-04-30-%25E5%259F%25BA%25E6%259C%25AC%25E3%2581%258B%25E3%2582%2589%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2586%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2597%25E3%2583%25AD%25E3%2582%25BB%25E3%2582%25B9%25E7%25AE%25A1%25E7%2590%2586%25E3%2581%25AE%25E8%25AA%25AD%25E6%259B%25B8%25E7%25AD%2586%25E8%25A8%2598"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fbooks%2F2023-04-30-%25E5%259F%25BA%25E6%259C%25AC%25E3%2581%258B%25E3%2582%2589%25E5%25AD%25A6%25E3%2581%25B6%25E3%2583%2586%25E3%2582%25B9%25E3%2583%2588%25E3%2583%2597%25E3%2583%25AD%25E3%2582%25BB%25E3%2582%25B9%25E7%25AE%25A1%25E7%2590%2586%25E3%2581%25AE%25E8%25AA%25AD%25E6%259B%25B8%25E7%25AD%2586%25E8%25A8%2598"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/study/2023-04-27-about-nft" data-toggle="tooltip" data-placement="top" title="About NFT">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/travel/2023-05-05-2023%E5%B9%B4%E9%BB%84%E9%87%91%E5%91%A8%E8%87%AA%E9%A9%BE%E6%B8%B8%E4%B8%9C%E6%97%A5%E6%9C%AC%E8%B5%B0%E8%B5%B7" data-toggle="tooltip" data-placement="top" title="2023年黄金周自驾游 东日本走起">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'guaiguailei-net';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      
+<ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:liuganxiang@hotmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="https://www.facebook.com/liuganxiang" title="Facebook">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Facebook</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/ichiliu" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/gxliu" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Ganxiang Liu
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">guaiguailei.net</a>
+        </span>
+      
+
+      
+
+      
+
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

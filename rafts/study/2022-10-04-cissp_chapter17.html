@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Chapter 17 Preventing and Responding to Incidents</title>
+
+  
+  <meta name="author" content="Ganxiang Liu">
+  
+
+  <meta name="description" content="Chapter 17 Preventing and Responding to Incidents Conducting Incident Management The primary goal of incident management is to minimize the impact on the organization. Defining an Incident RFC2350 Any adverse events which compromises some aspect of computer or network security. NIST SP800-61 A violation or imminent threat of violation of...">
+
+  
+
+  
+  <meta name="keywords" content="IT, Study, Security, Life, Travel, Books, Gourmet, Blog">
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="IT技術者的BLOG" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="IT技術者的BLOG">
+  <meta property="og:title" content="Chapter 17 Preventing and Responding to Incidents">
+  <meta property="og:description" content="Chapter 17 Preventing and Responding to Incidents Conducting Incident Management The primary goal of incident management is to minimize the impact on the organization. Defining an Incident RFC2350 Any adverse events which compromises some aspect of computer or network security. NIST SP800-61 A violation or imminent threat of violation of...">
+
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Ganxiang Liu">
+  <meta property="og:article:published_time" content="2022-10-04T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/study/2022-10-04-cissp_chapter17">
+  <link rel="canonical" href="http://localhost:4000/study/2022-10-04-cissp_chapter17">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@gxliu">
+  <meta name="twitter:creator" content="@gxliu">
+
+  <meta property="twitter:title" content="Chapter 17 Preventing and Responding to Incidents">
+  <meta property="twitter:description" content="Chapter 17 Preventing and Responding to Incidents Conducting Incident Management The primary goal of incident management is to minimize the impact on the organization. Defining an Incident RFC2350 Any adverse events which compromises some aspect of computer or network security. NIST SP800-61 A violation or imminent threat of violation of...">
+
+  
+
+  
+
+
+  
+
+  
+
+<link rel="icon" href="/favicon.ico">
+</head>
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">IT技術者的BLOG</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Index</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/category/it.html">IT</a>
+                  <a class="dropdown-item" href="/category/study.html">Study</a>
+                  <a class="dropdown-item" href="/category/security.html">Security</a>
+                  <a class="dropdown-item" href="/category/travel.html">Travel</a>
+                  <a class="dropdown-item" href="/category/life.html">Life</a>
+                  <a class="dropdown-item" href="/category/gourmet.html">Gourmet</a>
+                  <a class="dropdown-item" href="/category/books.html">Books</a>
+                  <a class="dropdown-item" href="/category/cat.html">Cat</a>
+                  <a class="dropdown-item" href="/category/other.html">Other</a>
+            </div>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+                  <a class="dropdown-item" href="https://www.markdowntutorial.com/">Learn markdown</a>
+            </div>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Chapter 21 Malicious Code and Application Attacks", \
+          "desc"     : "Chapter 21 Malicious Code and Application Attacks", \
+          "category" : "CISSPMalicious Code", \
+          "url"      : "/study/2023-10-03-cissp-chapter21", \
+          "date"     : "October  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "脆弱性管理にSSVCを活用", \
+          "desc"     : "脆弱性管理にSSVCを活用", \
+          "category" : "SecurityCVSSSSVCSEV", \
+          "url"      : "/security/2023-09-28-vuln-mgt-cvss-sev", \
+          "date"     : "September 28, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "AWS Security Services", \
+          "desc"     : "AWS Security Services", \
+          "category" : "AWSSecurity", \
+          "url"      : "/security/2023-09-20-aws-security-services", \
+          "date"     : "September 20, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "DISQUSのコメント投稿機能を追加", \
+          "desc"     : "DISQUSのコメント投稿機能を追加", \
+          "category" : "Disqus", \
+          "url"      : "/it/2023-09-17-add-disqus", \
+          "date"     : "September 17, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "My Hometown", \
+          "desc"     : "My Hometown", \
+          "category" : "hometown", \
+          "url"      : "/life/2023-09-16-my-hometown", \
+          "date"     : "September 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Migrate AWS EC2 WordPress to Github Pages", \
+          "desc"     : "Migrate AWS EC2 WordPress to Github Pages", \
+          "category" : "JekyllGithub PagesCloudflareSSL/TLS", \
+          "url"      : "/it/2023-09-15-good-bye-aws-ec2-wp", \
+          "date"     : "September 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "在macOS上看网络电视", \
+          "desc"     : "在macOS上看网络电视", \
+          "category" : "Internet TV网络电视", \
+          "url"      : "/life/2023-08-26-%E5%9C%A8macOS%E4%B8%8A%E7%9C%8B%E7%BD%91%E7%BB%9C%E7%94%B5%E8%A7%86", \
+          "date"     : "August 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Coding Styles", \
+          "desc"     : "Coding Styles", \
+          "category" : "Coding Style", \
+          "url"      : "/it/2023-07-21-coding-styles", \
+          "date"     : "July 21, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "ソフトウェアライセンスの学習メモ", \
+          "desc"     : "ソフトウェアライセンスの学習メモ", \
+          "category" : "Software License", \
+          "url"      : "/study/2023-07-19-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%81%AE%E5%AD%A6%E7%BF%92%E3%83%A1%E3%83%A2", \
+          "date"     : "July 19, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "OWASP Top 10", \
+          "desc"     : "OWASP Top 10", \
+          "category" : "owasptop10", \
+          "url"      : "/security/2023-06-24-owasp-top10", \
+          "date"     : "June 24, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "OWASP API Security Top 10 Study", \
+          "desc"     : "OWASP API Security Top 10 Study", \
+          "category" : "owasptop10", \
+          "url"      : "/security/2023-06-20-owasp-api-security-top10-study", \
+          "date"     : "June 20, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 20 Software Development Security", \
+          "desc"     : "Chapter 20 Software Development Security", \
+          "category" : "CISSP", \
+          "url"      : "/study/2023-05-30-cissp-chapter20", \
+          "date"     : "May 30, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "再游冲绳@2023/05", \
+          "desc"     : "再游冲绳@2023/05", \
+          "category" : "沖縄Okinawa出張", \
+          "url"      : "/travel/2023-05-27-%E5%86%8D%E6%B8%B8%E5%86%B2%E7%BB%B3at2023-05", \
+          "date"     : "May 27, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "天満宮&amp;東照宮@仙台", \
+          "desc"     : "天満宮&amp;東照宮@仙台", \
+          "category" : "仙台天満宮東照宮", \
+          "url"      : "/travel/2023-05-26-%E5%A4%A9%E6%BA%80%E5%AE%AEand%E6%9D%B1%E7%85%A7%E5%AE%AEat%E4%BB%99%E5%8F%B0", \
+          "date"     : "May 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "修心養性", \
+          "desc"     : "修心養性", \
+          "category" : "修心養性上善若水", \
+          "url"      : "/life/2023-05-14-%E4%BF%AE%E5%BF%83%E9%A4%8A%E6%80%A7", \
+          "date"     : "May 14, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "2023年黄金周自驾游 东日本走起", \
+          "desc"     : "2023年黄金周自驾游 东日本走起", \
+          "category" : "ドライブ東日本福島", \
+          "url"      : "/travel/2023-05-05-2023%E5%B9%B4%E9%BB%84%E9%87%91%E5%91%A8%E8%87%AA%E9%A9%BE%E6%B8%B8%E4%B8%9C%E6%97%A5%E6%9C%AC%E8%B5%B0%E8%B5%B7", \
+          "date"     : "May  5, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "基本から学ぶテストプロセス管理」の読書筆記", \
+          "desc"     : "基本から学ぶテストプロセス管理」の読書筆記", \
+          "category" : "testtest processテストテストプロセス", \
+          "url"      : "/books/2023-04-30-%E5%9F%BA%E6%9C%AC%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6%E3%83%86%E3%82%B9%E3%83%88%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%AE%A1%E7%90%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98", \
+          "date"     : "April 30, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "About NFT", \
+          "desc"     : "About NFT", \
+          "category" : "NFT", \
+          "url"      : "/study/2023-04-27-about-nft", \
+          "date"     : "April 27, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "PCI DSS v4.0読書筆記", \
+          "desc"     : "PCI DSS v4.0読書筆記", \
+          "category" : "pci-dss", \
+          "url"      : "/security/2023-04-16-pcidssv4%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98", \
+          "date"     : "April 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "イシューからはじめようの読書筆記", \
+          "desc"     : "イシューからはじめようの読書筆記", \
+          "category" : "issues", \
+          "url"      : "/books/2023-04-16-issue%E3%81%8B%E3%82%89%E3%81%AF%E3%81%98%E3%82%81%E3%82%88%E3%81%86%E3%81%AE%E8%AA%AD%E6%9B%B8%E7%AD%86%E8%A8%98", \
+          "date"     : "April 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "画像生成AIのMidjourneyを試してみました", \
+          "desc"     : "画像生成AIのMidjourneyを試してみました", \
+          "category" : "Midjourney生成AI", \
+          "url"      : "/it/2023-03-26-%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90ai%E3%81%AEmidjourney", \
+          "date"     : "March 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "OpenAIのDALL-E2を試してみました", \
+          "desc"     : "OpenAIのDALL-E2を試してみました", \
+          "category" : "OpenAIDALL-E2", \
+          "url"      : "/it/2023-03-26-openai%E3%81%AEdall-e2%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%BE%E3%81%97%E3%81%9F", \
+          "date"     : "March 26, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "macOS Usage Tips", \
+          "desc"     : "macOS Usage Tips", \
+          "category" : "macOSTips", \
+          "url"      : "/it/2023-03-21-macos-usage-tips", \
+          "date"     : "March 21, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "梅と桃のお花見", \
+          "desc"     : "梅と桃のお花見", \
+          "category" : "花見cherry blossom viewinghanami", \
+          "url"      : "/life/2023-03-18-%E6%A2%85%E3%81%A8%E6%A1%83%E3%81%AE%E3%81%8A%E8%8A%B1%E8%A6%8B", \
+          "date"     : "March 18, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Finance Study", \
+          "desc"     : "Finance Study", \
+          "category" : "financefiscniscfsa", \
+          "url"      : "/study/2023-03-15-finance-study", \
+          "date"     : "March 15, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "GmailでPGPを使ったメール暗号化の検証", \
+          "desc"     : "GmailでPGPを使ったメール暗号化の検証", \
+          "category" : "GmailPGP", \
+          "url"      : "/it/2023-03-07-gmail%E3%81%A7PGP%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%A1%E3%83%BC%E3%83%AB%E6%9A%97%E5%8F%B7%E5%8C%96%E3%81%AE%E6%A4%9C%E8%A8%BC", \
+          "date"     : "March  7, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 19 Investigations and Ethics", \
+          "desc"     : "Chapter 19 Investigations and Ethics", \
+          "category" : "CISSP", \
+          "url"      : "/study/2023-03-02-cissp-chapter19", \
+          "date"     : "March  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Penetration Testing Study", \
+          "desc"     : "Penetration Testing Study", \
+          "category" : "Penetration Test", \
+          "url"      : "/security/2023-03-02-penetration-testing-study", \
+          "date"     : "March  2, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Flutterを使ってみた", \
+          "desc"     : "Flutterを使ってみた", \
+          "category" : "Flutter", \
+          "url"      : "/study/2023-02-21-Flutter%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F", \
+          "date"     : "February 21, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "ChatGPTをいろいろ使ってみる", \
+          "desc"     : "ChatGPTをいろいろ使ってみる", \
+          "category" : "ChatGPT生成AI", \
+          "url"      : "/study/2023-02-16-ChatGPT%E3%82%92%E3%81%8A%E8%A9%A6%E3%81%97", \
+          "date"     : "February 16, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Node.js NPM Study", \
+          "desc"     : "Node.js NPM Study", \
+          "category" : "node.jsnpm", \
+          "url"      : "/it/2023-02-11-nodejs-npm-study", \
+          "date"     : "February 11, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "在Mac本地使用Screwdriver.cd验证job build", \
+          "desc"     : "在Mac本地使用Screwdriver.cd验证job build", \
+          "category" : "screwdriver.cdjob build", \
+          "url"      : "/it/2023-02-10-mac%E6%9C%AC%E5%9C%B0%E4%BD%BF%E7%94%A8screwdriver%E9%AA%8C%E8%AF%81", \
+          "date"     : "February 10, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "Lots of TOP10 of 2022", \
+          "desc"     : "Lots of TOP10 of 2022", \
+          "category" : "TOP10", \
+          "url"      : "/technology/2023-01-31-lotsoftip10of2022", \
+          "date"     : "January 31, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "2023年お正月、東京・浜離宮庭園で放鷹術を見学", \
+          "desc"     : "2023年お正月、東京・浜離宮庭園で放鷹術を見学", \
+          "category" : "Eagle鷹浜離宮", \
+          "url"      : "/life/2023-01-03-2023%E5%B9%B4%E3%81%8A%E6%AD%A3%E6%9C%88%E6%9D%B1%E4%BA%AC%E6%B5%9C%E9%9B%A2%E5%AE%AE%E5%BA%AD%E5%9C%92%E3%81%A7%E6%94%BE%E9%B7%B9%E8%A1%93%E3%82%92%E8%A6%8B%E5%AD%A6", \
+          "date"     : "January  3, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "WordPress的用法TIPS", \
+          "desc"     : "WordPress的用法TIPS", \
+          "category" : "WordPress", \
+          "url"      : "/it/2023-01-01-WordPress%E7%9A%84%E7%94%A8%E6%B3%95TIPS", \
+          "date"     : "January  1, 2023" \
+        }, \
+       \
+        { \
+          "title"    : "JekyllでGitHub Pagesにサイト公開を試す", \
+          "desc"     : "JekyllでGitHub Pagesにサイト公開を試す", \
+          "category" : "JekyllGithub Pages", \
+          "url"      : "/it/2022-12-29-Jekyll%E3%81%A7GitHubPages%E3%81%AB%E3%82%B5%E3%82%A4%E3%83%88%E5%85%AC%E9%96%8B", \
+          "date"     : "December 29, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "我家猫的新小伙伴（トモネコ）", \
+          "desc"     : "我家猫的新小伙伴（トモネコ）", \
+          "category" : "cat", \
+          "url"      : "/cat/2022-12-25-%E6%88%91%E5%AE%B6%E7%8C%AB%E7%9A%84%E6%96%B0%E5%B0%8F%E4%BC%99%E4%BC%B4", \
+          "date"     : "December 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "macOSのApache httpdの自動再起動設定", \
+          "desc"     : "macOSのApache httpdの自動再起動設定", \
+          "category" : "macOSapachehttpd", \
+          "url"      : "/it/2022-12-13-macOS%E3%81%AEApache%E3%81%AEhttpd%E3%81%AE%E8%87%AA%E5%8B%95%E5%86%8D%E8%B5%B7%E5%8B%95%E8%A8%AD%E5%AE%9A", \
+          "date"     : "December 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "大学入学共通テストまとめ", \
+          "desc"     : "大学入学共通テストまとめ", \
+          "category" : "大学入試共通テスト", \
+          "url"      : "/study/2022-12-07-%E5%A4%A7%E5%AD%A6%E5%85%A5%E5%AD%A6%E5%85%B1%E9%80%9A%E3%83%86%E3%82%B9%E3%83%88%E3%81%BE%E3%81%A8%E3%82%81", \
+          "date"     : "December  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "About OpenSSF", \
+          "desc"     : "About OpenSSF", \
+          "category" : "OpenSSF", \
+          "url"      : "/security/2022-11-21-aboutopenssf", \
+          "date"     : "November 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "日本で定年退職後に変わることメモ", \
+          "desc"     : "日本で定年退職後に変わることメモ", \
+          "category" : "retire定年リタイヤ", \
+          "url"      : "/life/2022-11-21-%E6%97%A5%E6%9C%AC%E3%81%A7%E5%AE%9A%E5%B9%B4%E9%80%80%E8%81%B7%E5%BE%8C%E3%81%AB%E5%A4%89%E3%82%8F%E3%82%8B%E3%81%93%E3%81%A8%E3%83%A1%E3%83%A2", \
+          "date"     : "November 21, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "DXレポートの読後感", \
+          "desc"     : "DXレポートの読後感", \
+          "category" : "DX", \
+          "url"      : "/it/2022-11-19-DX%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AE%E8%AA%AD%E5%BE%8C%E6%84%9F", \
+          "date"     : "November 19, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "macOSのapache2にSSLの自己証明書を導入", \
+          "desc"     : "macOSのapache2にSSLの自己証明書を導入", \
+          "category" : "macOSapache2SSL証明書", \
+          "url"      : "/it/2022-11-17-macOS%E3%81%AEpache2%E3%81%ABSSL%E3%81%AE%E8%87%AA%E5%B7%B1%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E5%B0%8E%E5%85%A5", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 18 Disaster Recovery Planning", \
+          "desc"     : "Chapter 18 Disaster Recovery Planning", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-11-17-cissp-chapter18", \
+          "date"     : "November 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "BBQ@水元公園", \
+          "desc"     : "BBQ@水元公園", \
+          "category" : "BBQ水元公園", \
+          "url"      : "/life/2022-11-13-BBQat%E6%B0%B4%E5%85%83%E5%85%AC%E5%9C%92", \
+          "date"     : "November 13, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Backup EBS to S3 by AMI", \
+          "desc"     : "Backup EBS to S3 by AMI", \
+          "category" : "EBSS3AMI", \
+          "url"      : "/it/2022-11-06-BackupEBStoS3byAMI", \
+          "date"     : "November  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "CloudFront+EC2でSSL通信させる", \
+          "desc"     : "CloudFront+EC2でSSL通信させる", \
+          "category" : "AWSCloudFrontSSL", \
+          "url"      : "/it/2022-11-04-CloudFront%E3%81%A7SSL%E9%80%9A%E4%BF%A1%E3%81%95%E3%81%9B%E3%82%8B", \
+          "date"     : "November  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "AWS EC2 のディスク使用量100%の解決方法", \
+          "desc"     : "AWS EC2 のディスク使用量100%の解決方法", \
+          "category" : "AWSEC2HDD容量", \
+          "url"      : "/it/2022-10-17-EC2%E3%81%AE%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%AE%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95", \
+          "date"     : "October 17, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 17 Preventing and Responding to Incidents", \
+          "desc"     : "Chapter 17 Preventing and Responding to Incidents", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-10-04-cissp_chapter17", \
+          "date"     : "October  4, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "About TOEFL iBT TEST", \
+          "desc"     : "About TOEFL iBT TEST", \
+          "category" : "toefl iBT Test", \
+          "url"      : "/study/2022-09-26-about-toefl-ibt-test", \
+          "date"     : "September 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Global Famous Cars", \
+          "desc"     : "Global Famous Cars", \
+          "category" : "car", \
+          "url"      : "/other/2022-09-25-global-famous-cars", \
+          "date"     : "September 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "福岡市出張", \
+          "desc"     : "福岡市出張", \
+          "category" : "福岡市出張", \
+          "url"      : "/travel/2022-09-18-%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%87%BA%E5%BC%B5", \
+          "date"     : "September 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 16 Managing Security Operations", \
+          "desc"     : "Chapter 16 Managing Security Operations", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-09-18-cissp_chapter16", \
+          "date"     : "September 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 15 Security Assessment and Testing", \
+          "desc"     : "Chapter 15 Security Assessment and Testing", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-08-25-cissp_chapter15", \
+          "date"     : "August 25, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "TAKAGI製の水栓修理DIY", \
+          "desc"     : "TAKAGI製の水栓修理DIY", \
+          "category" : "DIY水栓修理", \
+          "url"      : "/life/2022-08-07-TAKAGI%E8%A3%BD%E3%81%AE%E6%B0%B4%E6%A0%93%E4%BF%AE%E7%90%86DIY", \
+          "date"     : "August  7, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "About SSO (Single Sign On)", \
+          "desc"     : "About SSO (Single Sign On)", \
+          "category" : "SSO", \
+          "url"      : "/security/2022-06-26-about-sso", \
+          "date"     : "June 26, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 14 Controlling and Monitoring Access", \
+          "desc"     : "Chapter 14 Controlling and Monitoring Access", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-06-23-cissp_chapter14", \
+          "date"     : "June 23, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "冲绳到此一游", \
+          "desc"     : "冲绳到此一游", \
+          "category" : "沖縄Okinawa", \
+          "url"      : "/travel/2022-06-18-%E5%86%B2%E7%BB%B3%E5%88%B0%E6%AD%A4%E4%B8%80%E6%B8%B8", \
+          "date"     : "June 18, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "食&amp;夜@仙台", \
+          "desc"     : "食&amp;夜@仙台", \
+          "category" : "牛たんGyutan出張", \
+          "url"      : "/gourmet/2022-05-30-%E9%A3%9Fand%E5%A4%9Cat%E4%BB%99%E5%8F%B0", \
+          "date"     : "May 30, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "寻踪周树人&amp;藤野先生@仙台", \
+          "desc"     : "寻踪周树人&amp;藤野先生@仙台", \
+          "category" : "鲁迅周树人藤野先生sendai仙台", \
+          "url"      : "/travel/2022-05-20-%E5%AF%BB%E8%B8%AA%E5%91%A8%E6%A0%91%E4%BA%BAand%E8%97%A4%E9%87%8E%E5%85%88%E7%94%9Fat%E4%BB%99%E5%8F%B0", \
+          "date"     : "May 20, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Chapter 13 Managing Identity and Authentication", \
+          "desc"     : "Chapter 13 Managing Identity and Authentication", \
+          "category" : "CISSP", \
+          "url"      : "/study/2022-05-09-cissp_chapter13", \
+          "date"     : "May  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Blog環境改造記", \
+          "desc"     : "Blog環境改造記", \
+          "category" : "blogwordpress", \
+          "url"      : "/it/2022-05-09-blog%E7%92%B0%E5%A2%83%E6%94%B9%E9%80%A0%E8%A8%98", \
+          "date"     : "May  9, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "流山之行", \
+          "desc"     : "流山之行", \
+          "category" : "流山Spring温泉", \
+          "url"      : "/travel/2022-05-06-%E6%B5%81%E5%B1%B1%E4%B9%8B%E8%A1%8C", \
+          "date"     : "May  6, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "東京-三越前散策", \
+          "desc"     : "東京-三越前散策", \
+          "category" : "WalkMitsukoshi", \
+          "url"      : "/other/2022-05-05-%E6%9D%B1%E4%BA%AC%E4%B8%89%E8%B6%8A%E5%89%8D%E6%95%A3%E7%AD%96", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "🎏市川市的鲤鱼旗🎏", \
+          "desc"     : "🎏市川市的鲤鱼旗🎏", \
+          "category" : "鯉のぼりKoinobori", \
+          "url"      : "/life/2022-05-05-%E5%B8%82%E5%B7%9D%E5%B8%82%E7%9A%84%E9%B2%A4%E9%B1%BC%E6%97%97", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "EC2からSES経由でメール送信する", \
+          "desc"     : "EC2からSES経由でメール送信する", \
+          "category" : "AWSEC2SES", \
+          "url"      : "/it/2022-05-05-EC2%E3%81%8B%E3%82%89SES%E7%B5%8C%E7%94%B1%E3%81%A7%E3%83%A1%E3%83%BC%E3%83%AB%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "美貓魚", \
+          "desc"     : "美貓魚", \
+          "category" : "catdress-upfish", \
+          "url"      : "/cat/2022-05-05-%E7%BE%8E%E8%B2%93%E9%AD%9A", \
+          "date"     : "May  5, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "海底撈火鍋上野店", \
+          "desc"     : "海底撈火鍋上野店", \
+          "category" : "海底捞", \
+          "url"      : "/gourmet/2022-05-03-%E6%B5%B7%E5%BA%95%E6%92%88%E7%81%AB%E9%8D%8B%E4%B8%8A%E9%87%8E%E5%BA%97", \
+          "date"     : "May  3, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "アンデルセン公園", \
+          "desc"     : "アンデルセン公園", \
+          "category" : "Andersen Park安徒生公园", \
+          "url"      : "/travel/2022-05-02-%E3%82%A2%E3%83%B3%E3%83%87%E3%83%AB%E3%82%BB%E3%83%B3%E5%85%AC%E5%9C%92", \
+          "date"     : "May  2, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "今日の晩ごはん", \
+          "desc"     : "今日の晩ごはん", \
+          "category" : "Shushi寿司すし", \
+          "url"      : "/gourmet/2022-05-01-%E4%BB%8A%E6%97%A5%E3%81%AE%E6%99%A9%E3%81%94%E3%81%AF%E3%82%93", \
+          "date"     : "May  1, 2022" \
+        }, \
+       \
+        { \
+          "title"    : "Sample blog post to learn markdown tips", \
+          "desc"     : "Sample blog post to learn markdown tips", \
+          "category" : "test", \
+          "url"      : "/2020-02-28-sample-markdown", \
+          "date"     : "February 28, 2020" \
+        }, \
+       \
+        { \
+          "title"    : "Flake it till you make it", \
+          "desc"     : "Flake it till you make it", \
+          "category" : "bookstest", \
+          "url"      : "/2020-02-26-flake-it-till-you-make-it", \
+          "date"     : "February 26, 2020" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "desc"     : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/books", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/cat", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/gourmet", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/it", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/life", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/other", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/security", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/study", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Tag Index", \
+          "desc"     : "Tag Index", \
+          "category" : "page", \
+          "url"      : "/tags", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "", \
+          "desc"     : "", \
+          "category" : "page", \
+          "url"      : "/category/travel", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page5/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page6/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page7/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "IT技術者的BLOG", \
+          "desc"     : "IT技術者的BLOG", \
+          "category" : "page", \
+          "url"      : "/page8/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+  <div id="header-big-imgs" data-num-img=3
+    
+    
+    
+      
+      data-img-src-1="http://localhost:4000/assets/img/cover/study1.jpg"
+    
+    
+    
+    
+    
+      
+      data-img-src-2="http://localhost:4000/assets/img/cover/study2.jpg"
+    
+    
+    
+    
+    
+      
+      data-img-src-3="http://localhost:4000/assets/img/cover/study3.jpg"
+    
+    
+    
+  ></div>
+
+
+<header class="header-section has-img">
+
+<div class="big-img intro-header">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Chapter 17 Preventing and Responding to Incidents</h1>
+          
+
+          
+            <span class="post-meta">Posted on October 4, 2022</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class='img-desc'></span>
+</div>
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Chapter 17 Preventing and Responding to Incidents</h1>
+          
+
+          
+            <span class="post-meta">Posted on October 4, 2022</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</header>
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h1 id="chapter-17-preventing-and-responding-to-incidents">Chapter 17 Preventing and Responding to Incidents</h1>
+<h2 id="conducting-incident-management">Conducting Incident Management</h2>
+<p>The primary goal of incident management is to minimize the impact on the organization.</p>
+
+<p><img src="https://i.imgur.com/Se6UFV3.png" /></p>
+
+<h3 id="defining-an-incident">Defining an Incident</h3>
+<ul>
+  <li>RFC2350
+    <ul>
+      <li>Any adverse events which compromises some aspect of computer or network security.</li>
+    </ul>
+  </li>
+  <li>NIST SP800-61
+    <ul>
+      <li>A violation or imminent threat of violation of computer security policies, acceptable use policies, or standard security practices.</li>
+    </ul>
+  </li>
+  <li>Examples of incidents
+    <ul>
+      <li>Any attempted network intrusion (侵入网络)</li>
+      <li>Any attempted denial-of-service attack (DoS网络)</li>
+      <li>Any detection of malicious software (病毒软件)</li>
+      <li>Any unauthorized access of data (未授权访问数据)</li>
+      <li>Any violation of security policie (违反安全政策)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="incident-management-steps">Incident Management Steps</h3>
+<p><img src="https://imgur.com/ZkEttEh.png" alt="file" /></p>
+
+<p>NIST SP800-61 identifies the following 4 steps</p>
+<ol>
+  <li>Preparation</li>
+  <li>Detectin and Analysis</li>
+  <li>Containment, Eradication, and Recovery (遏制、根除和恢复)</li>
+  <li>Post-incident Recovery (事故后恢复)</li>
+</ol>
+
+<p>Incident management does not include a counterattack against the attacker.</p>
+
+<h4 id="detection">Detection</h4>
+<ul>
+  <li>IDS and IPS sent alerts</li>
+  <li>Antimaoware software</li>
+  <li>Automated tools regularly scan audit logs looking for predefined events.</li>
+  <li>End users detect irregular activity such as the inability to access a network resource etc.</li>
+</ul>
+
+<h4 id="response">Response</h4>
+<ul>
+  <li>Teams
+    <ul>
+      <li>CIRT (computer incident response team)</li>
+      <li>CSIRT (computer security incident response team)</li>
+    </ul>
+  </li>
+  <li>Computers should not be turned off when containing an incident.</li>
+</ul>
+
+<h4 id="mitigation">Mitigation</h4>
+<ul>
+  <li>Mitigation steps attempt to contain an incident.</li>
+</ul>
+
+<h4 id="reporting">Reporting</h4>
+<ul>
+  <li>If a data breach exposes PII, the oroganication muset report it.</li>
+  <li>The owner of the system have a responsibility to inform you of the attack <br />
+and what data the attackers accessed.</li>
+</ul>
+
+<h4 id="recovery">Recovery</h4>
+<p>Is to recover the system or return it to a fully functioning state.</p>
+<ul>
+  <li>Double check lists
+    <ul>
+      <li>ACLs (include firewall and router rules)</li>
+      <li>Services and protocols (unneeded ones are disabled or removed)</li>
+      <li>Patches (all up-to-date)</li>
+      <li>User accounts (have changed from their default configuratons)</li>
+      <li>Compromises (have been reversed)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="remediation-rɪˌmiːdiˈeɪʃn-修复补救整治-再発防止">Remediation ([rɪˌmiːdiˈeɪʃn] 修复;补救;整治) (再発防止)</h4>
+<p>Identify what allowed it to occur, and then implement methods to prevent it from happening again.</p>
+<ul>
+  <li>Root cause analysis<br />
+Examines the incident to determine what allowed it to happen.</li>
+</ul>
+
+<h4 id="lessons-learned-振り返り">Lessons Learned (振り返り)</h4>
+<p>Personnel examine the incident and the response to see if there are any lessons to be learned.</p>
+
+<h2 id="implementing-detective-and-preventive-measures-实施检测和预防措施">Implementing Detective and Preventive Measures (实施检测和预防措施)</h2>
+<p>No matter how effective preventive countermeasures are, incidents will still happen.</p>
+<ul>
+  <li>Preventive and detective controls
+    <ul>
+      <li>Preventive Control 
+Attempts to thwart or stop unwanted or unauthorized activity from occurring.</li>
+      <li>Detective Control
+Attempts to discover or detect unwanted or unauthorized activity.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="basic-preventive-measures">Basic Preventive Measures</h3>
+<ul>
+  <li>Keep systems and applications up to date.</li>
+  <li>Remove or disable unneeded services and protocols.</li>
+  <li>Use intrusion detection and prevention systems.</li>
+  <li>Use up-to-date antimalware software.</li>
+  <li>Use firewalls.
+    <ul>
+      <li>Network-based firewalls protect entire networks.</li>
+      <li>Host-based firewalls protect individual systems.</li>
+    </ul>
+  </li>
+  <li>Implement configuration and system management processes.</li>
+</ul>
+
+<h3 id="understanding-attacks">Understanding Attacks</h3>
+<ul>
+  <li>Botnets (bots / zombies)
+    <ul>
+      <li>A bot herder (牧民) is typically a criminal who controls all the computers in the botnet via one or more command-and-control (C&amp;C or C2) servers.</li>
+      <li>Real World Scenario
+        <ul>
+          <li>Botnets, IoT, and Embedded Systems
+            <ul>
+              <li>Mirai malware</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="denial-of-service-attacks">Denial-of-Service Attacks</h4>
+<p>Prevent a system from processing or responding to legitimate traffic or requests for resources and objects.</p>
+<ul>
+  <li>The source address in a DoS attack is rarely the attacker’s address.</li>
+</ul>
+
+<h4 id="syn-flood-attack">SYN Flood Attack</h4>
+<ul>
+  <li>Is a common DoS attack, it disruputs the standard three-way handsshake used by TCP to initiate communication sessions.</li>
+  <li>Using SYN cookies is one method of blocking this attack.</li>
+  <li>Another method of blocking this attack is to reduce the amount of time a server will wait for an ACK.</li>
+</ul>
+
+<h4 id="smurf-and-fraggle-attacks">Smurf and Fraggle Attacks</h4>
+<ul>
+  <li>A smurf attack is another type of flood attack.</li>
+  <li>It floods the victim with ICMP echo packets instead of with TCP SYN packets.</li>
+  <li>When standard security practices are used, smurf attacks are rarely a problem today.</li>
+  <li>Fraggle attacks use UDP packets over UDP ports 7 and 19.</li>
+</ul>
+
+<h4 id="ping-flood">Ping Flood</h4>
+<ul>
+  <li>Floods a victim with ping requests.</li>
+  <li>Active IDS can detect a ping flood and modify the environment to block ICMP echo requests during the attack.</li>
+</ul>
+
+<h4 id="legacy-attacks">Legacy Attacks</h4>
+<ul>
+  <li>Ping of Death<br />
+Used oversized ping packets.</li>
+  <li>Teardrop<br />
+Fragments data packets.</li>
+  <li>Land<br />
+Sends spoofed SYN packets to a victim using the victim’s IP address as both src and dst.</li>
+</ul>
+
+<h4 id="zero-day-exploit-零日漏洞利用">Zero-Day Exploit (零日漏洞利用)</h4>
+<p>Some examples:</p>
+<ul>
+  <li>Attacker discovers a vulnerability first.</li>
+  <li>Vendor learns of vulnerability but hasn’t released a patch.</li>
+  <li>Verdor releases patch and systems are attacked within 24 hours.</li>
+</ul>
+
+<p>Honeypots give administrators an opportunity to observe attacks and may reveal an attack using a ZDE.</p>
+
+<h4 id="man-in-the-middle-attacks-mitm--on-path-attack--中间人攻击--中間者攻撃">Man-in-the-Middle Attacks (MiTM / on-path attack / 中间人攻击 / 中間者攻撃)</h4>
+<ul>
+  <li>Two types
+    <ol>
+      <li>Involves copying or sniffing the traffic between two parties.</li>
+      <li>Involves attackers positioning themselves in the line of communication, where they act as a<br />
+store-and-forward or proxy mechanism.</li>
+    </ol>
+  </li>
+  <li>Countermeasures
+    <ol>
+      <li>Keeping systems up to date with patches.</li>
+      <li>Using VPNs to avoid these attacks.</li>
+    </ol>
+  </li>
+</ul>
+
+<h4 id="sabotage-蓄意破坏">Sabotage (蓄意破坏)</h4>
+<p>Employee terminations should be handled swiftly and account access should be disabled as soon as possible after the termination.</p>
+
+<h2 id="intrusion-detection-and-prevention-systems">Intrusion Detection and Prevention Systems</h2>
+<ul>
+  <li>An IDS is intended as part of a defense-in-depth security plan.</li>
+  <li>An IPS includes all the capabilities of an IDS but can alse take additional steps to stop or prevent intrusions.</li>
+</ul>
+
+<h3 id="knowledge--and-behavior-based-detection">Knowledge- and Behavior-Based Detection</h3>
+<ul>
+  <li>Knowledge-Based detection<br />
+Uses signatures similar to the signature definations used by antimalware software.
+    <ul>
+      <li>The most common method of detection.</li>
+      <li>also called signatur-based detection or pattern-mathching detection.</li>
+      <li>Drawback:<br />
+It is effective only against known attack methods.</li>
+      <li>IDS vendors commonly provide automated methods to update the signatures.</li>
+    </ul>
+  </li>
+  <li>Behavior-Based detection<br />
+Doesn’t use signatures but instead compares activity against a baseline of normal performance to detect abnormal behavior.
+    <ul>
+      <li>Also called
+        <ul>
+          <li>Statistical intrusion detection (统计入侵检测)</li>
+          <li>Anomaly detection (异常检测)</li>
+          <li>Heuristics-based detection (启发式检测)</li>
+        </ul>
+      </li>
+      <li>A significant benefit is that it can detect newer attacks that have no signatures and are not detectable with the signature-based method.</li>
+    </ul>
+  </li>
+  <li>
+    <p>False Positive or True Negative</p>
+
+    <p><img src="https://imgur.com/6blc1Se.png" alt="file" /></p>
+
+    <ul>
+      <li>IDPSs
+        <ul>
+          <li>True positive  - An incident occures and is detected.</li>
+          <li>Flase negative - An incident occures but is not detected (漏报)</li>
+          <li>Flase positive - An incident is detected but did not occur (误报)</li>
+          <li>True negative  - An incident does not occue and is not detected.</li>
+        </ul>
+      </li>
+      <li>Biometrics
+        <ul>
+          <li>True positive  – A registered user tries to authenticate and is authenticated.</li>
+          <li>False negative – A registered user tries to authenticate but is not authenticated (or is rejected).</li>
+          <li>False positive – An impostor tries to authenticate and is authenticated.</li>
+          <li>True negative  – An impostor tries to authenticate but is not authenticated.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ids-response">IDS Response</h3>
+<ul>
+  <li>Passive Response (被动响应)
+    <ul>
+      <li>Notifications via email or text messages, generate a detail report.</li>
+      <li>Network Operations Centers (NOCs)</li>
+    </ul>
+  </li>
+  <li>Actie Response (主动响应）
+    <ul>
+      <li>Can modify the environment, include firewall ACLs to block traffic based on ports, protocals, and source addresses etc.</li>
+      <li>NIST SP 800-94 recommends placing all active IDSs inline with the traffic so that they function as IPSs.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="host--and-network-based-idss">Host- and Network-Based IDSs</h3>
+<ul>
+  <li>Host-Based IDS (HIDS)
+    <ul>
+      <li>Can often examine events in more detail than an NIDS can.</li>
+      <li>Many HIDSs include antimalware capabilities.</li>
+      <li>Some of disadvantages of HIDSs are related to the cost and usability.</li>
+    </ul>
+  </li>
+  <li>Network-Based IDS (NIDS)
+    <ul>
+      <li>Can monitor a large network by using remote sensors to collect data at key network locations, and send data to SIEM.</li>
+    </ul>
+  </li>
+  <li>Monitoring Encrypted Traffic
+    <ul>
+      <li>TLS decryptors
+        <ul>
+          <li>Detect TLS traffic, takes steps to decrypt it, send the decrypted traffic to an IDPS for inspection.</li>
+          <li>Is often a standalone HW appliance dedicated to this function.</li>
+          <li>Can be within an IDPS, a next-generation FW.</li>
+          <li>Typically placed inline with the traffic.</li>
+          <li>Then establish two HTTPS sessions
+The internet server &lt;-&gt; TLS decryptor &lt;-&gt; The internal client</li>
+          <li>Weakness: TLS decryptor cannot decrypt the traffic encrypted APTs before establishing a HTTPS connection.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Switched Port Analyzer (SPAN) port : The port used for post mirroring of Cisco switches.</p>
+      </li>
+      <li>NIDS (Network Intrusion Detection System)
+        <ul>
+          <li>The NIDS central console is often installed on a hardened single-purpose computer.</li>
+          <li>Measures to discover the source of an attack
+            <ul>
+              <li>RARP (Reverse address resolution protocol / 反向地址解析协议 / 逆アドレス解決プロトコル)<br />
+MAC address -&gt; IP address</li>
+              <li>Reverse DNS lookups<br />
+IP address -&gt; domain name</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="intrusion-prevention-systems-ipss">Intrusion Prevention Systems (IPSs)</h3>
+<ul>
+  <li>A special of active IDS, detect and block attacks BEFORE they reach target systems.</li>
+  <li>NIDS vs. NIPS
+    <ul>
+      <li>NIPS is placed inline with the traffic.</li>
+      <li>Active NIDS is not placed inline can check the activity only after it has reached the target.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="specific-preventive-measures-具体预防措施">Specific Preventive Measures (具体预防措施)</h3>
+<ul>
+  <li>Honeypots and Honeynets (蜜罐和蜜网 / ハニーポットとハニーネット)
+    <ul>
+      <li>Honeypots are individual computers created as a trap or a decoy for intruders or insider threats.</li>
+      <li>A Honeynet is two or more networked honeypots used together to simulate a network.</li>
+      <li>Administrators often include pseudo-flaws on honeypots to emulate well-known operating system vulnerabilities.</li>
+      <li>The use of honeypots raises the issue of enticement versus entrapment.</li>
+    </ul>
+  </li>
+  <li>Warning Banners
+    <ul>
+      <li>Inform users and intruders about basic security policy guidelines.</li>
+      <li>Inform both authorized and unauthorized users.</li>
+    </ul>
+  </li>
+  <li>Antimalware</li>
+  <li>Whitelisting and Blacklisting
+    <ul>
+      <li>The terms of whitelists and blacklists are falling into disuse.</li>
+      <li>More intuitive phrases are allow lsit (for whitelisting) and deny/block list (for Blacklisting).</li>
+      <li>It’s important that a system would only use ONE list, either an allow list or a deny list.</li>
+      <li>The Apple iOS is an example for an extreme version of allow list (Only apps available from Apple’s App Store are allowed to be installed)</li>
+    </ul>
+  </li>
+  <li>Firewalls<br />
+Are preventive and technical controls, attempt to prevent security incidents using technical methods.
+    <ul>
+      <li>Protection against attacks
+        <ul>
+          <li>Block directed broadcasts on routers.</li>
+          <li>Block private IP addresses at the border.</li>
+        </ul>
+      </li>
+      <li>Types
+        <ul>
+          <li>Second-generation firewalls
+            <ul>
+              <li>Application-level gateway firewall -&gt; filters traffic based on specific application requestments.</li>
+              <li>Circuit-level gateway firewalls -&gt; based on the communications circuit.</li>
+            </ul>
+          </li>
+          <li>Third-generation firewalls (Statefull inspection FWs / Dynamic packet filtering FWs) -&gt; based on its state within a stream of traffic.</li>
+          <li>Application firewalls<br />
+Control traffic going to or from a specific application or service.
+            <ul>
+              <li>Web application firewall (WAF)
+                <ul>
+                  <li>Inspects all traffic going to a web server</li>
+                  <li>Block malicious traffic such as SQLi attacks and XSS attacks.</li>
+                  <li>Filters traffic going to the web server but not all NW traffic.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Next-generation firewall (NGFW)<br />
+Functions as a unified threat management (UTM) device and combines several filtering capabilities.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Sandboxing (沙盒)
+    <ul>
+      <li>Provides a security boundary for applications and prevents the application from interacting with other applications.</li>
+      <li>Application developers often use virtualization techniques to test applications.</li>
+    </ul>
+  </li>
+  <li>Third-Party Security Services
+    <ul>
+      <li>PCI DSS requires organizations to ensure that service providers also comply with PCI DSS requireements.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="logging-and-monitoring">Logging and Monitoring</h2>
+<p>Logging records events into various logs, and monitoring reviews these events.</p>
+<h3 id="logging-techniques">Logging Techniques</h3>
+<p>Logs are often referred to as audit logs, and logging is ofter called audit logging.</p>
+
+<h3 id="common-log-types">Common Log Types</h3>
+<ul>
+  <li>Security Logs<br />
+Record access to resource such as files, folders, printers, and so on.</li>
+  <li>System Logs
+    <ul>
+      <li>Record system events such as a system starts/stops, services start/stop, service attritures modified.</li>
+      <li>Logs that detect when systems reboot, or when services stop or are modified, can help administrators discover potentially malicious activity.</li>
+    </ul>
+  </li>
+  <li>Application Logs</li>
+  <li>Firewall Logs<br />
+Commonly log key packet information.</li>
+  <li>Proxy Logs<br />
+Include the ability to record details such as what sites specific users visit and how much time they spend on these sites.</li>
+  <li>Change Logs</li>
+</ul>
+
+<h3 id="protecting-log-data">Protecting Log Data</h3>
+<ul>
+  <li>It’s common to store copies of logs on a central system, such as a SIEM system, to protect it.</li>
+  <li>Organizations often have strict policies mandating backups of log files.</li>
+  <li>It’s important to destroy logs when they are no longer needed.</li>
+  <li>Keeping unnecessary logs can cause excessive labor costs if the organization experiences legal issues.</li>
+  <li>FIPS 200 specifies the minimum security requirements for audit data.</li>
+</ul>
+
+<h3 id="the-role-of-monitoring">The Role of Monitoring</h3>
+<h4 id="audit-trails-审计跟踪--監査証跡">Audit Trails (审计跟踪 / 監査証跡)</h4>
+<ul>
+  <li>Using audit trails is a passive form of detective security control.</li>
+</ul>
+
+<h4 id="monitoring-and-accountability">Monitoring and Accountability</h4>
+<p>Legislation often requires specific monitoring and accountability practices.</p>
+<ul>
+  <li>Monitoring Activity<br />
+You cannot hold them accountable for mistakes or misdeeds they commit without monitoring.</li>
+</ul>
+
+<h4 id="monitoring-and-investigations">Monitoring and Investigations</h4>
+<ul>
+  <li>Accurate timestamps (via a internal NTP server)</li>
+</ul>
+
+<h4 id="monitoring-and-ploblem-identification">Monitoring and Ploblem Identification</h4>
+<h4 id="monitoring-techniques">Monitoring Techniques</h4>
+<p>Personnel can manually review logs or use tools to automate the process.</p>
+
+<h4 id="security-information-and-event-management-siem--シーム">Security Information and Event Management (SIEM / シーム)</h4>
+<p>A centralized application to automate the monitoring of systems on a network.</p>
+
+<p>SIEM : Security Information and Event Management<br />
+SEM  : Security Event Management<br />
+SIM  : Security Information Management</p>
+
+<ul>
+  <li>Many IDSs and IPSs send collected data to a SIEM system.</li>
+  <li>Provodes long-term storage of data, allowing security professionals to analyze the data later.</li>
+  <li>Most SIEMs are configurable.</li>
+  <li>SIEMs ofter include sophisticated correlation engines.</li>
+</ul>
+
+<h4 id="syslog">Syslog</h4>
+<ul>
+  <li>RFC 5424, the Syslog Protocal is used to send event notification messages.</li>
+  <li>Syslog-ng and rsyslog allow the syslog server to accept messages from any source, not just Unix and Linux systems.</li>
+</ul>
+
+<h4 id="sampling-抽样">Sampling (抽样)</h4>
+<p>Sampling is a form of data reduction, allow someone to glean valuable information by looking at only a small sample of data in an audit trail.</p>
+
+<h4 id="clipping-levels-剪裁级别">Clipping Levels (剪裁级别)</h4>
+<ul>
+  <li>Clipping level is a predefined threshold for the event (e.g. five failed logon attempts within a 30-minute period)</li>
+  <li>Widely used to establish a baseline of routine system or user acvtivity.</li>
+  <li>Be effective and less expensive and easier to implement than statistical sampling.</li>
+</ul>
+
+<h4 id="other-monitoring-tools">Other Monitoring Tools</h4>
+<ul>
+  <li>CCTV system (闭路电视系统)</li>
+  <li>Keystroke Monitoring (击键监控)<br />
+There is some debate about whether keystroke monitoring should by restricted and controlled.</li>
+  <li>Traffic Analysis and Trend Analysis (流量分析和趋势分析)</li>
+</ul>
+
+<h4 id="log-management">Log Management</h4>
+<ul>
+  <li>Rollover Loggin = Circular Logging = Log Cycling (滚动日志=循环日志=日志循环) = Log Rotation</li>
+  <li>For windows systems, implement a method will save the log entries and prevent the logs from filling a disk drive.</li>
+</ul>
+
+<h4 id="egress-ˈiːɡres-monitoring-出口监控">Egress ([ˈiːɡres]) Monitoring (出口监控)</h4>
+<ul>
+  <li>An advanced implementation of watermarking is digital watermarking.</li>
+  <li>DLP systems can detect watermarks in unencrypted files.</li>
+</ul>
+
+<h2 id="automating-incident-response">Automating Incident Response</h2>
+<h3 id="understanding-soar">Understanding SOAR</h3>
+<p>SOAR = Security Orchestration, Automation, and Response (安全协调、自动化和响应)</p>
+<ul>
+  <li>Playbook
+    <ul>
+      <li>A document or checklist defines how to verify an incident, gives details on the response.</li>
+      <li>Listing the same actions security adminstrators take to verrify attacks and the steps taken after verifying them.</li>
+    </ul>
+  </li>
+  <li>Runbook
+    <ul>
+      <li>Implments the playbook data into an automated tool.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="machine-learning-and-ai-tools">Machine Learning and AI Tools</h3>
+<ul>
+  <li>ML<br />
+A part of AI, gives computer systems the ability to learn.</li>
+  <li>AI<br />
+A broad field includes ML, it gives machines the ability to do things a human can do better or allows a machine to perfoem tasks we previously thought required human intelligence.</li>
+</ul>
+
+<h3 id="threat-intelligence-威胁情报">Threat Intelligence (威胁情报)</h3>
+<p>Refers to gathering data on potential threats.</p>
+
+<h3 id="understanding-the-kill-chain">Understanding the Kill Chain</h3>
+<p>Cyber Kill Chain framework (Created by Lockheed Martin)</p>
+<ul>
+  <li>Reconnaissance (侦查)</li>
+  <li>Weaponization (武器化)</li>
+  <li>Delivery (传送)</li>
+  <li>Exploitation (搾取)</li>
+  <li>Installationa (安装)</li>
+  <li>Command and Control (命令与控制)</li>
+  <li>Actions on objectives (目标行动)</li>
+</ul>
+
+<h3 id="understanding-the-mitre-attck">Understanding the MITRE ATT&amp;CK</h3>
+<p>ATT&amp;CK Matrix is a living document that is update at least twice a year.</p>
+
+<h3 id="threat-hunting">Threat Hunting</h3>
+<ul>
+  <li>The process of actively searching for cyber threats in a network.</li>
+  <li>ATPs ofter stay undetected in netwoks for months.</li>
+  <li>One popular method of threat hunting is to use a kill chain model.</li>
+</ul>
+
+<h3 id="the-intersection-of-soar-machine-learning-ai-and-threat-feeds">The Intersection of SOAR, Machine Learning, AI, and Threat Feeds</h3>
+<ul>
+  <li>Computers are great at performing repetitive steps and eliminating human errors, so they are welcomed by most administrators.</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+<h2 id="exam-essentials">Exam Essentials</h2>
+<ul>
+  <li>List and describe incident management steps.
+    <ul>
+      <li>detection, response, mitigation, reporting, recovery, remediation, lesson learned</li>
+      <li>检测、响应、缓解、报告、恢复、补救、吸取教训</li>
+    </ul>
+  </li>
+  <li>Understand basic preventive measures.</li>
+  <li>Know the difference between whitelisting and blacklisting.</li>
+  <li>Understand sandboxing.</li>
+  <li>Know about third-party provided security services.</li>
+  <li>Understand botnets, botnet controllers, andbot herders.</li>
+  <li>Know about denial-of-service (DoS) attacks.</li>
+  <li>Understand zero-day exploits.</li>
+  <li>Understand man-in-the-middle attacks.</li>
+  <li>Understand intrusion detection and intrusion prevention.</li>
+  <li>Recognize IDS/IPS responses.</li>
+  <li>Understand the difference between HIDSs and NIDSs.</li>
+  <li>Describe honeypots and honeynets.</li>
+  <li>Understand the methods used to block malicious code.</li>
+  <li>Know the types of log files.</li>
+  <li>Understand monitoring and uses of monitoring tools.<br />
+Log management includes analyzing logs and archiving logs.</li>
+  <li>Be able to explain audit trails.</li>
+  <li>Understand how to maintain accountability.</li>
+  <li>Describe threat feeds and threat hunting.</li>
+  <li>Know the relationship between ML and AI.</li>
+  <li>Know the benefits of SOAR.</li>
+</ul>
+
+<h2 id="review-questions">Review Questions</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 B C D
+2 A
+3 A (The question and the answer is not matched)
+4 A B C → A C D
+5 B
+6 B
+7 C → A
+8 A
+9 C
+10 C → D
+11 B
+12 D → A
+13 B → D
+14 B
+15 B
+16 B
+17 B
+18 D
+19 B → A
+20 A
+</code></pre></div></div>
+<p>正解率：15 / 20 = 75%</p>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#CISSP">CISSP</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Chapter+17+Preventing+and+Responding+to+Incidents&url=http%3A%2F%2Flocalhost%3A4000%2Fstudy%2F2022-10-04-cissp_chapter17"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fstudy%2F2022-10-04-cissp_chapter17"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/study/2022-09-26-about-toefl-ibt-test" data-toggle="tooltip" data-placement="top" title="About TOEFL iBT TEST">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/it/2022-10-17-EC2%E3%81%AE%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%AE%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95" data-toggle="tooltip" data-placement="top" title="AWS EC2 のディスク使用量100%の解決方法">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'guaiguailei-net';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+  
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      
+<ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:liuganxiang@hotmail.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="https://www.facebook.com/liuganxiang" title="Facebook">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Facebook</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/ichiliu" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://twitter.com/gxliu" title="Twitter">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Twitter</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Ganxiang Liu
+        &nbsp;&bull;&nbsp;
+      
+      2023
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">guaiguailei.net</a>
+        </span>
+      
+
+      
+
+      
+
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>
