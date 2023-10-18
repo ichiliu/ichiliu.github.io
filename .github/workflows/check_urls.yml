@@ -1,0 +1,17 @@
+name: Check URLs
+
+on:
+  schedule:
+    #    - cron: "0 3 * * *" # UTC
+    - cron: "15 16 * * *" # UTC
+
+jobs:
+  check-urls:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run script
+      run: ./scripts/check_urls.sh
+
