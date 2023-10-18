@@ -98,6 +98,10 @@ rss-description: This website is a virtual proof that I'm awesome
 # --- General options --- #
 ###########################
 
+# For sitemap.xml
+url: "https://guaiguailei.net" # GitHub PagesのURL
+baseurl: "" # ベースURL（通常は空白に設定）
+
 # Select which social network share links to show in posts
 share-links-active:
   twitter: true
@@ -265,7 +269,7 @@ date_format: "%B %-d, %Y"
 timezone: "Asia/Tokyo"
 markdown: kramdown
 highlighter: rouge
-permalink: /:categories/:year-:month-:day-:title
+permalink: /:categories/:year-:month-:day-:title/
 # permalink: /:year-:month-:day-:title/
 paginate: 10
 
