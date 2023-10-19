@@ -1,19 +1,21 @@
 name: Check URLs
 
-on:
-  schedule:
-    #    - cron: "0 3 * * *" # UTC
-    - cron: "15 16 * * *" # UTC
+on: [push]
 
 jobs:
   check-urls:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        node-version: '16'  # Node.js 16
+      uses: actions/checkout@v2 # repoのコードをCheck Out
 
-    - name: Run script
-      run: ./scripts/check_urls.sh
+    - name: Run Script
+      run: |
+        ./scripts/check_urls.sh
+
+    - name: Upload Output
+      uses: actions/upload-artifact@v2
+      with:
+        name: Check URLs Output
+        path: logs  # logs内のファイルをArtifactoryとして保存
 
