@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2.4.4 # repoのコードをCheck Out
+      uses: actions/checkout@v2 # repoのコードをCheck Out
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -20,7 +20,7 @@ jobs:
     - name: Run Script and Save Output
       run: |
         mkdir -p temp
-        ./scripts/check_urls.sh > temp/urls.txt >2 temp/crawl.log
+        ./scripts/check_urls.sh > temp/urls.txt 2> temp/crawl.log
 
         # $GITHUB_WORKSPACE here is the directory in the workflow environment
         mv temp $GITHUB_WORKSPACE/output
@@ -28,7 +28,7 @@ jobs:
 
 
     - name: Upload Output As Artifact
-      uses: actions/upload-artifact@v2.4.4
+      uses: actions/upload-artifact@v2
       with:
         name: check-urls-output
         path: $GITHUB_WORKSPACE/output
