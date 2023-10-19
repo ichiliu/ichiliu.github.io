@@ -1,6 +1,9 @@
 name: Check URLs
 
-on: [push]
+on:
+  push:
+    branches:
+      master
 
 jobs:
   check-urls:
@@ -30,9 +33,9 @@ jobs:
         name: check-urls-output
         path: $GITHUB_WORKSPACE/output
 
-     - name: Copy Output to Repository
-        run: |
-          # $GITHUB_WORKSPACE here is the directory in the repo environment
-          mkdir -p $GITHUB_WORKSPACE/logs
-          cp -rp $RUNNER_WORKSPACE/check-urls-output/output/* $GITHUB_WORKSPACE/logs/
-        shell: bash
+    - name: Copy Output to Repository
+      run: |
+        # $GITHUB_WORKSPACE here is the directory in the repo environment
+        mkdir -p $GITHUB_WORKSPACE/logs
+        cp -rp $RUNNER_WORKSPACE/check-urls-output/output/* $GITHUB_WORKSPACE/logs/
+      shell: bash
