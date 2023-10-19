@@ -23,19 +23,21 @@ jobs:
         ./scripts/check_urls.sh > temp/urls.txt 2> temp/crawl.log
 
         # $GITHUB_WORKSPACE here is the directory in the workflow environment
-        mv temp $GITHUB_WORKSPACE/logs
+        mv temp $GITHUB_WORKSPACE/output
+        ls -l $GITHUB_WORKSPACE/output
       shell: bash
-
 
     - name: Upload Output As Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: check-urls-logs
+        name: check-urls-output
         path: $GITHUB_WORKSPACE/logs
 
     - name: Copy Output to Repository
       run: |
         # $GITHUB_WORKSPACE here is the directory in the repo environment
         mkdir -p $GITHUB_WORKSPACE/logs
-        cp -rp $RUNNER_WORKSPACE/check-urls-logs/logs/* $GITHUB_WORKSPACE/logs/
+        ls -l $GITHUB_WORKSPACE/logs
+        ls -l $RUNNER_WORKSPACE/check-urls-output/output
+        cp -rp $RUNNER_WORKSPACE/check-urls-output/output/* $GITHUB_WORKSPACE/logs/
       shell: bash
