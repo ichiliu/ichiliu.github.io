@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Anti UTC
+export TZ=Asia/Tokyo
+
 # URL of your sitemap.xml
 SITEMAP_URL="https://guaiguailei.net/sitemap.xml"
 
