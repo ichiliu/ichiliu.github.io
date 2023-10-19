@@ -31,7 +31,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: check-urls-output
-        path: $GITHUB_WORKSPACE/output
+        path: $GITHUB_WORKSPACE/logs
 
     - name: Copy Output to Repository
       run: |
