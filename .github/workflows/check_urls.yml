@@ -7,15 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2 # repoのコードをCheck Out
+      uses: actions/checkout@v2.4.4 # repoのコードをCheck Out
 
-    - name: Run Script
-      run: |
-        ./scripts/check_urls.sh
-
-    - name: Upload Output
-      uses: actions/upload-artifact@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
       with:
-        name: Check URLs Output
-        path: logs  # logs内のファイルをArtifactoryとして保存
+        node-version: 16
 
+    - name: Run Script and Save Output
+      run: |
+        mkdir -p temp
+        ./scripts/check_urls.sh > temp/urls.txt >2 temp/crawl.log
+
+        # $GITHUB_WORKSPACE here is the directory in the workflow environment
+        mv temp $GITHUB_WORKSPACE/output
+      shell: bash
+
+
+    - name: Upload Output As Artifact
+      uses: actions/upload-artifact@v2.4.4
+      with:
+        name: check-urls-output
+        path: $GITHUB_WORKSPACE/output
+
+     - name: Copy Output to Repository
+        run: |
+          # $GITHUB_WORKSPACE here is the directory in the repo environment
+          mkdir -p $GITHUB_WORKSPACE/logs
+          cp -rp $RUNNER_WORKSPACE/check-urls-output/output/* $GITHUB_WORKSPACE/logs/
+        shell: bash

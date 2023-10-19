@@ -3,14 +3,6 @@
 # URL of your sitemap.xml
 SITEMAP_URL="https://guaiguailei.net/sitemap.xml"
 
-# Log file
-LOG_FILE="./logs/access_log.txt"
-URLS_FILE="./logs/urls.txt"  # Save URLs to this file
-
-# Clear existing log and URLs file
-#> "$LOG_FILE"
-> "$URLS_FILE"
-
 # Function to URL decode
 urldecode() {
   # URL decode using Bash built-ins
@@ -21,7 +13,7 @@ urldecode() {
 log_message() {
   local message="$1"
   local timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-  echo "$timestamp $message" >> "$LOG_FILE"
+  echo "$timestamp $message" >&2
 }
 
 # Log start time
@@ -41,7 +33,7 @@ for url in "${urls[@]}"; do
     http_status="N/A"
   fi
   
-  echo "$decoded_url" >> "$URLS_FILE"  # Save the URL for investigation
+  echo "$decoded_url" # Save the URL for investigation
   
   if [[ "$http_status" != "200" ]]; then
     log_message "URL $decoded_url failed (HTTP $http_status)"
@@ -53,6 +45,3 @@ log_message "Execution completed."
 
 # Clean up temporary files
 rm -f decoded_sitemap.txt
-
-echo "Results saved in $LOG_FILE"
-
