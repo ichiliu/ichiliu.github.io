@@ -71,6 +71,7 @@ https://guaiguailei.net/security/2023-09-20-aws-security-services
 https://guaiguailei.net/security/2023-09-28-vuln-mgt-cvss-ssvc
 https://guaiguailei.net/study/2023-10-03-cissp-chapter21
 https://guaiguailei.net/it/2023-10-17-seo
+https://guaiguailei.net/it/2023-10-20-auto-urls-check
 https://guaiguailei.net/aboutme
 https://guaiguailei.net/category/books
 https://guaiguailei.net/category/cat
