@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://guaiguailei.net/sitemap.xml
