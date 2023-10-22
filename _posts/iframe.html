@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<p>内部のHTMLファイル（クロスオリジン）</p>
+		iframe内:<p id="cookieData2" style="display: inline;"></p>
+		<script>
+			const cookies = document.cookie
+
+			// HTML内の特定の要素にクッキー情報を表示
+			const cookieDataElement2 = document.getElementById("cookieData2");
+			cookieDataElement2.textContent = `${cookies}`;
+			//alert(document.cookie)
+		</script>
+	</body> 
+</html>
+
