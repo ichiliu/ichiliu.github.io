@@ -22,6 +22,7 @@ IT業界の現場でエンジニアの仕事をしている（したことがあ
 * [2022年は25,000件ものCVE脆弱性が公表された](#2022年は25000件ものcve脆弱性が公表された)
 * [CISAのBOD 22-01から知った事実](#cisaのbod-22-01から知った事実)
 * [CISAにはKEVがある](#cisaにはkevがある)
+  * [後日に追加した参考資料](#後日に追加した参考資料)
 * [SSVC](#ssvc)
   * [SSVC](#ssvc-1)
     * [基本的な特性](#基本的な特性)
@@ -126,6 +127,9 @@ CISAは、これらの既知の悪用された脆弱性を注意深く監視し�
 |CVE-2021-45046|Apache|Log4j2|Apache Log4j2 Deserialization of Untrusted Data Vulnerability|2023/05/01|
 
 どこかのページでみたのですが、CISAはCVE脆弱性の悪用を検知したら2,3日以内にKEVに追加しているそうです。
+
+## 後日に追加した参考資料
+- [アレな3人が注目するドキュメント“BOD”から始める「脆弱性対応」の第一歩](https://enterprisezine.jp/article/detail/18599?utm_source=ez_newsletter&utm_medium=email&utm_campaign=piano_esp&pnespid=6LWOnphE4KjN5PTp_wG146IKvg0L8yd7hhEwH0UzrkOVq70vE65ONWYwomiudP9zss_xFTQV)
 
 # SSVC
 Stakeholder-Specific Vulnerability Categorization  
@@ -1136,6 +1140,12 @@ secured, the answer should be CONTROLLED.
 - EPSS is an "effort for predicting when software vulnerabilities will be exploited" (预测软件漏洞何时会被利用)
 - Currently, Exploitation focuses on the observable state of the world at the time of the SSVC decision. EPSS is about predicting if a transition will occur from the SSVC state of none to active.
 
+EPSSは全世界のCSIRT（Computer Security Incident Response Team）における情報交換を目的としたフォーラム「FIRST」（Forum of Incident Response and Security Teams）で開発されている仕組みで、CVSSやCVEの情報や言及されている参考URLの数などのさまざまな情報から、30日以内に該当脆弱性が悪用される確率を「EPSS Probability」として、1～100の間で算出するというもの。
+
+EPSSはFIRSTのWebサイトで公開されており、その脆弱性が他の脆弱性と比較し、どのような位置にいるかを把握できます。データはCSV形式でダウンロードも可能である。
+
+参照:[EPSS Data](https://www.first.org/epss/data_stats?_ga=2.178617261.887979224.1697164995-1353954653.1697164995)
+
 ## VPR
 - VPR is a prioritization product sold by Tenable.
 - VPR determines the severity level of a vulnerability based on “technical impact and threat.”
@@ -1157,4 +1167,5 @@ secured, the answer should be CONTROLLED.
   - [SSVCを使った脆弱性管理の取り組み](https://www.conoris.jp/blog/ssvc)
   - [ユーザー企業におけるSSVCの導入と留意点](https://www.pwc.com/jp/ja/knowledge/column/awareness-cyber-security/ssvc-introduction.html)
   - Youtube : [SSVC On Demand Training](https://www.youtube.com/watch?v=NqiwyUPLy6I)
+- [見るべきは「CVSSスコア」“だけ”でいいのか？　脆弱性管理に役立つ指標をまとめてみた](https://www.itmedia.co.jp/enterprise/articles/2310/17/news019.html)
 

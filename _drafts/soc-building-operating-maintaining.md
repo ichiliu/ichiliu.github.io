@@ -53,6 +53,16 @@ This blog is my reading notes on 'Security Operations Center: Building, Operatin
   * [Security Analysis (安全分析)](#security-analysis-安全分析)
   * [Alternatives to Rule-Based Correlation](#alternatives-to-rule-based-correlation)
   * [Data Enrichment](#data-enrichment)
+  * [Big Data Platforms for Security](#big-data-platforms-for-security)
+  * [Vulnerability Management](#vulnerability-management)
+  * [Vulnerability Announcements](#vulnerability-announcements)
+  * [Threat Intelligence](#threat-intelligence)
+  * [Compliance](#compliance-1)
+  * [Ticketing and Case Management](#ticketing-and-case-management)
+  * [Collaboration](#collaboration)
+  * [SOC Conceptual Architecture](#soc-conceptual-architecture)
+* [Chapter 3. Assessing Security Operations Capabilities (评估安全运营能力)](#chapter-3-assessing-security-operations-capabilities-评估安全运营能力)
+  * [Assessment Methodology](#assessment-methodology)
 
 <!-- vim-markdown-toc -->
 
@@ -331,9 +341,81 @@ In this text, the importance of monitoring network connections using devices lik
 
 ## Data Enrichment
 Refers to the practice of adding additional context to the data that you receive.
+- GEO information
+- WHOIS information
+- Reputation information
+- Domain age information
 
+## Big Data Platforms for Security
+## Vulnerability Management
+The most critical element of vulnerability management is being faster at protecting the vulnerable asset before the weakness is exploited.
 
+## Vulnerability Announcements
+- The list of products that use CVE for referencing vulnerabilities is maintained by MITRE.
+- Vulnerability Scoring System (CVSS) is maintained by NIST.
 
+## Threat Intelligence
+- “Threat intelligence is evidence-based knowledge, including context, mechanisms, indicators, implications and actionable advice, about an existing or emerging menace or hazard to assets that you can use to inform decisions regarding the subject’s response to that menace or hazard.” (According to Gartner)
+  >既存または新興の脅威や危険に関する、証拠に基づく知識であり、文脈、仕組み、指標、影響、および対処方法についての情報を含みます。これを利用して、対象物の対脅威または危険への対応に関する決定を通知することができる。
+
+- Threat intelligence’s primary purpose is to inform business decisions regarding the risks and implications associated with threats.
+  >脅威インテリジェンスの主要な目的は、脅威に関連するリスクとその影響についてのビジネス上の決定を通知すること。
+
+- Forrester defines a five-step threat intelligence cycle
+  - planning and direction
+  - collection
+  - processing
+  - analysis and production
+  - dissemination
+
+## Compliance
+## Ticketing and Case Management
+- RACI Chart ("レイシー")  日本語で"責任分担表"  
+ref: https://ja.wikipedia.org/wiki/RACI%E5%9B%B3
+  - R = Responsible (実行責任者) - タスク達成のために働く責任者。複数のリソースについて責任を持つことがある。
+  - A = Accountable (説明責任者) - タスクの正しい完了について外部からの問合せに対して責任を持って対応する。
+    - 各タスクの窓口は1つでなければならない。
+  - C = Consulted (相談先/協業先)- 意見を求められる者。双方向の対話。
+  - I = Informed (報告先情) - 進捗を常に把握している者。一方向の通信。
+
+- RACI Matrix Example
+![file](https://i.imgur.com/c95rn1F.png)
+
+## Collaboration
+- The platform should support role-based access control (RBAC) so that you can facilitate for various user-access requirements.
+
+## SOC Conceptual Architecture
+![file](https://i.imgur.com/WslgAWf.png)
+
+# Chapter 3. Assessing Security Operations Capabilities (评估安全运营能力)
+“Give me six hours to chop down a tree and I will spend the first four sharpening the axe.”—Abraham Lincoln
+
+## Assessment Methodology
+- The basic idea is to follow a process in which you collect, document, verify, and update information with the goal of providing a deliverable used to understand the current state of the SOC. 
+- All IT goals must align with a business goal so that they can be mapped to a strategy sponsored by leadership.
+- Steps identifying the business and IT goals
+  - Step 1: Identify Business and IT Goals (ビジネスとITの目標を特定する)
+  - Step 2: Assessing Capabilities (能力の評価)  
+    Evaluate the IT processes involved with each IT goal.  
+    - Dependencies Between Business Goals, IT Goals, and IT Processes  
+
+      ![file](https://i.imgur.com/3LSryNF.png)
+
+    - Assessing IT Processes  
+      SOC Capabilities to Evaluate  
+
+      ![file](https://i.imgur.com/kXJqV6E.png)
+
+    - People
+    - Processes
+      - Incident Triage
+        - Assess whether there is a computer security incident response plan that formalizes the triage process.
+        - Assess whether there are official channels and formats for reporting security incidents.
+          - Do the members of the organization know these channels?
+        - Assess whether there are processes to classify and prioritize incidents.
+        - Assess whether there are internal or external service level agreements (SLA) that the organization must meet.
+
+    
 
 
 

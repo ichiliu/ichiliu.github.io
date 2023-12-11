@@ -209,6 +209,10 @@ Qualified Security Assessors/認定セキュリティ評価機関。PCISSCにさ
 
 * [Sizing](https://e-words.jp/w/%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0.html) / サイジング
 
+- [SOAR](https://www.nec-solutioninnovators.co.jp/ss/insider/column17.html)
+  Security Orchestration,Automation & Response / ソアー /  
+  製品例：[RSA Netwitness Orchestrator](https://www.netwitness.com/ja/products/security-automation-orchestration/)
+
 * SOC
   Security Operation Center
 
@@ -276,6 +280,22 @@ Vulnerability Prioritization Technology（漏洞优先级技术）
 * [White Paper](https://www.onemarketing.jp/contents/whitepaper-re/) / 白皮书 / ホワイトペーパー / 白書
   商品やサービスに関する情報を記載し、課題解決に関するソリューションを提案する「報告書」。
 
+- zero-day attack  
+  漏洞尚未被软件或硬件供应商识别或修复，因此攻击者可以在漏洞曝光后的第零天就开始利用它们的漏洞。
+  - 半日漏洞  
+    漏洞信息已经在GitHub或国家漏洞数据库上披露，但仍然没有官方修复补丁的漏洞。
+  - 0.75日漏洞  
+    那些已经有官方修复程序，但没有分配CVE编号或CPE标识符的漏洞。  
+    (这意味着漏洞扫描工具暂时无法检测到IT环境中的易受攻击组件，安全团队也不知道需要安装补丁)
+
+  ||零日漏洞|半日漏洞|0.75日漏洞|1日~漏洞|
+  |:-:|:-:|:-:|:-:|:-:|
+  |官方的漏洞认知|x|o|o|o|
+  |官方的漏洞修复提供|x|x|o|o|
+  |漏洞公开(Github/NVD etc.)|x|o|o|o|
+  |CVE编号|x|x|x|o|
+  |最早发现漏洞的人|非恶意攻击者|-|-|-|
+
 * [ZTNA](https://www.nri-secure.co.jp/blog/explanation-of-zero-trust-network-access)
   Zero Trust Network Access / 零信任网络访问 / ゼロトラストネットワークアクセス  
 特長
@@ -329,16 +349,16 @@ Threat-Led Penetration Testing / 脅威ベースのペネトレーションテ�
 用于挖掘 Monero 加密货币的开源 CPU 挖掘软件。
 
 # Malicious Organizations
-+ 8220 Gang（別名: ReturnedLibra）
+- 8220 Gang（別名: ReturnedLibra）
 Cryptojacker / クリプトジャッカー / 加密挖矿者
 
-* LockBit
+- LockBit
 勒索软件团伙 / Ransomware Group
 
-+ Monti
+- Monti
 ランサムウェアグループ
 
-+ Qakbot
+- Qakbot
 マルウェア・アズ・ア・サービス
 
 
