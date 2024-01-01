@@ -3,14 +3,16 @@ layout: post
 title: Cyber Attack Incidents
 subtitle: 
 cover-img: [/assets/img/cover/security1.jpg, /assets/img/cover/security2.jpg, /assets/img/cover/security3.jpg]
-thumbnail-img: 
+thumbnail-img: [https://i.imgur.com/BHnQ84Y.png]
 share-img:
-tags: [PII, Incident]
+tags: [cyberattack, incident]
 categories: [Security]
 ---
 
 ## 概要
 サイバー攻撃の代表事例をメモ書きしてみます。
+
+![file](https://i.imgur.com/BHnQ84Y.png)
 
 <!-- vim-markdown-toc GFM -->
 
