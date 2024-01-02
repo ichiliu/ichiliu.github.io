@@ -3,7 +3,7 @@ layout: post
 title: サイバー脅威の事例
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
-thumbnail-img: [https://webweb.hatenablog.com/blog/search-engine/support-scam]
+thumbnail-img: [https://i.imgur.com/gzWPuwU.png]
 share-img:
 tags: [cyber threat]
 categories: [IT]
