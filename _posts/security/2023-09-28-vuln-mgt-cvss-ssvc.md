@@ -239,10 +239,10 @@ Remediation (修復) とMitigation (缓和措置)の違い
   
 | Deployer Priority |つまり |Description |
 |:-|:-|:-|
-|Defer| 延期対応 |Do not act at present.|
-|Scheduled |定期対応|Act during regularly scheduled maintenance time.|
-|Out-of-cycle |優先対応 |Act more quickly than usual to apply the mitigation or remediation out-of-cycle, during the next available opportunity, working overtime if necessary.|
-|Immediate |緊急対応|Act immediately; focus all resources on applying the fix as quickly as possible, including, if necessary, pausing regular organization operations.|
+|Defer| 定期メンテ時に対応 |Do not act at present.|
+|Scheduled |定期メンテ時に対応|Act during regularly scheduled maintenance time.|
+|Out-of-cycle |計画外で対応 |Act more quickly than usual to apply the mitigation or remediation out-of-cycle, during the next available opportunity, working overtime if necessary.|
+|Immediate |すぐに対応|Act immediately; focus all resources on applying the fix as quickly as possible, including, if necessary, pausing regular organization operations.|
 
 ### Items With the Same Priority
 - CVSS is designed to be accurate only within +/- 0.5, and, in practice, is scored with errors of around +/- 1.5 to 2.5
@@ -1145,6 +1145,9 @@ EPSSは全世界のCSIRT（Computer Security Incident Response Team）におけ�
 EPSSはFIRSTのWebサイトで公開されており、その脆弱性が他の脆弱性と比較し、どのような位置にいるかを把握できます。データはCSV形式でダウンロードも可能である。
 
 参照:[EPSS Data](https://www.first.org/epss/data_stats?_ga=2.178617261.887979224.1697164995-1353954653.1697164995)
+
+![file](https://i.imgur.com/VnRSIWu.png)
+(引用:https://active.nikkeibp.co.jp/atcl/act/19/00324/112100022/?P=3)
 
 ## VPR
 - VPR is a prioritization product sold by Tenable.
