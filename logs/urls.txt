@@ -78,6 +78,7 @@ https://guaiguailei.net/security/2023-10-27-cookies/
 https://guaiguailei.net/books/2023-10-29-secure-by-design/
 https://guaiguailei.net/security/2024-01-01-cyber-attack-incidents/
 https://guaiguailei.net/it/2024-01-03-cyber-threats/
+https://guaiguailei.net/security/2024-01-09-security-posture/
 https://guaiguailei.net/aboutme/
 https://guaiguailei.net/category/books/
 https://guaiguailei.net/category/cat/
@@ -97,3 +98,4 @@ https://guaiguailei.net/page5/
 https://guaiguailei.net/page6/
 https://guaiguailei.net/page7/
 https://guaiguailei.net/page8/
+https://guaiguailei.net/page9/
