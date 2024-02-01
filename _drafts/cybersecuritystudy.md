@@ -71,9 +71,14 @@ Approved Scanning Vendors/認定スキャニングベンダー
 + CaaS
 Crypter as a Service / クリプター・アズ・ア・サービス / 加密器即服务
 
-* [CASB](https://e-words.jp/w/CASB.html)
+* [CASB](https://www.cybernet.co.jp/zerotrust/products/casb.html) (キャスビー)
   Cloud Access Security Broker / 云访问安全代理
   クラウドの利用状況の可視化、操作制御
+  代表製品:Netskopeの主なCASB機能
+  - 可視化・分析(Agent/Proxy導入により、通信内容検出、ログイン状況、DL/ALの状況可視化。シャドーIT検出可能)
+  - データ保護(機密情報定義し、KWや多数の識別方法で、高精度のDLPを実施可能)
+  - コントロール(解析されたコンテキストに基づき、非許可SaaSの利用を制御、許可SaaSでもクレカ番号などをALできない制御)
+  - 脅威防御(SaaSにあるマルウェアやランサムウェアを検知し隔離。データコピー、大量DLなど異常値を検知)
   
 * [Credential Stuffing Attack](https://e-words.jp/w/パスワードリスト攻撃.html)
   パスワードリスト攻撃 / クレデンシャルスタッフィング攻撃
@@ -130,6 +135,9 @@ Initial Access Broker / イニシャル・アクセス・ブローカー / 初�
 
 + MSSP(Managed Security Service Provider)
 MSSを提供するセキュリティベンダーを指す。
+
+- Noware Ransome (ノーウェアランサム)  
+データの暗号化をすることなく、窃取したデータのみを材料に脅迫を行うサイバー攻撃。
 
 * OpenFlow
 
@@ -274,8 +282,17 @@ Qualified Security Assessors/認定セキュリティ評価機関。PCISSCにさ
 		* VPN Gateway <->（VPN通信）<-> VPN Gateway 接続
 		* 端末内VPN Client -> （VPN通信）VPN Gateway 接続
 
-* VPT
+* VPT  
 Vulnerability Prioritization Technology（漏洞优先级技术）
+
+- WAAP  
+Web Application and API Protection (Web アプリケーションと API の保護)   
+ガートナー社が提唱する概念、Webアプリケーション保護対策に加えAPI保護機能を備えているソリューション。
+主要な機能：  
+  - WAF : iSQL攻撃、XSSなど攻撃から守る上で欠かせないツール。
+  - API対策
+  - Bot対策
+  - DDoS攻撃
 
 * [White Paper](https://www.onemarketing.jp/contents/whitepaper-re/) / 白皮书 / ホワイトペーパー / 白書
   商品やサービスに関する情報を記載し、課題解決に関するソリューションを提案する「報告書」。

