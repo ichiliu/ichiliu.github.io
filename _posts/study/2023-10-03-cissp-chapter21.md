@@ -439,6 +439,7 @@ If the application tries to dereference this NULL pointer, it causes a condition
 - Understand common web application vulnerabilities and countermeasures.
 
 # Review Questions
+```
 1 D
 2 C → B
 3 C
@@ -459,5 +460,5 @@ If the application tries to dereference this NULL pointer, it causes a condition
 18 D
 19 D
 20 C
-
+```
 正解率：16 / 20 = 80%
