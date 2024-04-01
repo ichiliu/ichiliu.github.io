@@ -12,39 +12,6 @@ categories: [IT]
 # 概要
 github pagesを理解するためにまとめたものです。
 
->2024-04-01追記  
->ruby@3.3.0以上になると、`bundle exec jekyll serve --watch`でやると、次のようなエラーが出るようになった
->```sh
->jekyll 4.4.3 | Error:  undefined method `[]' for nil
->/opt/homebrew/opt/ruby/lib/ruby/3.3.0/logger.rb:384:in `level': undefined method `[]' for nil (NoMethodError)
->...省略...
->```
->いろいろ調べたが、[Ruby (Versioning) Hell with Jekyll & GitHub Pages](https://ritviknag.com/tech-tips/ruby-versioning-hell-with-jekyll-&-github-pages/)からヒントをもらい、次のように対応した
->```sh
->$ brew install rbenv rbenv ruby-build
->$ which rbenv
->/opt/homebrew/bin/rbenv
->$ rbenv install 3.2.3
->$ ruby -v
->$ ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [arm64-darwin23]
->$ echo 'eval "$(rbenv init - bash)"' >> ~/.bash_profile
->$ echo "rbenv global 3.2.3" >> ~/.bash_profile
->$ echo "rbenv local 3.2.3" >> ~/.bash_profile
->$ source ~/.bash_profile
->```
->これまでやったら、準備ができました。
->
->```sh
->$ gem install bundler
->$ bundle -v
->Bundler version 2.5.7
->$ bundle exec jekyll serve --watch
->...省略...
->   Server address: http://127.0.0.1:4000/xxxxx/xxxxxx/
-> Server running... press ctrl-c to stop.
->```
->が表示されるようになりました！
-
 ![file](https://i.imgur.com/YlRnWhB.png)
 
 # GitHub Pagesとは
@@ -87,14 +54,15 @@ ref: [参考資料](https://zenn.dev/sasakiki/articles/e4d5dd28700b16)　（こ�
 
 `ruby`は`macOS`デフォルトの`/usr/bin/ruby`であるため、`brew`を使って最新バージョンをインストールします（参考：[Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)）。
 
-```sh
+```shell
 $ brew install ruby
 ...省略...
 ```
-
-インストール直後にterminalに出ていた以下のメッセージ:
-
-```sh
+<details>
+  <summary>インストール直後にterminalに出ていた以下のメッセージ</summary>
+  <div>
+  
+  ```shell
   ==> ruby
 By default, binaries installed by gem will be placed into:
   /usr/local/lib/ruby/gems/3.1.0/bin
@@ -111,8 +79,9 @@ If you need to have ruby first in your PATH, run:
 For compilers to find ruby you may need to set:
   export LDFLAGS="-L/usr/local/opt/ruby/lib"
   export CPPFLAGS="-I/usr/local/opt/ruby/include"
-```
-
+  ```
+  </div>
+</details>
 に従って`.bashrc`に設定しておきました。
 
 最新の`ruby`をインストール後の環境。
@@ -288,8 +257,7 @@ baseurl: /pages-test      # place folder name if the site is served in a subfold
 ### Pagesをローカルでテストする
 ref: [参考資料](https://docs.github.com/ja/enterprise-server&#64;3.5/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
 * ローカルでJekyllサイトを実行する
-
-```sh
+  ```shell
   $ bundle add webrick # This may be needed if you use ruby 3 or higher
   $ bundle exec jekyll serve
   Configuration file: /Users/xxxxxxxx/dev/github/pages-test/docs/_config.yml
@@ -303,8 +271,7 @@ To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
  Auto-regeneration: enabled for '/Users/xxxxxxxx/dev/github/pages-test/docs'
     Server address: http://127.0.0.1:4000/
   Server running... press ctrl-c to stop.
-```
-
+  ```
   ブラウザから`http://127.0.0.1:4000/`にアクセスすると、
   ![file](https://i.imgur.com/8BlncHT.png)
   のように表示されました！　（Webサーバを止める時は`foregrand`で実行中の`terminal`にて`ctrl-c`で）。
@@ -329,7 +296,7 @@ ref: [参考資料](https://docs.github.com/ja/enterprise-server&#64;3.5/pages/g
   上記ページにある [GitHub Pages Study](https://gxgliu.github.io/pages-test/blog/2022/12/29/github-pages.html) は`push`する前に新規作成したページ（`Post`ともいう）であり、作成方法とその中身は以下に説明します。
   `_post`フォルダに`2022-12-29-github-pages.md`ファイルを作成し、その先頭の一部を以下に示します。
   
-```markdown
+  ```markdown
   ---
 layout: post
 title:  "GitHub Pages Study"
