@@ -35,7 +35,6 @@ https://guaiguailei.net/study/2022-12-07-大学入学共通テストまとめ/
 https://guaiguailei.net/it/2022-12-13-macOSのApacheのhttpdの自動再起動設定/
 https://guaiguailei.net/cat/2022-12-25-我家猫的新小伙伴/
 https://guaiguailei.net/it/2022-12-29-JekyllでGitHubPagesにサイト公開/
-https://guaiguailei.net/it/2022-12-29-JekyllでGitHubPagesにサイト公開.md/
 https://guaiguailei.net/it/2023-01-01-WordPress的用法TIPS/
 https://guaiguailei.net/life/2023-01-03-2023年お正月東京浜離宮庭園で放鷹術を見学/
 https://guaiguailei.net/technology/2023-01-31-lotsoftip10of2022/
