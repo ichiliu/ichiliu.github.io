@@ -3,13 +3,15 @@ layout: post
 title: Honda STREAM 1.8L RSZ自分なりのまとめ
 subtitle: 
 cover-img: [/assets/img/cover/life1.jpg, /assets/img/cover/life2.jpg, /assets/img/cover/life3.jpg]
-thumbnail-img: 
+thumbnail-img: https://i.imgur.com/Rmek3DA.png
 share-img:
 tags: [car, DIY, STREAM]
 categories: [Life]
 ---
 
 自分はSTREAM 1.8L RSZに乗っています。STREAMをよく知り、良くしていくために、DIYの参考事例などのいいコンテンツを集めます。
+
+![file](https://i.imgur.com/Rmek3DA.png)
 
 <!-- vim-markdown-toc GFM -->
 
