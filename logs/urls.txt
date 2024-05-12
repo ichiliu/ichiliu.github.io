@@ -65,7 +65,6 @@ https://guaiguailei.net/study/2023-07-19-ソフトウェアライセンスの学
 https://guaiguailei.net/it/2023-07-21-coding-styles/
 https://guaiguailei.net/life/2023-08-26-在macOS上看网络电视/
 https://guaiguailei.net/it/2023-09-15-good-bye-aws-ec2-wp/
-https://guaiguailei.net/life/2023-09-16-my-hometown/
 https://guaiguailei.net/it/2023-09-17-add-disqus/
 https://guaiguailei.net/security/2023-09-20-aws-security-services/
 https://guaiguailei.net/security/2023-09-28-vuln-mgt-cvss-ssvc/
