@@ -84,6 +84,7 @@ https://guaiguailei.net/life/2024-05-12-about-honda-stream/
 https://guaiguailei.net/it/2024-05-27-mongodb/
 https://guaiguailei.net/study/2024-08-10-owasp-asvs/
 https://guaiguailei.net/it/2024-08-16-http2/
+https://guaiguailei.net/security/2024-09-14-ransomware/
 https://guaiguailei.net/aboutme/
 https://guaiguailei.net/category/books/
 https://guaiguailei.net/category/cat/
