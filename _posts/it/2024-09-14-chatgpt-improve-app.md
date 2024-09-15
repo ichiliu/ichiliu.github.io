@@ -3,7 +3,7 @@ layout: post
 title: ChatGPTを活用したWebアプリケーション作成
 subtitle: 
 cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
-thumbnail-img: https://i.imgur.com/8FHh1A9.png
+thumbnail-img: https://i.imgur.com/K2ZALZc.png
 share-img:
 tags: [AI, ChatGPT]
 categories: [IT]
@@ -27,7 +27,7 @@ categories: [IT]
 
 この記事では、Node.jsを使用してシンプルなタスク管理アプリケーションを作成し、ChatGPTの力を借りてその機能を段階的に改善していく過程を追っていく。アプリケーションは最初は基本的なタスクの追加と表示機能のみを備えているが、段階的に機能を追加し、最終的には便利で実用的なツールへと進化させていく。ここでは、ChatGPTにプロンプトを与え、アプリケーションの改善を進めていく過程を詳しく見ていこう。
 
-![file](https://i.imgur.com/8FHh1A9.png)
+![file](https://i.imgur.com/K2ZALZc.png)
 
 ### ステップ1: 基本機能の実装
 
