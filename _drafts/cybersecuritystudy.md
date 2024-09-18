@@ -141,6 +141,10 @@ MSSを提供するセキュリティベンダーを指す。
 
 * OpenFlow
 
+- PAM (Privileged Access Management)  
+  特権アクセス管理 / 特权访问管理  
+  IT環境内のユーザー、アカウント、プロセス、システムに対する高いレベルの（＝特権）アクセス権や各種権限をコントロールするためのサイバーセキュリティ戦略、及びそのためのテクノロジーを指す。
+
 * [Password Spraying Attack](https://e-words.jp/w/%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%82%B9%E3%83%97%E3%83%AC%E3%83%BC%E6%94%BB%E6%92%83.html)
   パスワードスプレー攻撃（= [Reverse Brute-force Attack](https://e-words.jp/w/%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B9%E3%83%96%E3%83%AB%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9%E6%94%BB%E6%92%83.html))
 
@@ -312,6 +316,12 @@ Web Application and API Protection (Web アプリケーションと API の保�
   |漏洞公开(Github/NVD etc.)|x|o|o|o|
   |CVE编号|x|x|x|o|
   |最早发现漏洞的人|非恶意攻击者|-|-|-|
+
+- [Zero Standing Privilege (ZSP)](https://mnb.macnica.co.jp/2024/02/zerotrust/ZSP.html)  
+  攻撃経路の最小化:IDを悪用した攻撃経路を最小化する。  
+  - ZSPの世界では、ターゲットシステムには特権IDを常時持たせない状態を目指す。
+    ![file](https://i.imgur.com/5AjaFaW.png)
+    (ref: https://mnb.macnica.co.jp/2024/02/zerotrust/ZSP.html)
 
 * [ZTNA](https://www.nri-secure.co.jp/blog/explanation-of-zero-trust-network-access)
   Zero Trust Network Access / 零信任网络访问 / ゼロトラストネットワークアクセス  
