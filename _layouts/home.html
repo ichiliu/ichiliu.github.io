@@ -4,6 +4,8 @@ layout: page
 
 {{ content }}
 
+{% assign posts = paginator.posts | default: site.posts %}
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4181701384003236"
      crossorigin="anonymous"></script>
 <!-- it blog ads -->
@@ -16,8 +18,6 @@ layout: page
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-{% assign posts = paginator.posts | default: site.posts %}
 
 <!-- role="list" needed so that `list-style: none` in Safari doesn't remove the list semantics -->
 <ul class="posts-list list-unstyled" role="list">
