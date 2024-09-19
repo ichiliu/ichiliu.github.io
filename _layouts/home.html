@@ -107,6 +107,21 @@ layout: page
 
     </article>
   </li>
+	{% if forloop.index % 3 == 0 %}
+  <li class="ad">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4181701384003236"
+			crossorigin="anonymous"></script>
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-format="fluid"
+			 data-ad-layout-key="-d2-a+6x-vk+g9"
+			 data-ad-client="ca-pub-4181701384003236"
+			 data-ad-slot="6512245172"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+  </li>
+  {% endif %}
   {% endfor %}
 </ul>
 
