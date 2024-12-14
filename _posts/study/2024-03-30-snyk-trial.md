@@ -9,7 +9,7 @@ tags: [Snyk]
 categories: [Study]
 ---
 
-About Snyk
+## About Snyk
 Snyk is a developer-first security platform that helps software-driven businesses enhance security posture by finding, prioritizing, and fixing vulnerabilities in open-source libraries and containers.
 
 https://snyk.io/
