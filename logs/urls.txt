@@ -86,6 +86,8 @@ https://guaiguailei.net/study/2024-08-10-owasp-asvs/
 https://guaiguailei.net/it/2024-08-16-http2/
 https://guaiguailei.net/it/2024-09-14-chatgpt-improve-app/
 https://guaiguailei.net/security/2024-09-14-ransomware/
+https://guaiguailei.net/study/2024-10-20-acmstudy/
+https://guaiguailei.net/study/2024-12-14-fsa-cybersecurity-guideline/
 https://guaiguailei.net/aboutme/
 https://guaiguailei.net/category/books/
 https://guaiguailei.net/category/cat/
