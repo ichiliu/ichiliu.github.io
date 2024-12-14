@@ -54,6 +54,7 @@ Ref: [Secure-by-Design | CISA](https://www.cisa.gov/resources-tools/resources/se
 - [Secure-by-Design](https://www.cisa.gov/resources-tools/resources/secure-by-design)
 - [CISA, U.S. and International Partners Announce Updated Secure by Design Principles Joint Guide｜CISA](https://www.cisa.gov/news-events/news/cisa-us-and-international-partners-announce-updated-secure-design-principles-joint-guide)
   - Initially [published in April 2023](https://www.cisa.gov/sites/default/files/2023-06/principles_approaches_for_security-by-design-default_508c.pdf)
+- (日本語訳)[セキュアバイデザイン、セキュアバイデフォルトの原則とアプローチ](https://www.nisc.go.jp/pdf/policy/kokusai/Provisional_Translation_JP_Principles_Approaches_for_Security-by-Design-Default_October.pdf)
 
 # SECURITY BY DESGIN 
 ## BACKGROUP
