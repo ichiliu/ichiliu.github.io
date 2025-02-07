@@ -88,6 +88,7 @@ https://guaiguailei.net/it/2024-09-14-chatgpt-improve-app/
 https://guaiguailei.net/security/2024-09-14-ransomware/
 https://guaiguailei.net/study/2024-10-20-acmstudy/
 https://guaiguailei.net/study/2024-12-14-fsa-cybersecurity-guideline/
+https://guaiguailei.net/study/2025-02-06-ollama-webui/
 https://guaiguailei.net/aboutme/
 https://guaiguailei.net/category/books/
 https://guaiguailei.net/category/cat/
@@ -109,3 +110,4 @@ https://guaiguailei.net/page6/
 https://guaiguailei.net/page7/
 https://guaiguailei.net/page8/
 https://guaiguailei.net/page9/
+https://guaiguailei.net/page10/
