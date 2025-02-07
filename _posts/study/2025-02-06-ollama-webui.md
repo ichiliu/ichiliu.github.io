@@ -42,7 +42,7 @@ categories: [Study]
 ## 手順
 ### Ollamaをインストール
 `Ollama`は、`Llama3`や`DeepSeek`などオープンソースのLLM（大規模言語モデル）を、ローカルPCなどの環境に実行できるツール。
-https://ollama.com/ にてDownload
+[https://ollama.com/](https://ollama.com) にてDownload
 
 ![file](https://i.imgur.com/ei6MZ65.png)
 
@@ -64,7 +64,7 @@ $ ollama run llama3.2
 
 ### 別のLLMを入れてみる
 2024年の年末の世界中を驚かせた`DeepSeek`の軽量版モデルを入れてみる。
-https://ollama.com/library/deepseek-r1/tags に1.5bのものを入れてみたい。
+[https://ollama.com/library/deepseek-r1/tags](https://ollama.com/library/deepseek-r1/tags) に1.5bのものを入れてみたい。
 
 ![file](https://i.imgur.com/Yf8zC9n.png)
 
