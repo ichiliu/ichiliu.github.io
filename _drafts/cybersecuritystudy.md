@@ -81,7 +81,8 @@ Crypter as a Service / クリプター・アズ・ア・サービス / 加密器
   - 脅威防御(SaaSにあるマルウェアやランサムウェアを検知し隔離。データコピー、大量DLなど異常値を検知)
   
 * [Credential Stuffing Attack](https://e-words.jp/w/パスワードリスト攻撃.html)
-  パスワードリスト攻撃 / クレデンシャルスタッフィング攻撃
+  パスワードリスト攻撃 / クレデンシャルスタッフィング攻撃  
+  攻撃者が入手した大量のユーザーIDとパスワードの組み合わせを使い、別のサービスへの不正ログインを試みる手法。
 
 * [CSRF](https://siteguard.jp-secure.com/blog/what-is-csrf)
   [Cross-site request forgery）：跨站请求伪造](https://www.51cto.com/article/744860.html)
