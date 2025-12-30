@@ -3,7 +3,7 @@ layout: post
 title: Burp Suiteを初期設定
 subtitle: 
 cover-img: [/assets/img/cover/security1.jpg, /assets/img/cover/security2.jpg, /assets/img/cover/security3.jpg]
-thumbnail-img: 
+thumbnail-img: https://i.imgur.com/8qqHf6O.png
 share-img:
 tags: [Security, Burp Suite]
 categories: [Security]
@@ -31,6 +31,8 @@ categories: [Security]
 `Burp Suite` は、Web アプリケーションのセキュリティを検査するための強力な統合プラットフォーム。プロキシ、スキャナ、リピーター、インターセプターなど多彩なツールが統合されており、手動ペンテストから自動脆弱性スキャンまで柔軟に対応できる。初心者からベテランまで、幅広いレベルのセキュリティテストに対応可能な点が最大の特徴。
 
 今回は、`macOS` に `Burt Suite Communication Edition` をインストールして初歩的な動作確認までやってみる。
+
+![file](https://i.imgur.com/8qqHf6O.png)
 
 # Burp Suiteのインストール
 下記サイトから自分のPCに合うバージョンをインストールする（自分は`2022.3`をインストールした）
