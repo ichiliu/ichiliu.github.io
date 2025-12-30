@@ -92,6 +92,8 @@ https://guaiguailei.net/study/2025-02-06-ollama-webui/
 https://guaiguailei.net/security/2025-05-17-cybersecurity/
 https://guaiguailei.net/security/2025-05-25-degital-agency-security-by-design/
 https://guaiguailei.net/security/2025-08-23-attack-surface-management/
+https://guaiguailei.net/security/2025-12-06-burp-suite/
+https://guaiguailei.net/study/2025-12-28-jdla-deep-learning-for-general/
 https://guaiguailei.net/aboutme/
 https://guaiguailei.net/category/books/
 https://guaiguailei.net/category/cat/
