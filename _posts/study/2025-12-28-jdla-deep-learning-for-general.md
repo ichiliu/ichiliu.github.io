@@ -3,7 +3,7 @@ layout: post
 title: Fundamentals of Machine Learning and Artificial Intelligence
 subtitle: 
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
-thumbnail-img: 
+thumbnail-img: https://i.imgur.com/UN7RLeq.png
 share-img:
 tags: [AI, ML, DL]
 categories: [Study]
