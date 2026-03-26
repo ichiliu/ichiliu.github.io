@@ -12,7 +12,33 @@ categories: [IT]
 # 概要
 github pagesを理解するためにまとめたものです。
 
->2024-04-01追記  
+## 2026-03-26追記
+macOSを再構築し、デフォルトのrubyのバージョンが2系でHomebrewでインストールするとソースビルドがすごく時間かかるため、DockerでJekyll環境を構築することにした。
+
+>colima+dockerの環境構築  
+>&nbsp;&nbsp;参照:[macOSでColimaを使用したDocker環境構築](https://guaiguailei.net/it/2026-03-26-colima-docker/)  
+>
+>colima起動  
+>```sh
+> colima start
+>```
+>
+>Jekyllサーバ起動
+>```sh
+>docker run --rm -it \
+>  -p 4000:4000 \
+>  -v "$PWD:/srv/jekyll" \
+>  jekyll/jekyll \
+>  jekyll serve --host 0.0.0.0 --livereload
+>```  
+>ブラウザ動作確認  
+>```sh
+> http://localhost:4000/
+>```
+>コンテナを停止する（Ctrl+C）  
+>colimaを停止する（colima stop）
+
+## 2024-04-01追記
 >ruby@3.3.0以上になると、`bundle exec jekyll serve --watch`でやると、次のようなエラーが出るようになった
 >```sh
 >jekyll 4.4.3 | Error:  undefined method `[]' for nil
