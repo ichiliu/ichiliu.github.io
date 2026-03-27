@@ -3,7 +3,7 @@ layout: post
 title: Install OpenClaw to my MacBook Pro
 subtitle: 
 cover-img: [/assets/img/cover/ai1.jpg, /assets/img/cover/ai2.jpg, /assets/img/cover/ai3.jpg]
-thumbnail-img: 
+thumbnail-img: https://i.imgur.com/I4Hdy8o.png
 share-img:
 tags: [AI, OpenClas]
 categories: [AI]
