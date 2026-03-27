@@ -1,0 +1,116 @@
+I"S <p>WordPress使用上的出错对应，借用好方法等的归纳总结。</p>
+
+<p><img src="https://i.imgur.com/BjvxFSn.png" alt="file" /></p>
+
+<h1 id="good-cases">Good Cases</h1>
+<h2 id="chromenews主题">ChromeNews主题</h2>
+<h3 id="主题模版的宽度变更">主题模版的宽度变更</h3>
+<p>查看CSS文件，找到了定义宽度的地方，然后把它改了过来。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /var/www/html/wp-content/themes/chromenews
+<span class="nv">$ </span><span class="nb">sudo cp</span> <span class="nt">-p</span> style.css<span class="o">{</span>,.orgi<span class="o">}</span>
+<span class="nv">$ </span><span class="nb">sudo </span>vim style.css
+<span class="nv">$ </span>diff style.css.orin style.css
+1177c1177
+&lt;     width: 66.66%<span class="p">;</span>
+<span class="nt">---</span>
+<span class="o">&gt;</span>     width: 75.00%<span class="p">;</span>
+1181c1181
+&lt;     width: 33.33%<span class="p">;</span>
+<span class="nt">---</span>
+<span class="o">&gt;</span>     width: 25.00%<span class="p">;</span>
+<span class="nv">$ </span><span class="nb">sed</span> <span class="nt">-n</span> <span class="s2">"1176,1185p"</span> style.css
+.container-wrapper <span class="c">#primary {</span>
+    width: 75.00%<span class="p">;</span>
+    padding-right: 10px<span class="p">;</span>
+<span class="o">}</span>
+.container-wrapper <span class="c">#secondary {</span>
+    width: 25.00%<span class="p">;</span>
+    padding-left: 10px<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="twenty-twenty-two主题">Twenty Twenty Two主题</h2>
+<p>试用WordPress的默认主题（Theme）Twenty Twenty Two的时候, 它的模版的宽度比较窄，根据这篇文章
+<a href="https://nendeb.com/1113">WordPress5.9 新デフォルトテーマ Twenty Twenty-Two と フルサイト編集(FSE) をチェックしています</a> 的分析，写Blog部分的Content是650px，我把它改成了850px。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /var/www/html
+<span class="nv">$ </span>find <span class="nb">.</span> <span class="nt">-name</span> theme.json
+<span class="nv">$ </span>ｃd wp-content/themes/twentytwentytwo
+<span class="nv">$ </span><span class="nb">sudo cp</span> <span class="nt">-p</span> theme.json<span class="o">{</span>,.orig<span class="o">}</span>
+<span class="nv">$ </span><span class="nb">sudo </span>vim theme.json
+<span class="nv">$ </span>diff theme.json.orig theme.json
+204c204
+&lt;            <span class="s2">"contentSize"</span>: <span class="s2">"650px"</span>,
+<span class="nt">---</span>
+<span class="o">&gt;</span>           <span class="s2">"contentSize"</span>: <span class="s2">"850px"</span>,
+</code></pre></div></div>
+
+<h2 id="自动写目录插件">自动写目录插件</h2>
+<p>参考一下文章，安装了自动写目录的插件。</p>
+
+<p><a href="https://more-field.co.jp/web/easy-table-of-contents/">【Easy Table of Contents】WordPressの記事内に目次を自動挿入する方法</a></p>
+
+<h1 id="troubleshooting">TroubleShooting</h1>
+<h2 id="contact-form不能发送邮件">Contact Form不能发送邮件</h2>
+<p>原因很明确，因为安装了WordPress的EC2没有开通对外的SMTP端口。</p>
+
+<p>我是看了这篇文章 <a href="https://www.xserver.ne.jp/blog/contact-form/">20分でできる！【WordPressブログ】お問い合わせフォームの作り方</a> 后设置好了Contact Form的，多谢了!</p>
+
+<p>上面这篇文章介绍的form,但是正如 <a href="https://guaiguailei.net/it/aws-ec2%e3%81%8b%e3%82%89ses%e7%b5%8c%e7%94%b1%e3%81%a7%e3%83%a1%e3%83%bc%e3%83%ab%e9%80%81%e4%bf%a1%e3%81%99%e3%82%8b">[AWS] EC2からSES経由でメール送信する</a> 上写的，AWS没有允许我解除沙箱的限制，所以我不能从EC2通过SES发送自己邮箱以外的邮件（在沙箱环境下，自能发送给已经Verified过的作为Sender的邮件。就是说自己发给自己）。</p>
+
+<p>Contact Form 7有一个很特别的限制条件，就是设置的From（Sender）的邮箱域名必须跟网站的域名一致。这就造成了一个问题，就是我在没有接触沙箱限制之前不能使用它。所以我先把它给Deactivate，然后把Contact的菜单先下单了再说。</p>
+
+<p>TBD:安装 <a href="https://form.run/media/contents/website-lp-creation/mw-wp-form/">MW WP Form</a> 试试。</p>
+
+<h2 id="予約投稿失敗">予約投稿失敗</h2>
+<p>公开的时候、也没有预约公开但不知道为什么会显示「予約投稿失敗」的错误，不能成功地公开。在网上查询，进行了以下两个更改之后搞好了。</p>
+
+<h3 id="更改时区">更改时区</h3>
+<p>WordPress设置的时区默认是UTC（协调世界时），而日本是JST（UTC+9）。所以在首先在「设定」的「一般」的时区选项里，把时区设置为「东京」。
+<img src="https://i.imgur.com/rtpPf3X.png" alt="file" /></p>
+
+<p>如果再有发生显示预约投稿预约失败之类错误的话，可以尝试执行以下命令:</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>yum reinstall tzdata
+<span class="nv">$ </span><span class="nb">sudo </span>systemctl restart httpd
+</code></pre></div></div>
+
+<h3 id="设定代替cron">设定代替CRON</h3>
+<p>我的情况是更改了时区后（包括后台的EC2），预约投稿失败的出错还存在。所以参考了 WordPressの予約投稿に失敗する原因と見るべき重要ポイントのまとめ！后，终于改好了。也就是说，在WordPress的文件wp-cron.php的开头里加了一行。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>vim /var/www/html/wp-cron.php
+define<span class="o">(</span><span class="s1">'ALTERNATE_WP_CRON'</span>, <span class="nb">true</span><span class="o">)</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>改完过了一阵时间后问题解决了。</p>
+
+<h2 id="mariadb宕机down机对策">MariaDB宕机（Down机）对策</h2>
+<p>在运用过程中，原因不明的mariadb宕机时有出现。以下是一个很原始的对应方法（自己20年前使用的手法）。写一个叫<code class="language-plaintext highlighter-rouge">self_check.sh</code>的脚本， 每10分钟<code class="language-plaintext highlighter-rouge">cron</code>执行一次。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/usr/bin/env bash</span>
+
+<span class="c">#set -x</span>
+
+<span class="k">while </span><span class="nb">true
+</span><span class="k">do
+	</span><span class="nv">ret</span><span class="o">=</span><span class="sb">`</span>systemctl status mariadb | <span class="nb">grep</span> <span class="s2">"active (running)"</span><span class="sb">`</span>
+	<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+		</span><span class="nb">sudo </span>systemctl restart mariadb
+	<span class="k">else
+		</span><span class="nb">break
+	</span><span class="k">fi
+done</span>
+</code></pre></div></div>
+
+<p>然后，设置<code class="language-plaintext highlighter-rouge">cron</code></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">SHELL</span><span class="o">=</span>/usr/bin/bash
+<span class="nv">PATH</span><span class="o">=</span>~/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/bin:/sbin
+
+<span class="nv">MAILTO</span><span class="o">=</span>xxxxxx@xxxxx.xxx
+
+<span class="c"># Mariadb self_check</span>
+<span class="k">*</span>/10 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> /home/ec2-user/bin/self_check.sh <span class="o">&gt;</span> /dev/null 2&gt;&amp;1
+</code></pre></div></div>
+<p>搞掂。</p>
+:ET

@@ -1,0 +1,14 @@
+I"I<h2 id="概要">概要</h2>
+<p>Google Tag Manager and Google Analytics を導入</p>
+
+<ul>
+  <li>Tag Assistantによる接続確認
+<img src="https://i.imgur.com/5pHjG2m.png" alt="file" /></li>
+</ul>
+
+<h2 id="参考リンク">参考リンク</h2>
+<ul>
+  <li><a href="https://mieru-ca.com/blog/google_tag_manager/">【入門】Googleタグマネージャー（GTM）とは？仕組みや用語解説、使い方、GA4設定まで</a></li>
+  <li><a href="https://support.google.com/tagassistant/answer/10039345#zippy=%2Cin-this-article">Troubleshooting with Tag Assistant</a></li>
+</ul>
+:ET

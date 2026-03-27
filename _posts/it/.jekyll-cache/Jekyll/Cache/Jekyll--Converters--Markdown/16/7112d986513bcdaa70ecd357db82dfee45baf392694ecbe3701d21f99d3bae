@@ -1,0 +1,109 @@
+I"3$<h2 id="概要">概要</h2>
+<p>AWSのEC2上で、LAMP環境（AWS Linux 2/Apache/MariaDB/PHP）とWordPressで構築したBlog環境に対して、性能改善など改造したことを記録します。</p>
+
+<p><img src="https://i.imgur.com/B5aalyM.png" alt="file" /></p>
+
+<h2 id="改造記録">改造記録</h2>
+
+<h3 id="メモリ不足軽減memory-shortage-mitigation">メモリ不足軽減（Memory Shortage Mitigation）</h3>
+
+<p>利用しているAWSの無料枠のt2.microでは[1vCPU, メモリ1GB]というスペックになっています（無料枠なので、仕方がありません）。</p>
+
+<p>Blog書く初期段階では、<code class="language-plaintext highlighter-rouge">504</code>のサーバー側エラーが頻発していたので、<code class="language-plaintext highlighter-rouge">top</code>コマンドでみると、明らかにメモリ不足状態に陥ている状態でした。仕方なく、ディスク容量の一部を仮想メモリ化して凌ぐことにしました（応急措置）。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/swapfile <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span>2048 ← 2GBのスワップファイルを作成
+<span class="nv">$ </span><span class="nb">sudo </span>mkswap /swapfile　← スワップ領域をセットアップ
+<span class="nv">$ </span><span class="nb">sudo </span>swapon /swapfile  ← スワップファイルを使用
+<span class="nv">$ </span><span class="nb">sudo chmod </span>600 /swapfile　←　読み書きのパーミッション設定
+</code></pre></div></div>
+<p>上記では、2GBのSwapfileを確保しています。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>swapon <span class="nt">-s</span>　←　正常に完了したことを確認
+ファイル名				タイプ		サイズ	使用済み	優先順位
+/swapfile                          file    	2097148	479744	<span class="nt">-2</span>
+</code></pre></div></div>
+<p>/etc/fstab ファイルを編集して、起動時にスワップファイルに自動マウントする。
+<code class="language-plaintext highlighter-rouge">$ sudo vi /etc/fstab</code> ファイルの末尾に次の新しい行を追加し、ファイルを保存して終了。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/swapfile swap swap defaults 0 0
+</code></pre></div></div>
+<p>参考資料：<a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-memory-swap-file/">Amazon EC2 インスタンスのスワップ領域として機能するようにメモリを割り当てる</a></p>
+
+<h3 id="アップ画像サイズ拡大expand-the-file-size-of-upload-images">アップ画像サイズ拡大（Expand the file size of upload images）</h3>
+
+<p>インストール直後では、WordPress上で画像アップロードする特の最大サイズが2MBまででした。これを拡大すればあげることが可能。</p>
+
+<p>制限しているのはPHPであり、php.iniの下記設定項目をいじることで変更可能。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>vim /etc/php.ini
+upload_max_filesize <span class="o">=</span> 2M
+</code></pre></div></div>
+
+<p>しかし、下記関連する2項目と依存関係があるので注意</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>php.ini | egrep <span class="s2">"post_max_size|memory_limit"</span>
+memory_limit <span class="o">=</span> 128M
+post_max_size <span class="o">=</span> 10M
+</code></pre></div></div>
+
+<p>依存関係は <code class="language-plaintext highlighter-rouge">upload_max_filesize &lt; post_max_size &lt; memory_limit</code> になります。</p>
+
+<h3 id="管理画面のurl変更失敗">管理画面のURL変更失敗</h3>
+<p><img src="https://i.imgur.com/ZLMPlD2.png" alt="file" />
+この2つのURL変更失敗すると（存在しないURLに変更したなど）、2度と管理画面に戻れない可能性があります（実際に遭遇してしまいました）。実際にはDBの次のテーブルとレコードに保存されているので、修正すれば元に戻せます。</p>
+
+<p><img src="https://i.imgur.com/jFk6vO6.png" alt="file" /></p>
+
+<h3 id="wordpressのrest-apiのコール失敗">WordPressのREST APIのコール失敗</h3>
+<p>「ALB-&gt;オリジン」構成の時には問題なかったが、ALBを削除し、「CloudFront-&gt;オリジン」の構成に変えた後に、WordPressのREST APIを利用していた<code class="language-plaintext highlighter-rouge">Plugins</code>からエラーが吐くようになりました。例えば、</p>
+
+<p>AIOSEOの場合：
+<img src="https://i.imgur.com/hrEYGHY.png" alt="file" /></p>
+
+<p>Google Site Kitの場合：
+<img src="https://i.imgur.com/HBZp3tM.png" alt="file" /></p>
+
+<p>ChromeのDevToolのコンソール画面には、REST APIへの通信エラーから、<code class="language-plaintext highlighter-rouge">/wp-json/*</code>の<code class="language-plaintext highlighter-rouge">uri</code>になっていることが分かりました。オリジンへのリクエストに、<code class="language-plaintext highlighter-rouge">Cookie</code>がうまくヘッダーに</p>
+
+<p>解決方法：
+CloudFrontの既存のディストリビューションに、<code class="language-plaintext highlighter-rouge">/wp-json/*</code>パスに対するビヘイビアを新規作って、キャッシュさせないようにすれば行けそう。</p>
+
+<p>パスとHTTPメソッドの設定：
+<img src="https://i.imgur.com/oYm8YOF.png" alt="file" /></p>
+
+<p>キャッシュキーとオリジンリクエストの設定：
+<img src="https://i.imgur.com/qWNkCDM.png" alt="file" /></p>
+
+<p>ついでに、WordPress REST APIの認証についての説明資料：
+<a href="https://ja.wp-api.org/guide/authentication/">WP REST API</a></p>
+
+<h3 id="レスポンスヘッダーのセキュリティ対策">レスポンスヘッダーのセキュリティ対策</h3>
+<p>デフォルトのままですと、WordPressコンテンツのレスポンスヘッダーに、<code class="language-plaintext highlighter-rouge">apache</code>と<code class="language-plaintext highlighter-rouge">php</code>のバージョン表示されています。これでは悪意の持つ人に攻撃しやすい材料を与えてしまうことになるので、非常にするようにセキュリティ対策をします。</p>
+
+<h4 id="apacheの場合">apacheの場合</h4>
+<p><code class="language-plaintext highlighter-rouge">httpd -v</code>でバージョンを確認し、Apache/2.2.x と Apache/2.4.xの場合、次のように<code class="language-plaintext highlighter-rouge">httpd.conf</code>の最後に2行を追加し、<code class="language-plaintext highlighter-rouge">httpd</code>サーバを再起動します。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ServerTokens ProductOnly
+ServerSignature off
+</code></pre></div></div>
+<p>そうすると、該当ヘッダー行には<code class="language-plaintext highlighter-rouge">server: Apache</code>のようにバージョン表示がなくなります。</p>
+
+<h4 id="phpの場合">phpの場合</h4>
+<p>デフォルトの設定では、ヘッダーに<code class="language-plaintext highlighter-rouge">x-powered-by: PHP/x.y.z</code>のようにバージョン表示されています。対策としては、<code class="language-plaintext highlighter-rouge">php.ini</code>ファイルに、以下の行になるように変更（デフォルトはOn）します。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">expose_php</span><span class="o">=</span>Off
+</code></pre></div></div>
+<p>設定の反映は、 <code class="language-plaintext highlighter-rouge">php.fpm</code>の場合は次のようにします。</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl restart php-fpm
+</code></pre></div></div>
+
+<h2 id="my-flavorite-plugins">My Flavorite Plugins</h2>
+<h3 id="wp-githuber-md">WP Githuber MD</h3>
+<p>An all-in-one Markdown plugin for your WordPress sites。紹介ページ：</p>
+<ul>
+  <li><a href="https://github.com/terrylinooo/githuber-md"> terrylinooo /githuber-md</a></li>
+  <li><a href="https://ai-research-collection.com/wp_githuber_md/">WordPress をもっと便利に！！ (WP Githuber MD プラグイン) </a></li>
+  <li><a href="https://www.rough-and-cheap.jp/wordpress/wp-githuber-md/">WP Githuber MD が微妙に使えそうなハナシ</a></li>
+</ul>
+
+:ET

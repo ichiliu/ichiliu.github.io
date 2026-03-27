@@ -1,0 +1,124 @@
+I").<h2 id="概要">概要</h2>
+<p>このBlogサイトにSEO対策を追加します。</p>
+
+<p><img src="https://i.imgur.com/xCzns6z.png" alt="file" /></p>
+
+<!-- vim-markdown-toc GFM -->
+
+<ul>
+  <li><a href="#手順">手順</a>
+    <ul>
+      <li><a href="#gemfileにパッケージを追加">Gemfileにパッケージを追加</a></li>
+      <li><a href="#bundlerを使ってプラグインをインストール">Bundlerを使ってプラグインをインストール</a></li>
+      <li><a href="#configymlにプラグインを追加">_config.ymlにプラグインを追加</a></li>
+      <li><a href="#head要素にseoタグを追加">head要素にSEOタグを追加</a></li>
+      <li><a href="#bundleでサイトをビルドします">bundleでサイトをビルドします</a></li>
+    </ul>
+  </li>
+  <li><a href="#動作確認">動作確認</a>
+    <ul>
+      <li><a href="#sitemapxmlをgscに追加">sitemap.xmlをGSCに追加</a></li>
+    </ul>
+  </li>
+  <li><a href="#まとめ">まとめ</a></li>
+  <li><a href="#参考リンク">参考リンク</a></li>
+</ul>
+
+<!-- vim-markdown-toc -->
+
+<h2 id="手順">手順</h2>
+<h3 id="gemfileにパッケージを追加">Gemfileにパッケージを追加</h3>
+<p><code class="language-plaintext highlighter-rouge">Gemfile</code>を開き、以下の1行を追加します</p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'jekyll-seo-tag'</span>
+</code></pre></div></div>
+<h3 id="bundlerを使ってプラグインをインストール">Bundlerを使ってプラグインをインストール</h3>
+<p>ターミナルでプロジェクトのルートディレクトリに移動し、次のコマンドを実行してプラグインをインストールします。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="_configymlにプラグインを追加">_config.ymlにプラグインを追加</h3>
+<p><code class="language-plaintext highlighter-rouge">_config.yml</code> に <code class="language-plaintext highlighter-rouge">jekyll-seo-tag</code> プラグインを追加します。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
+</code></pre></div></div>
+
+<h3 id="head要素にseoタグを追加">head要素にSEOタグを追加</h3>
+<p><code class="language-plaintext highlighter-rouge">_includes/head.html</code>を編集し、&lt;head&gt;セッション内に以下1行を追加します。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>｛% seo %｝
+</code></pre></div></div>
+
+<p>※注意：自分は<code class="language-plaintext highlighter-rouge">beautiful-jekyll</code>の<code class="language-plaintext highlighter-rouge">theme</code>を使っているので<code class="language-plaintext highlighter-rouge">_includes/head.html</code>を編集対象にしていますが、他の<code class="language-plaintext highlighter-rouge">theme</code>を利用している場合は、別のファイルを編集することになる可能性があります。</p>
+
+<h3 id="bundleでサイトをビルドします">bundleでサイトをビルドします</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--watch</span>
+</code></pre></div></div>
+
+<h2 id="動作確認">動作確認</h2>
+<p><code class="language-plaintext highlighter-rouge">http://127.0.0.1:4000</code>を開き、ページに<code class="language-plaintext highlighter-rouge">html</code>ソースコードを確認します。
+以下のコードが追加されることが確認できました。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="c">&lt;!-- Begin Jekyll SEO tag v2.8.0 --&gt;</span>
+<span class="nt">&lt;title&gt;</span>IT技術者的BLOG<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"generator"</span> <span class="na">content=</span><span class="s">"Jekyll v3.9.3"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:title"</span> <span class="na">content=</span><span class="s">"IT技術者的BLOG"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"Ganxiang Liu"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:locale"</span> <span class="na">content=</span><span class="s">"en_US"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"canonical"</span> <span class="na">href=</span><span class="s">"http://localhost:4000/"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:url"</span> <span class="na">content=</span><span class="s">"http://localhost:4000/"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:site_name"</span> <span class="na">content=</span><span class="s">"IT技術者的BLOG"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"og:type"</span> <span class="na">content=</span><span class="s">"website"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"next"</span> <span class="na">href=</span><span class="s">"http://localhost:4000/page2"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"twitter:card"</span> <span class="na">content=</span><span class="s">"summary"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"twitter:title"</span> <span class="na">content=</span><span class="s">"IT技術者的BLOG"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"application/ld+json"</span><span class="nt">&gt;</span>
+<span class="p">{</span><span class="dl">"</span><span class="s2">@context</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">https://schema.org</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">@type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">WebSite</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:{</span><span class="dl">"</span><span class="s2">@type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Person</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">Ganxiang Liu</span><span class="dl">"</span><span class="p">},</span><span class="dl">"</span><span class="s2">headline</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">IT技術者的BLOG</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">IT技術者的BLOG</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">http://localhost:4000/</span><span class="dl">"</span><span class="p">}</span><span class="nt">&lt;/script&gt;</span>
+<span class="c">&lt;!-- End Jekyll SEO tag --&gt;</span>
+</code></pre></div></div>
+
+<h3 id="sitemapxmlをgscに追加">sitemap.xmlをGSCに追加</h3>
+<p>23/10/17に書いたこのブログは、後日にGSC (Google Search Console)をみたら、相変わらずindexed pagesがない状態。おかしいなと思っていろいろ調べたら、<code class="language-plaintext highlighter-rouge">sitemap.xml</code>を追加していないのが一番の原因かなと自分が考えました。</p>
+
+<p>早速GSCに<code class="language-plaintext highlighter-rouge">sitemap.xml</code>を追加しました(http://guaiguailei.net/sitemap.xml)。 追加後の画面には、</p>
+
+<p><img src="https://i.imgur.com/n2aZWLr.png" alt="file" /></p>
+
+<p>と表示され、正しい状態かのように見えましたが、実際の<code class="language-plaintext highlighter-rouge">sitemap.xml</code>をGSC経由で開いてみたら、なんと、各Blogの記事のurlが</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:4000/
+</code></pre></div></div>
+
+<p>で始まるようになっています。これでは、正しくindexedされる訳がない。</p>
+
+<p>またいろいろ調べたら、<code class="language-plaintext highlighter-rouge">_config.yml</code>に以下の2行を追加すれば、<code class="language-plaintext highlighter-rouge">github.com</code>にて正しく<code class="language-plaintext highlighter-rouge">sitemap.yml</code>を生成できることが分かりました。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url: "https://guaiguailei.net"
+baseurl: ""
+</code></pre></div></div>
+
+<p>ちなみに、同じファイル内で<code class="language-plaintext highlighter-rouge">permalink</code>は次のように設定しています</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>permalink: /:categories/:year-:month-:day-:title
+</code></pre></div></div>
+
+<p>変更したら、<code class="language-plaintext highlighter-rouge">github.com</code>にpushして、正しく<code class="language-plaintext highlighter-rouge">sitemap.xml</code>を作ることを確認しました。</p>
+
+<h2 id="まとめ">まとめ</h2>
+<p>今回のSEO対策で以下のことが分かりました：</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Jekyll</code>を普通に使うだけでは、SEO対策できていない可能性が高い。</li>
+  <li>SEO対策は簡単に導入できるので、おすすめです（後日<code class="language-plaintext highlighter-rouge">Google Search Console</code>で検証しないといけないですが）</li>
+  <li>何をやろうとしても、<code class="language-plaintext highlighter-rouge">ChatGPT</code>は本当にお役に立つので、まだ使っていない人には、絶対オススメです。</li>
+  <li>(23/10/18追記)SEO対策には、今回紹介した<code class="language-plaintext highlighter-rouge">plugin</code>を入れるだけでは足りなくて、<code class="language-plaintext highlighter-rouge">sitemap.xml</code>を追加しましょう。</li>
+</ul>
+
+<h2 id="参考リンク">参考リンク</h2>
+<ul>
+  <li><a href="https://blog.webjeda.com/optimize-jekyll-seo/#what-is-required-in-a-jekyll-website-for-seo">10 Must do Jekyll SEO optimizations</a></li>
+  <li>ChatGPT</li>
+</ul>
+
+:ET

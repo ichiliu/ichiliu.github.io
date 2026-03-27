@@ -1,0 +1,239 @@
+I"FF<!-- vim-markdown-toc GFM -->
+
+<ul>
+  <li><a href="#概要">概要</a></li>
+  <li><a href="#npm">NPM</a>
+    <ul>
+      <li><a href="#プロジェクトパッケージ">プロジェクト=パッケージ</a></li>
+      <li><a href="#packagejson">package.json</a>
+        <ul>
+          <li><a href="#パッケージ作成">パッケージ作成</a>
+            <ul>
+              <li><a href="#dependenciesの表記">dependenciesの表記</a></li>
+              <li><a href="#scripts">scripts</a></li>
+              <li><a href="#main">main</a></li>
+              <li><a href="#bin">bin</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#package-lockjson">package-lock.json</a></li>
+      <li><a href="#packagejsonとpackage-lockjsonの優先順位">package.jsonとpackage-lock.jsonの優先順位</a></li>
+      <li><a href="#ユースケース">ユースケース</a>
+        <ul>
+          <li><a href="#npm-install">npm install</a></li>
+          <li>[npm install <package>](#npm-install-package)</package></li>
+          <li><a href="#npm-audit">npm audit</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#参考資料thx">参考資料（THX）</a></li>
+</ul>
+
+<!-- vim-markdown-toc -->
+<h1 id="概要">概要</h1>
+<p><code class="language-plaintext highlighter-rouge">Node.js</code>を仕事上で最近1,2ヶ月初めて使うようになったので、調べて理解したものをまとめる（といっても内容的なは初歩的なものである）。</p>
+
+<p><img src="https://i.imgur.com/a70XpT1.png" alt="file" /></p>
+
+<h1 id="npm">NPM</h1>
+<p><code class="language-plaintext highlighter-rouge">npm（node package manager）</code>は、<code class="language-plaintext highlighter-rouge">node.js</code>のパッケージを関するする<code class="language-plaintext highlighter-rouge">CLI</code>。パッケージの</p>
+<ul>
+  <li>作成</li>
+  <li>インストール</li>
+  <li><code class="language-plaintext highlighter-rouge">npm</code>への公開</li>
+</ul>
+
+<p>などができる。別の<code class="language-plaintext highlighter-rouge">CLI</code>である<code class="language-plaintext highlighter-rouge">Yarn</code>（「ヤーン」、<code class="language-plaintext highlighter-rouge">Facebook</code>が開発した）もあるが、やはり<code class="language-plaintext highlighter-rouge">npm</code>が一番メジャーである。</p>
+
+<h2 id="プロジェクトパッケージ">プロジェクト=パッケージ</h2>
+<p>プロジェクト=コードのまとめり（<code class="language-plaintext highlighter-rouge">repo</code>単位とリニアイコールと考えてもいいかもしれない）。</p>
+
+<h2 id="packagejson">package.json</h2>
+<p>パッケージ管理の設計書みたいなもので、<code class="language-plaintext highlighter-rouge">package.json</code>を読み込むことで同じパッケージをインストールすることができるような仕組みになっている。</p>
+
+<p><code class="language-plaintext highlighter-rouge">npm</code>では、「パッケージ=<code class="language-plaintext highlighter-rouge">package.json</code>がいる<strong>親ディレクトリ</strong>に含まれるファイル群」であり、<code class="language-plaintext highlighter-rouge">npm</code>のコマンドは、通常<code class="language-plaintext highlighter-rouge">package.json</code>がいるプロジェクトの「ルートディレクトリ」で実行される。</p>
+
+<h3 id="パッケージ作成">パッケージ作成</h3>
+<p>パッケージの「ルートディレクトリ」にて、下記コマンドを実行し、<code class="language-plaintext highlighter-rouge">package.json</code>を生成する。インタラクティブの質問をスキップするには<code class="language-plaintext highlighter-rouge">-y</code>オプションを付ける。</p>
+
+<p>以下に、<code class="language-plaintext highlighter-rouge">npm init</code>を実行した際に出てきた質問のデフォルトと意味あいを書いておく。</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See <span class="sb">`</span>npm <span class="nb">help </span>init<span class="sb">`</span> <span class="k">for </span>definitive documentation on these fields
+and exactly what they <span class="k">do</span><span class="nb">.</span>
+
+Use <span class="sb">`</span>npm <span class="nb">install</span> &lt;pkg&gt;<span class="sb">`</span> afterwards to <span class="nb">install </span>a package and
+save it as a dependency <span class="k">in </span>the package.json file.
+
+Press ^C at any <span class="nb">time </span>to quit.
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">質問</th>
+      <th style="text-align: left">説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">package name: (user_details)</td>
+      <td style="text-align: left">デフォルトは括弧内のディレクトリ名</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">version: (1.0.0)</td>
+      <td style="text-align: left">デフォルト<code class="language-plaintext highlighter-rouge">1.0.0</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">description:</td>
+      <td style="text-align: left">説明</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">entry point: (user_details.js)</td>
+      <td style="text-align: left">エントリポイント。デフォルトは中にある<code class="language-plaintext highlighter-rouge">js</code>ファイル名（複数ある場合は？）</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">test command:</td>
+      <td style="text-align: left">テスト用のスクリプト</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">git repository:</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">git repo URL</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">keywords:</td>
+      <td style="text-align: left">パッケージ公開時のための検索キーワード</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">author:</td>
+      <td style="text-align: left">著者</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">license: (ISC)</td>
+      <td style="text-align: left">パッケージのライセンス</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="dependenciesの表記">dependenciesの表記</h4>
+<p><code class="language-plaintext highlighter-rouge">Semver (Semantic Versioning）</code>の規則に従う必要がある（<code class="language-plaintext highlighter-rouge">3.1.4</code>があるとする場合、<code class="language-plaintext highlighter-rouge">3</code>は<code class="language-plaintext highlighter-rouge">Major</code>、利用側は一般的にプログラム修正が必要、<code class="language-plaintext highlighter-rouge">1</code>は<code class="language-plaintext highlighter-rouge">Minor</code>、新機能追加だが、利用側は修正しなくてもそのまま使える。<code class="language-plaintext highlighter-rouge">4</code>は<code class="language-plaintext highlighter-rouge">Patch</code>で、不具合修正などでバージョンが上がる）。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  "dependencies": {
+    "express": "^4.17.1",
+    "request": "~2.88.0"
+  },
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">^</code>（キャレット， <code class="language-plaintext highlighter-rouge">caret</code>）や<code class="language-plaintext highlighter-rouge">~</code>（チルダ、<code class="language-plaintext highlighter-rouge">tilde</code>）を先頭に付ける場合とつけない場合の意味合いを下表にまとめた。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">例</th>
+      <th style="text-align: left">意味あい</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">^3.1.4</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Major</code>は一致し<code class="language-plaintext highlighter-rouge">Minor</code>と<code class="language-plaintext highlighter-rouge">Patch</code>は指定されたもの以上。<code class="language-plaintext highlighter-rouge">3.2.5</code>は合致、<code class="language-plaintext highlighter-rouge">3.1.3</code>は合致しない</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">~2.7.18</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Major</code>と<code class="language-plaintext highlighter-rouge">Minor</code>は一致し<code class="language-plaintext highlighter-rouge">Patch</code>は指定されたもの以上。<code class="language-plaintext highlighter-rouge">2.7.20</code>は合致、<code class="language-plaintext highlighter-rouge">2.8.8</code>は合致しない</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">0.6.18</code></td>
+      <td style="text-align: left">先頭に何も付いていない場合はちょうどそのバージョンである</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">package-lock.json</code>がなく、<code class="language-plaintext highlighter-rouge">dependencies</code>がローカルにインストールされていない状態で<code class="language-plaintext highlighter-rouge">npm install</code>が実行されると、<code class="language-plaintext highlighter-rouge">package.json</code>　にある<code class="language-plaintext highlighter-rouge">dependencies</code>のルールに従い、指定されたバージョンにマッチする中で<strong>最も新しいバージョン</strong>がインストールされる。</p>
+
+<p><code class="language-plaintext highlighter-rouge">dependencies</code>を編集（追加/バージョン変更など）をする際、<code class="language-plaintext highlighter-rouge">package.json</code>は直接編集しないで、<code class="language-plaintext highlighter-rouge">npm</code>を通じて行うべき。
+注意：<code class="language-plaintext highlighter-rouge">npm v4</code>までは、<code class="language-plaintext highlighter-rouge">dependencies</code>として追加するときに<code class="language-plaintext highlighter-rouge">--save</code>を指定しないと<code class="language-plaintext highlighter-rouge">package.json</code>に反映されないが、<code class="language-plaintext highlighter-rouge">npm v5</code>以降はデフォルトで反映するようになった。</p>
+
+<p><code class="language-plaintext highlighter-rouge">devDependency（devDep）</code>として追加する場合は<code class="language-plaintext highlighter-rouge">-D（--save-dev</code>のエイリアス）を指定する。</p>
+
+<p>バージョン指定する場合は、<code class="language-plaintext highlighter-rouge">package@version</code>の形を書けばいい、例：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install react@latest
+$ npm install request@2.88.2
+</code></pre></div></div>
+<p>パッケージの削除は<code class="language-plaintext highlighter-rouge">npm uninstall &lt;package&gt;</code>。</p>
+
+<h4 id="scripts">scripts</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"scripts": {
+    "start": "node index.js",
+    "lint": "eslint",
+    "cmd": "command arg",
+	"precmd": "pre command arg",
+	"postcmd": "post command arg"
+  },
+</code></pre></div></div>
+<p>コマンドの別名（エイリアス）であり、<code class="language-plaintext highlighter-rouge">npm run &lt;name&gt;</code>のように実行できる。<code class="language-plaintext highlighter-rouge">pre&lt;name&gt;</code>や<code class="language-plaintext highlighter-rouge">post&lt;name&gt;</code>の別名があると、<code class="language-plaintext highlighter-rouge">cmd</code>の実行前に<code class="language-plaintext highlighter-rouge">precmd</code>が、実行後<code class="language-plaintext highlighter-rouge">postcmd</code>が実行される具合。</p>
+
+<h4 id="main">main</h4>
+<p>そのパッケージを外からインポートするときにどの JavaScript ファイルが入り口であるかを指定するものである。例えば、パッケージ<code class="language-plaintext highlighter-rouge">request</code>を利用する場合、</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const req = require('request');
+</code></pre></div></div>
+<p>その<code class="language-plaintext highlighter-rouge">request</code>の<code class="language-plaintext highlighter-rouge">package.json（node_modules/request/package.json)</code>をみると、</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>省略
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "&gt;= 6"
+  },
+  "main": "index.js",
+  "files": [
+    "lib/",
+    "index.js",
+    "request.js"
+  ],
+  "dependencies": {
+    "aws-sign2": "~0.7.0",
+省略
+</code></pre></div></div>
+<p>のように、<code class="language-plaintext highlighter-rouge">main: index.js,</code>になっている。これは、<code class="language-plaintext highlighter-rouge">index.js</code>がエクスポートした値が、<code class="language-plaintext highlighter-rouge">require('request')</code>の戻り値になることを表している。</p>
+
+<p><code class="language-plaintext highlighter-rouge">index.js</code>の中身をみると、<code class="language-plaintext highlighter-rouge">module.exports = request</code>になっている。その値が、<code class="language-plaintext highlighter-rouge">const req</code>に代入されていることになる。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Exports
+
+module.exports = request
+request.Request = require('./request')
+request.initParams = initParams
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">package.json</code>の<code class="language-plaintext highlighter-rouge">main</code>は、そのパッケージを<code class="language-plaintext highlighter-rouge">NPM</code>で公開しない限り重要ではない。</p>
+
+<h4 id="bin">bin</h4>
+<p><code class="language-plaintext highlighter-rouge">bin</code>も、外から使われるものでなければ重要ではないものなので、割愛する。</p>
+
+<h2 id="package-lockjson">package-lock.json</h2>
+<p><code class="language-plaintext highlighter-rouge">dependency</code>のバージョンを<code class="language-plaintext highlighter-rouge">lock</code>(固定)するためのファイルであり、<code class="language-plaintext highlighter-rouge">npm install</code>の実行時に自動的に作成される。<code class="language-plaintext highlighter-rouge">npm v5</code>以降に導入され、<code class="language-plaintext highlighter-rouge">dependency、dependency</code>の<code class="language-plaintext highlighter-rouge">dependency</code>…と間接的なものも含めすべての<code class="language-plaintext highlighter-rouge">dependency</code>のバージョン(とその<code class="language-plaintext highlighter-rouge">integrity</code>）が記録される。</p>
+
+<h2 id="packagejsonとpackage-lockjsonの優先順位">package.jsonとpackage-lock.jsonの優先順位</h2>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">package-lock.json</code>が存在しないとき
+  <code class="language-plaintext highlighter-rouge">package.json</code>に基づいて<code class="language-plaintext highlighter-rouge">dependency</code>がインストールされ、実際にインストールされたバージョンが<code class="language-plaintext highlighter-rouge">package-lock.json</code>に記録する。</li>
+  <li><code class="language-plaintext highlighter-rouge">package-lock.json</code>が存在するとき
+  <code class="language-plaintext highlighter-rouge">package-lock.json</code>に基づいてインストールされるが、<code class="language-plaintext highlighter-rouge">package.json</code>との矛盾があれば、<code class="language-plaintext highlighter-rouge">package.json</code>が優先され、実際にインストールされたバージョンが<code class="language-plaintext highlighter-rouge">package-lock.json</code>に記録する。</li>
+</ul>
+
+<h2 id="ユースケース">ユースケース</h2>
+<h3 id="npm-install">npm install</h3>
+<p>開発中のソースコードだけあり、<code class="language-plaintext highlighter-rouge">dependencies</code>がインストールされていないとき。</p>
+
+<h3 id="npm-install-">npm install <package></package></h3>
+<p><code class="language-plaintext highlighter-rouge">dependencies</code>はインストールされたが、新たにパッケージを追加したいとき。</p>
+
+<h3 id="npm-audit">npm audit</h3>
+<p>脆弱性のある<code class="language-plaintext highlighter-rouge">dependency</code>があるか自動でチェックすることができる（報告されているものならば）。</p>
+
+<h1 id="参考資料thx">参考資料（THX）</h1>
+<ul>
+  <li><a href="https://qiita.com/righteous/items/e5448cb2e7e11ab7d477">【初心者向け】NPMとpackage.jsonを概念的に理解する</a></li>
+</ul>
+
+:ET

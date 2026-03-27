@@ -1,0 +1,147 @@
+I"t<h1 id="macosでcolimaを使用したdocker環境構築">macOSでColimaを使用したDocker環境構築</h1>
+
+<!-- vim-markdown-toc GFM -->
+
+<ul>
+  <li><a href="#はじめに">はじめに</a>
+    <ul>
+      <li><a href="#colimaの特徴">Colimaの特徴</a></li>
+      <li><a href="#colimaのインストール">Colimaのインストール</a></li>
+      <li><a href="#テストコンテナの起動">テストコンテナの起動</a></li>
+    </ul>
+  </li>
+  <li><a href="#まとめ">まとめ</a></li>
+</ul>
+
+<!-- vim-markdown-toc -->
+
+<h2 id="はじめに">はじめに</h2>
+
+<p>このガイドでは、macOSでColimaを使用してDocker環境を構築する方法について説明します。Colimaは、macOS上で軽量なLinux仮想マシンを提供し、Dockerを実行するための便利なツールです。</p>
+
+<p>自分のmacOS上でDockerを使用するのに、Colimaを使用するのは、古いスペックのサブ機上で構築するため、GUIのDocker Desktopだと重くて、軽量&amp;CLI中心のColimaが適していると考えたから。</p>
+
+<p><img src="https://i.imgur.com/9Acm2hM.png" alt="file" /></p>
+
+<h3 id="colimaの特徴">Colimaの特徴</h3>
+<ul>
+  <li>Lima（仮想化）＋containerd/Docker</li>
+  <li>必要最小限だけ動かす</li>
+  <li>Docker Desktopよりかなり軽量<br />
+  古いmacOS上でも快適に動作する</li>
+  <li>軽量＆CLI中心<br />
+  使い方（超基本）</li>
+  <li>起動
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>colima start  
+</code></pre></div>    </div>
+  </li>
+  <li>停止
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>colima stop  
+</code></pre></div>    </div>
+  </li>
+  <li>状態確認
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>colima status  
+</code></pre></div>    </div>
+  </li>
+  <li>Docker互換<br />
+  普通のDockerコマンドがそのまま使える</li>
+  <li>無料・オープンソース<br />
+  ライセンス問題なし</li>
+</ul>
+
+<h3 id="colimaのインストール">Colimaのインストール</h3>
+<ul>
+  <li>Homebrewを使用してColimaをインストールします。ターミナルを開いて、以下のコマンドを実行します
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% brew <span class="nb">install </span>docker colima
+</code></pre></div>    </div>
+  </li>
+  <li>念の為に確認する
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% docker version
+Client: Docker Engine - Community
+Version:           29.3.1
+API version:       1.54
+Go version:        go1.26.1
+Git commit:        c2be9ccfc3
+Built:             Wed Mar 25 14:22:32 2026
+OS/Arch:           darwin/amd64
+Context:           default
+
+% colima version
+colima version 0.10.1
+git commit: ed905203afdbc6fd4eae6cc301918099ff31e86e
+
+runtime: docker
+<span class="nb">arch</span>: x86_64
+client: v29.3.1
+server: v29.2.1
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="テストコンテナの起動">テストコンテナの起動</h3>
+<ul>
+  <li>Colima起動
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% colima start
+INFO[0001] starting colima
+INFO[0001] runtime: docker
+INFO[0005] creating and starting ...                     <span class="nv">context</span><span class="o">=</span>vm
+INFO[0006] downloading disk image ...                    <span class="nv">context</span><span class="o">=</span>vm
+INFO[0102] provisioning ...                              <span class="nv">context</span><span class="o">=</span>docker
+INFO[0106] starting ...                                  <span class="nv">context</span><span class="o">=</span>docker
+INFO[0108] <span class="k">done</span>
+</code></pre></div>    </div>
+  </li>
+  <li>hello-worldコンテナの起動
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% docker run hello-world
+Unable to find image <span class="s1">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
+4f55086f7dd0: Pull <span class="nb">complete
+</span>d5e71e642bf5: Download <span class="nb">complete
+</span>Digest: sha256:452a468a4bf985040037cb6d5392410206e47db9bf5b7278d281f94d1c2d0931
+Status: Downloaded newer image <span class="k">for </span>hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">"hello-world"</span> image from the Docker Hub.
+    <span class="o">(</span>amd64<span class="o">)</span>
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ <span class="nv">$ </span>docker run <span class="nt">-it</span> ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre></div>    </div>
+  </li>
+  <li>Colima状態確認
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% colima status
+INFO[0001] colima is running using macOS Virtualization.Framework
+INFO[0001] <span class="nb">arch</span>: x86_64
+INFO[0001] runtime: docker
+INFO[0001] mountType: virtiofs
+INFO[0001] docker socket: unix:///Volumes/ST500LT/&lt;user_name&gt;.colima/default/docker.sock
+INFO[0001] containerd socket: unix:///Volumes/ST500LT/&lt;user_name&gt;.colima/default/containerd.sock
+</code></pre></div>    </div>
+  </li>
+  <li>Colima停止
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% colima stop
+INFO[0000] stopping colima
+INFO[0001] stopping ...                                  <span class="nv">context</span><span class="o">=</span>docker
+INFO[0001] stopping ...                                  <span class="nv">context</span><span class="o">=</span>vm
+INFO[0006] <span class="k">done</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="まとめ">まとめ</h2>
+<p>Colima+Dockerで古いスペックのmacOS上でもCLIで快適なDocker環境を構築することができた。今後は、この環境を活用して、様々なDockerプロジェクトを試してみたいと思います。</p>
+:ET

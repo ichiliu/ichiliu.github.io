@@ -1,0 +1,43 @@
+I"T<h2 id="概要">概要</h2>
+<p>サイバー脅威の事例をメモ書きします。</p>
+
+<!-- vim-markdown-toc GFM -->
+
+<ul>
+  <li><a href="#フィッシング">フィッシング</a></li>
+  <li><a href="#サポート詐欺偽セキュリティ警告">サポート詐欺(偽セキュリティ警告)</a>
+    <ul>
+      <li><a href="#ipaが疑似体験サイトを公開">IPAが疑似体験サイトを公開</a></li>
+      <li><a href="#seo専門家の辻正浩さんの記事">SEO専門家の辻正浩さんの記事</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- vim-markdown-toc -->
+
+<h2 id="フィッシング">フィッシング</h2>
+<h2 id="サポート詐欺偽セキュリティ警告">サポート詐欺(偽セキュリティ警告)</h2>
+<p>サポート詐欺は、Webブラウザに偽のセキュリティ警告が表示され、サポート電話やチャットを通じて言葉巧みに、被サポート費用としてGoogle Play Gift CardやApply Gift Cardを買わせて支払わせたり、被害者自身がマルウェアをインストールするように誘導したりする手口。</p>
+
+<p><img src="https://i.imgur.com/gzWPuwU.png" alt="file" />
+(引用元:https://webweb.hatenablog.com/blog/search-engine/support-scam)</p>
+
+<h3 id="ipaが疑似体験サイトを公開">IPAが疑似体験サイトを公開</h3>
+<p>2023年12月19日に、IPAは<a href="https://www.ipa.go.jp/security/anshin/measures/fakealert.html">偽セキュリティ警告（サポート詐欺）対策特集ページ</a>を公開しました。体験サイトに移動し、「体験サイト起動」ボタンをクリックすると、体験できます。</p>
+
+<p><img src="https://i.imgur.com/QhWn2O3.png" alt="file" />
+(引用元：https://www.ipa.go.jp/security/anshin/measures/fakealert.html)</p>
+
+<p>音声と画面表示を使って、よくできています。IPAの説明では、</p>
+<blockquote>
+  <p>体験サイトで学んでいただきたいことは、全画面表示となっている状態から、「ESCキー」を長押しして「閉じるボタン」を出現させ、ブラウザを閉じる操作になります。</p>
+</blockquote>
+
+<p>と書かれています。</p>
+
+<h3 id="seo専門家の辻正浩さんの記事">SEO専門家の辻正浩さんの記事</h3>
+<p><a href="https://webweb.hatenablog.com/blog/search-engine/support-scam">サポート詐欺をGoogle広告が拡散／実際に表示された詐欺誘導広告を100以上集めました</a> という記事には、事例が沢山紹介され、とてもいい参考になります。</p>
+
+<p>中には、<a href="https://news.tv-asahi.co.jp/news_society/articles/900000983.html">“PCウイルス”サポート詐欺…MS社かたる“2人のマイク”直撃…詐欺指摘で声荒らげる</a> の事例では、朝日テレビが2023/12/14に放送した番組の様子を書かれています。</p>
+
+:ET

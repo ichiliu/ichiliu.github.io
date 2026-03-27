@@ -1,0 +1,238 @@
+I"vS<h2 id="概要">概要</h2>
+<p>HTTP/2は、ウェブ通信の速度、効率、およびパフォーマンスを向上させるために設計されたHTTPの主要な改訂版である。HTTP/1.1を基盤としながら、以下のような重要な改善点を導入している。</p>
+
+<ol>
+  <li>マルチプレクシング (Multiplexing): 複数のリクエストとレスポンスを1つの接続で同時に送信できるようにし、レイテンシを削減し、ページの読み込み速度を向上させる。</li>
+  <li>ヘッダー圧縮: HPACK圧縮を使用してHTTPヘッダーのサイズを縮小し、データ伝送を高速化する。</li>
+  <li>サーバプッシュ: サーバが必要なリソースを事前にクライアントに送信できるようにし、ページの読み込みをさらに迅速にする。</li>
+</ol>
+
+<p><img src="https://i.imgur.com/OVg2BkD.png" alt="file" /></p>
+
+<!-- vim-markdown-toc GFM -->
+
+<ul>
+  <li><a href="#httpプロトコルの各バージョンの歴史">httpプロトコルの各バージョンの歴史</a></li>
+  <li><a href="#http2のサーバ間通信の検証">http/2のサーバ間通信の検証</a></li>
+  <li><a href="#手順">手順</a>
+    <ul>
+      <li><a href="#webserver">webServer</a></li>
+      <li><a href="#apiserver">apiServer</a></li>
+      <li><a href="#client">Client</a></li>
+    </ul>
+  </li>
+  <li><a href="#まとめ">まとめ</a></li>
+</ul>
+
+<!-- vim-markdown-toc -->
+
+<p>Ref: https://coolicehost.com/http2-protocol.html</p>
+
+<h2 id="httpプロトコルの各バージョンの歴史">httpプロトコルの各バージョンの歴史</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">バージョン</th>
+      <th style="text-align: left">リリース年</th>
+      <th style="text-align: left">主な特徴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">HTTP/1.0</td>
+      <td style="text-align: left">1996年</td>
+      <td style="text-align: left">- 初期のHTTPバージョン<br />- 各リクエストごとに新しいTCP接続を確立</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">HTTP/1.1</td>
+      <td style="text-align: left">1997年</td>
+      <td style="text-align: left">- パーシステント接続を導入（複数のリクエストで同じTCP接続を使用）<br />- ホストヘッダーの必須化<br />- チャンク転送エンコーディングのサポート</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">HTTP/2</td>
+      <td style="text-align: left">2015年</td>
+      <td style="text-align: left">- マルチプレクシングによる複数リクエストの同時処理<br />- ヘッダー圧縮（HPACK）<br />- サーバプッシュ機能の追加</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="http2のサーバ間通信の検証">http/2のサーバ間通信の検証</h2>
+<p>以下のような構成で検証したい。</p>
+
+<p><img src="https://i.imgur.com/kBS3nsg.png" alt="file" /></p>
+
+<p>検証したいこと</p>
+<ul>
+  <li>Clientからhttp/2のプロトコルで、webServer.jsに通信する</li>
+  <li>webServer.jsはボディとヘッダーをそのままapiServer.jsに転送</li>
+  <li>apiServer.jsは受信したヘッダーとボティを出力し、簡単なメッセージをClientに返す</li>
+  <li>webServer.jsはapiServer.jsから受信したレスポンスをClientに返す</li>
+</ul>
+
+<p>今回は<code class="language-plaintext highlighter-rouge">node.js</code>を利用して検証する。</p>
+
+<h2 id="手順">手順</h2>
+<h3 id="webserver">webServer</h3>
+
+<p>最初は<code class="language-plaintext highlighter-rouge">SSL/TLS</code>を使わずにサーバを立てて検証したが、Client側で<code class="language-plaintext highlighter-rouge">curl</code>にてリクエストを送信したところ</p>
+<blockquote>
+  <p>curl: (1) Received HTTP/0.9 when not allowed</p>
+</blockquote>
+
+<p>という訳の分からないエラーメッセージが表示された。いろいろ調べた所、どうやら<code class="language-plaintext highlighter-rouge">SSL/TLS</code>を使えば解決できそうということで、自己証明書を作ることにした。</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>openssl req <span class="nt">-x509</span> <span class="nt">-newkey</span> rsa:2048 <span class="nt">-nodes</span> <span class="nt">-keyout</span> server-key.pem <span class="nt">-out</span> server-cert.pem <span class="nt">-days</span> 365
+</code></pre></div></div>
+
+<p>各オプションとその意味を以下に説明する</p>
+
+<ul>
+  <li>-x509: X.509形式の証明書を生成するオプション。X.509は証明書の標準フォーマット。</li>
+  <li>-newkey rsa:2048: 新しいRSA鍵ペアを生成し、鍵の長さを2048ビットに設定。</li>
+  <li>-nodes: 秘密鍵をパスフレーズなしで生成。</li>
+  <li>-keyout server-key.pem: 秘密鍵を server-key.pem というファイルに保存。</li>
+  <li>-out server-cert.pem: 証明書を server-cert.pem というファイルに保存。</li>
+  <li>-days 365: 証明書の有効期限を365日間に設定オプション。</li>
+</ul>
+
+<p>以下は<code class="language-plaintext highlighter-rouge">webServer.js</code>のソース</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">http2</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// サーバ用の証明書とキーを読み込み</span>
+<span class="kd">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http2</span><span class="p">.</span><span class="nx">createSecureServer</span><span class="p">({</span>
+	<span class="na">key</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">server-key.pem</span><span class="dl">'</span><span class="p">),</span>
+	<span class="na">cert</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">server-cert.pem</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">stream</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="c1">// ローカルのAPIサーバへの接続を確立</span>
+	<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">http2</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:7001</span><span class="dl">'</span><span class="p">);</span>
+
+	<span class="c1">// クライアントからのリクエストヘッダーをAPIサーバに転送</span>
+	<span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
+	<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">response</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">headers</span><span class="p">,</span> <span class="nx">flags</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// APIサーバからのレスポンスヘッダーをクライアントに転送</span>
+		<span class="nx">stream</span><span class="p">.</span><span class="nx">respond</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
+	<span class="p">});</span>
+
+	<span class="nx">req</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">);</span>
+	<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// APIサーバからのレスポンスボディをクライアントに転送</span>
+		<span class="nx">stream</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
+	<span class="p">});</span>
+
+	<span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="c1">// レスポンスが完了したら、クライントとの接続を終了</span>
+		<span class="nx">stream</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+		<span class="nx">client</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+	<span class="p">});</span>
+
+	<span class="c1">// クライアントからのリクエストボティがあれば、APIサーバに転送</span>
+	<span class="nx">stream</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
+	<span class="p">});</span>
+
+	<span class="nx">stream</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+	<span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">7000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Secure HTTP/2 server listening on port 7000</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">webServer</code>が<code class="language-plaintext highlighter-rouge">SSL/TLS</code>の終端になるので、<code class="language-plaintext highlighter-rouge">apiServer</code>へは普通の<code class="language-plaintext highlighter-rouge">http</code>プロトコルで行ける。</p>
+
+<p>Webサーバを立ち上げる。</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node webServer.js
+Secure HTTP/2 server listening on port 7000
+</code></pre></div></div>
+
+<h3 id="apiserver">apiServer</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">http2</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">http2</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// HTTP/2サーバを作成</span>
+<span class="kd">const</span> <span class="nx">apiServer</span> <span class="o">=</span> <span class="nx">http2</span><span class="p">.</span><span class="nx">createServer</span><span class="p">();</span>
+
+<span class="nx">apiServer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">stream</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">stream</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="c1">// HTTP/2プロトコルであることを前提に、リクエストの詳細をログに表示</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Stream ID:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">stream</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span> <span class="c1">// ストリームID</span>
+
+	<span class="c1">// ヘッダーの情報を直接確認</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Stream Headers:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
+
+	<span class="c1">// リクエストボディを受け取るための変数</span>
+	<span class="kd">let</span> <span class="nx">body</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+
+	<span class="c1">// クライアントから送られてくるデータを受け取る</span>
+	<span class="nx">stream</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">body</span> <span class="o">+=</span> <span class="nx">chunk</span><span class="p">;</span> <span class="c1">// データを連結</span>
+	<span class="p">});</span>
+
+    <span class="c1">// データ受け取りが完了した時にボディをログに出力</span>
+    <span class="nx">stream</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Request Body:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">body</span><span class="p">);</span> <span class="c1">// リクエストボディの出力</span>
+
+		<span class="c1">// 応答を送信</span>
+		<span class="nx">stream</span><span class="p">.</span><span class="nx">respond</span><span class="p">({</span>
+			<span class="dl">'</span><span class="s1">:status</span><span class="dl">'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+			<span class="dl">'</span><span class="s1">content-type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">text/plain</span><span class="dl">'</span>
+		<span class="p">});</span>
+		<span class="nx">stream</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello from HTTP/2 API server!</span><span class="se">\n</span><span class="dl">'</span><span class="p">);</span>
+	<span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">apiServer</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">7001</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">API server listening on port 7001</span><span class="dl">'</span><span class="p">));</span>
+</code></pre></div></div>
+<p>APIサーバを立ち上げる。</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node apiServer.js
+API server listening on port 7001
+</code></pre></div></div>
+
+<h3 id="client">Client</h3>
+<p><code class="language-plaintext highlighter-rouge">curl</code>コマンドのバージョンが<code class="language-plaintext highlighter-rouge">http/2</code>に対応しているかを確認しておく</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">--version</span>
+curl 8.8.0 <span class="o">(</span>x86_64-apple-darwin19.6.0<span class="o">)</span> libcurl/8.8.0 <span class="o">(</span>SecureTransport<span class="o">)</span> OpenSSL/3.3.0 zlib/1.2.11 brotli/1.1.0 zstd/1.5.6 libidn2/2.3.7 libssh2/1.11.0 nghttp2/1.61.0 librtmp/2.3 OpenLDAP/2.6.8
+Release-Date: 2024-05-22
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtmp rtsp scp sftp smb smbs smtp smtps telnet tftp
+Features: alt-svc AsynchDNS brotli GSS-API HSTS HTTP2 HTTPS-proxy IDN IPv6 Kerberos Largefile libz MultiSSL NTLM SPNEGO SSL threadsafe TLS-SRP UnixSockets zstd
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Features:</code>に<code class="language-plaintext highlighter-rouge">HTTP2</code>が含まれているので問題ない。</p>
+
+<p>以下のコマンドで<code class="language-plaintext highlighter-rouge">webServer</code>にヘッダーとボディを送信する</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">--http2</span> <span class="nt">-k</span> <span class="s2">"https://localhost:7000"</span> <span class="nt">-H</span> <span class="s2">"Client-Set-Header: Header Value"</span> <span class="nt">-d</span> <span class="s2">"This is the body data"</span>
+Hello from HTTP/2 API server!
+</code></pre></div></div>
+
+<p>Clientからは正しく<code class="language-plaintext highlighter-rouge">apiServer</code>からのレスポンスを受信できた。</p>
+
+<p>この時、<code class="language-plaintext highlighter-rouge">apiServer</code>を立てたターミナルには以下のような情報が出力された</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Stream ID: 1
+Stream Headers: [Object: null prototype] {
+  ':method': 'POST',
+  ':scheme': 'https',
+  ':authority': 'localhost:7000',
+  ':path': '/',
+  'user-agent': 'curl/8.8.0',
+  accept: '*/*',
+  'client-set-header': 'Header Value',
+  'content-length': '21',
+  'content-type': 'application/x-www-form-urlencoded',
+  [Symbol(nodejs.http2.sensitiveHeaders)]: []
+}
+Request Body: This is the body data
+</code></pre></div></div>
+
+<p>Clientから受信してヘッダーとボディが、<code class="language-plaintext highlighter-rouge">webServer</code>経由（プロキシ）し、<code class="language-plaintext highlighter-rouge">apiServer</code>に転送されることが検証できた。また、それが<code class="language-plaintext highlighter-rouge">http2</code>のプロトコルで、ストリームIDが1であることも分かった。</p>
+
+<h2 id="まとめ">まとめ</h2>
+<p><code class="language-plaintext highlighter-rouge">http/2</code>について触り程度で、<code class="language-plaintext highlighter-rouge">stream</code>イベントにて<code class="language-plaintext highlighter-rouge">マルチプレクシング</code>での処理を検証した。<code class="language-plaintext highlighter-rouge">http/1.1</code>のような単純な<code class="language-plaintext highlighter-rouge">req</code>と<code class="language-plaintext highlighter-rouge">res</code>の扱い方ほど直感的ではない感覚もあるが、リクエスト間の待機時間が短縮でき、通信の効率が向上することに繋がる。
+<code class="language-plaintext highlighter-rouge">サーバプッシュ</code>の検証はしなかったが、今後時間があれば試したい。</p>
+:ET
