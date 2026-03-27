@@ -5,7 +5,7 @@ subtitle:
 cover-img: [/assets/img/cover/ai1.jpg, /assets/img/cover/ai2.jpg, /assets/img/cover/ai3.jpg]
 thumbnail-img: https://i.imgur.com/I4Hdy8o.png
 share-img:
-tags: [AI, OpenClas]
+tags: [AI, OpenClaw, Claude, Anthropic]
 categories: [AI]
 ---
 
