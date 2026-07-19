@@ -5,7 +5,7 @@ subtitle:
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
 thumbnail-img: https://i.imgur.com/YCTXd2z.png
 share-img:
-tags: [Jira, n8n, Slack, Automation]
+tags: [Jira, Cloudfleard, n8n, Slack, Automation]
 categories: [Study]
 ---
 
