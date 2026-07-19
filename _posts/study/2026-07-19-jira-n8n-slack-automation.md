@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Jira → n8n → Slack DM Automation: Automatically Notify the Jira Reporter
+title: Automatically Notify the Jira Reporter
 subtitle: 
 cover-img: [/assets/img/cover/study1.jpg, /assets/img/cover/study2.jpg, /assets/img/cover/study3.jpg]
 thumbnail-img: https://i.imgur.com/YCTXd2z.png
