@@ -186,7 +186,7 @@ Tunneling through Cloudflare allows me to run n8n locally while still being able
   }
   ```
 
-  ![file](https://i.imgur.com/YCTXd2z.png)
+  ![file](https://i.imgur.com/TJk5M5K.png)
 
 # Step 3. Build the n8n Workflow
 ```text
