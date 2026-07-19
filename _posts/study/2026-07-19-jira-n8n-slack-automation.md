@@ -280,6 +280,8 @@ Jira Automation
 ```
 Which is sent by the Slack bot.
 
+![file](https://i.imgur.com/zjLSvTa.png)
+
 # Problems I Encountered
 - Reporter email was empty  
   Wrong:
