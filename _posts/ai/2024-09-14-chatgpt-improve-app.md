@@ -2,11 +2,11 @@
 layout: post
 title: ChatGPTを活用したWebアプリケーション作成
 subtitle: 
-cover-img: [/assets/img/cover/it1.jpg, /assets/img/cover/it2.jpg, /assets/img/cover/it3.jpg]
+cover-img: [/assets/img/cover/ai1.jpg, /assets/img/cover/ai2.jpg, /assets/img/cover/ai3.jpg]
 thumbnail-img: https://i.imgur.com/K2ZALZc.png
 share-img:
 tags: [AI, ChatGPT]
-categories: [IT]
+categories: [AI]
 ---
 
 ## ChatGPTで段階的に機能改善していくWebアプリの構築
